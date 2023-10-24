@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('dashboard', [
+        "title" => "Dashboard"
+    ]);
 });
 
-Route::get('/laravel', function () {
-    return view('laravel_welcome');
+Route::get('laravel', function () {
+    return view('laravel_welcome', [
+        "title" => "Laravel"
+    ]);
 });
