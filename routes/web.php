@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('laravel', function () {
         "title" => "Laravel"
     ]);
 });
+
+Route::get('login', [LoginController::class, 'index']);
