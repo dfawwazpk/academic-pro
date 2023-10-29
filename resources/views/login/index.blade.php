@@ -5,6 +5,11 @@
     <div class="col-md-4">
         <main class="form-signin w-100 m-auto">
             <h1 class="mb-3 fw-bold text-center">AcademicPro</h1>
+            @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
             <form>
                 <div class="form-floating">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
