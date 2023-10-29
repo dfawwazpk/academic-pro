@@ -8,7 +8,7 @@
             <form>
                 <div class="form-floating">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+                    <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
@@ -20,7 +20,7 @@
                     <div class="px-4 mt-2 mb-2">Belum punya akun?</div>
                     <hr class="my-auto flex-grow-1">
                 </div>
-                <button class="btn btn-light w-100 py-2" href="/register">Register</button>
+                <a href="/register" class="btn btn-outline-dark w-100 py-2">Register</a>
             </form>
         </main>
     </div>
