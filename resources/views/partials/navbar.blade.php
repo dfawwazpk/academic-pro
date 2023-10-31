@@ -6,6 +6,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+
+                @if(auth()->guard('operator')->check())
                 <li class="nav-item">
                     <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
                 </li>
@@ -21,6 +23,25 @@
                 <li class="nav-item">
                     <a class="nav-link {{ ($title === "Buat Akun Dosen") ? 'active' : '' }}" href="/">Buat Akun Dosen</a>
                 </li>
+                @endif
+
+                @if(auth()->guard('dosen')->check())
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "Progress Mahasiswa") ? 'active' : '' }}" href="/">Progress Mahasiswa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "PKL") ? 'active' : '' }}" href="/">PKL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "Skripsi") ? 'active' : '' }}" href="/">Skripsi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "Verifikasi IRS") ? 'active' : '' }}" href="/">Verifikasi IRS</a>
+                </li>
+                @endif
             </ul>
             <ul class="navbar-nav ms-auto">
                 @auth
