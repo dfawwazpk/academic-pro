@@ -21,12 +21,12 @@ Route::get('laravel', function () {
     ]);
 });
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth:operator,dosen');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate']);
 
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'store']);
