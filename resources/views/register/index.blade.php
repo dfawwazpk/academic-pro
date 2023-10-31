@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="row justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <main class="form-register w-100 m-auto">
             <h1 class="mb-3 fw-bold text-center">AcademicPro</h1>
             <form action="/register" method="post">

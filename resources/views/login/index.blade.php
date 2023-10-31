@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <main class="form-signin w-100 m-auto">
             <h1 class="mb-3 fw-bold text-center">AcademicPro</h1>
             @if (session()->has('success'))
