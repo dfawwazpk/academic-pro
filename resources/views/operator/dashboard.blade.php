@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Ini dashboard.</h1>
+    <h1>Ini dashboard operator.</h1>
 @endsection

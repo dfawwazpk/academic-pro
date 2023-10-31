@@ -9,7 +9,9 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
+        @auth
         @include("partials.navbar")
+        @endauth
         <div class="container mt-4">
             @yield('container')
         </div>
