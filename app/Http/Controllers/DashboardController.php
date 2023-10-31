@@ -18,5 +18,10 @@ class DashboardController extends Controller
             "title" => "Dashboard"
             ]);
         }
+        if (Auth::guard('mahasiswa')->check()) {
+            return view('mahasiswa.dashboard', [
+            "title" => "Dashboard"
+            ]);
+        }
     }
 }

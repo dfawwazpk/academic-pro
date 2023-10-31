@@ -31,4 +31,4 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'store']);
 
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth:operator,dosen');
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');

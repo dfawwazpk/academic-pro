@@ -42,6 +42,24 @@
                     <a class="nav-link {{ ($title === "Verifikasi IRS") ? 'active' : '' }}" href="/">Verifikasi IRS</a>
                 </li>
                 @endif
+
+                @if(auth()->guard('mahasiswa')->check())
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "IRS") ? 'active' : '' }}" href="/">IRS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "KHS") ? 'active' : '' }}" href="/">KHS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "PKL") ? 'active' : '' }}" href="/">PKL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ ($title === "Skripsi") ? 'active' : '' }}" href="/">Skripsi</a>
+                </li>
+                @endif
             </ul>
             <ul class="navbar-nav ms-auto">
                 @auth
