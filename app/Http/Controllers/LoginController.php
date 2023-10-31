@@ -22,12 +22,23 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('operator')->attempt($credentials)) {
             $request->session()->regenerate();
-
+            return redirect()->intended('dashboard');
+        }
+        if (Auth::guard('dosen')->attempt($credentials)) {
+            $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
 
         return back()->with('loginError', 'Email atau password salah!');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+        return redirect('/login');
     }
 }
