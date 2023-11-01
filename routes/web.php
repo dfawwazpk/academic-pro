@@ -35,3 +35,4 @@ Route::post('register', [RegisterController::class, 'store']);
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
 
 Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
+Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');
