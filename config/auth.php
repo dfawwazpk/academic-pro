@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'dosen',
         ],
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswa',
+        ],
     ],
 
     /*
@@ -79,6 +83,10 @@ return [
         'dosen' => [
             'driver' => 'eloquent',
             'model' => App\Models\Dosen::class,
+        ],
+        'mahasiswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mahasiswa::class,
         ],
 
         // 'users' => [

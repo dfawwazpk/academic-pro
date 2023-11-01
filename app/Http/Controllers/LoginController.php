@@ -30,6 +30,10 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
+        if (Auth::guard('mahasiswa')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+        }
 
         return back()->with('loginError', 'Email atau password salah!');
     }
@@ -38,6 +42,7 @@ class LoginController extends Controller
     {
         Auth::guard('operator')->logout();
         Auth::guard('dosen')->logout();
+        Auth::guard('mahasiswa')->logout();
         $request->session()->invalidate();
         $request->session()->regenerate();
         return redirect('/login');
