@@ -12,16 +12,16 @@
                     <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Daftar Mahasiswa") ? 'active' : '' }}" href="/">Daftar Mahasiswa</a>
+                    <a class="nav-link {{ ($title === "Daftar Mahasiswa") ? 'active' : '' }}" href="/daftar/mahasiswa">Daftar Mahasiswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Daftar Dosen") ? 'active' : '' }}" href="/">Daftar Dosen</a>
+                    <a class="nav-link {{ ($title === "Daftar Dosen") ? 'active' : '' }}" href="/daftar/dosen">Daftar Dosen</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Buat Akun Mahasiswa") ? 'active' : '' }}" href="/">Buat Akun Mahasiswa</a>
+                    <a class="nav-link {{ ($title === "Buat Akun Mahasiswa") ? 'active' : '' }}" href="/buat/mahasiswa">Buat Akun Mahasiswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Buat Akun Dosen") ? 'active' : '' }}" href="/">Buat Akun Dosen</a>
+                    <a class="nav-link {{ ($title === "Buat Akun Dosen") ? 'active' : '' }}" href="/buat/dosen">Buat Akun Dosen</a>
                 </li>
                 @endif
 

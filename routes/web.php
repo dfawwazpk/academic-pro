@@ -5,7 +5,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditAkunController;
-
+use App\Http\Controllers\DaftarMahasiswaController;
+use App\Http\Controllers\DaftarDosenController;
+use App\Http\Controllers\BuatAkunDosenController;
+use App\Http\Controllers\BuatAkunMahasiswaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +37,11 @@ Route::post('register', [RegisterController::class, 'store']);
 
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
 
+//operator daftar
+Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class, 'index'])->middleware('auth:operator');
+Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth:operator');
+//operator buat akun
+Route::get('buat/mahasiswa', [BuatAkunMahasiswaController::class,'index'])->middleware('auth:operator');
+Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth:operator');
 Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
 Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');
