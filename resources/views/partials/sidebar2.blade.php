@@ -35,8 +35,8 @@
       .b-example-divider {
         width: 100%;
         height: 3rem;
-        background-color: rgba(130, 123, 123, 0.603);
-        border: solid rgba(180, 180, 180, 0.525);
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
         border-width: 1px 0;
         box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
       }
@@ -98,7 +98,7 @@
 
     
     <!-- Custom styles for this template -->
-<link href={{asset('/css/sidebars.css')}} rel="stylesheet">
+    <link href="/css/sidebars.css" rel="stylesheet">
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -190,31 +190,31 @@
         
     @if(auth()->guard('operator')->check())
     <li>
-        <a class="nav-link"{{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+        <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
           Dashboard
         </a>
       </li>
       <li>
-        <a class="nav-link text-white" {{ ($title === "Daftar Mahasiswa") ? 'active' : '' }}" href="/">
+        <a class="nav-link {{ ($title === "Daftar Mahasiswa") ? 'active' : '' }}" href="/">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
           Daftar Mahasiswa
         </a>
       </li>
       <li>
-        <a class="nav-link text-white" {{ ($title === "Daftar Dosen") ? 'active' : '' }}" href="/">
+        <a class="nav-link {{ ($title === "Daftar Dosen") ? 'active' : '' }}" href="/">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
           Daftar Dosen
         </a>
       </li>
       <li>
-        <a class="nav-link text-white" {{ ($title === "Buat Akun Mahasiswa") ? 'active' : '' }}" href="/">
+        <a class="nav-link {{ ($title === "Buat Akun Mahasiswa") ? 'active' : '' }}" href="/">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           Buat Akun Mahasiswa
         </a>
       </li>
       <li>
-        <a class="nav-link text-white" {{ ($title === "Buat Akun Dosen") ? 'active' : '' }}" href="/">
+        <a class="nav-link {{ ($title === "Buat Akun Dosen") ? 'active' : '' }}" href="/">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
           Buat Akun Dosen
         </a>
@@ -222,169 +222,29 @@
       @endif    
     </ul>
     <hr>
- 
-    <div class="div">
-        <div class="div-2">
-          <div class="div-3"></div>
-          <div class="div-4">
-            @auth
-            <div class="div-5">
-                <a href="#" class="d-flex align-items-center text-black text-decoration-none"  aria-expanded="false">
-                  {{ auth()->user()->nama_lengkap }}
-                </a>
-              </div>              
-            <div class="div-6">NIP Operator</div>
-          </div>
-        </div>
-        <div class="div-7">
-            <div class="div-8">
-                <li><a class="d-flex align-items-center text-black text-decoration-none" href="#">Edit Profil</a></li>
-              </div>              
-          <div class="div-10">
-            <li><a class="d-flex align-items-center text-black text-decoration-none" href="/logout">Keluar</a></li>
-          </div>          
-        </div>
+    <div class="dropdown">
+        @auth
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ auth()->user()->nama_lengkap }}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+          <li><a class="dropdown-item" href="#">Edit akun</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+        </ul>
         @endauth
-       
-        </div>
       </div>
-      <style>
-        .div {
-          border-radius: 20px;
-          background-color: #ddd;
-          display: flex;
-          width: 250px;
-          height: 100px;
-          flex-direction: column;
-          padding: 0 15px;
-        }
-        @media (max-width: 640px) {
-          .div {
-            margin-right: -5px;
-          }
-        }
-        .div-2 {
-          align-self: start;
-          display: flex;
-          margin-top: 11px;
-          width: 183px;
-          max-width: 100%;
-          align-items: flex-start;
-          gap: 10px;
-        }
-        .div-3 {
-            border-radius: 10px;
-            background-color: #bcbcbc;
-            align-self: stretch;
-            display: flex;
-            width: 45px;
-            height: 45px;
-            flex-direction: column;
-            background-image: url("https://if.fsm.undip.ac.id/id//assets/img/pengelola/kadep.png");
-            background-size: cover; /* To fill the entire area of the element with the image */
-            background-position: center; /* To center the image within the element */
-        }
-
-
-        .div-4 {
-          align-self: center;
-          display: flex;
-          flex-direction: column;
-          margin: auto 0;
-        }
-        .div-5 {
-          color: #606060;
-          align-self: start;
-          white-space: nowrap;
-          font: 700 16px Helvetica, sans-serif;
-        }
-        @media (max-width: 991px) {
-          .div-5 {
-            white-space: initial;
-          }
-        }
-        .div-6 {
-          color: #bcbcbc;
-          align-self: start;
-          white-space: nowrap;
-          font: 700 14px Helvetica, sans-serif;
-        }
-        @media (max-width: 991px) {
-          .div-6 {
-            white-space: initial;
-          }
-        }
-        .div-7 {
-    align-self: start;
-    display: flex;
-    width: 235px;
-    max-width: 100%;
-    align-items: flex-start;
-    gap: 9px;
-    margin: 10px 0;
-  }
-  .div-8 {
-    border-radius: 20px;
-    background-color: #bcbcbc;
-    width: 140px;
-    height: 30px;
-    display: flex;
-    justify-content: center; /* Horizontally center text */
-    align-items: flex-end; /* Vertically center text */
-    padding: 0px 20px;
-    white-space: nowrap; /* Prevent text from wrapping */
-}
-
-
-  .div-9 {
-    color: #888;
-    text-align: center;
-    align-self: center;
-    white-space: nowrap;
-    font: 700 14px Helvetica, sans-serif;
-  }
-  @media (max-width: 991px) {
-    .div-9 {
-      white-space: initial;
-    }
-  }
-  .div-10 {
-    border-radius: 20px;
-    background-color: #bcbcbc;
-    width: 140px;
-    height: 30px;
-    display: flex;
-   
-    justify-content: center; /* Horizontally center text */
-    align-items: flex-end; /* Vertically center text */
-    padding: 0px 30px;
-    white-space: nowrap; /* Prevent text from wrapping */
-  }
-  .div-11 {
-    color: #888;
-    text-align: center;
-    align-self: center;
-    white-space: nowrap;
-    font: 700 14px Helvetica, sans-serif;
-  }
-  @media (max-width: 991px) {
-    .div-11 {
-      white-space: initial;
-    }
-  }
-
-
-</style>
-
       
 
 
   
+
+
   <div class="b-example-divider b-example-vr"></div>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script href={{asset('/js/sidebars.js')}}></script></body>
+<script src="/js/sidebars.js"></script></body>
 
 
 
