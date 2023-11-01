@@ -32,6 +32,10 @@ class EditAkunController extends Controller
     {
         if (Auth::guard('operator')->check()) {
 
+            Operator::find($request->nip)->update([
+                'password' => Hash::make($request->password
+                )]);
+
             if (Operator::find($request->nip)->nama_lengkap != $request->nama_lengkap) {
                 $validatedData = $request->validate([
                     'nama_lengkap' => 'required|max:255',
