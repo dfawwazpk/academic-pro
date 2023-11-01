@@ -1,0 +1,125 @@
+.div {
+  border-radius: 20px;
+  background-color: #ddd;
+  display: flex;
+  width: 250px;
+  height: 100px;
+  flex-direction: column;
+  padding: 0 15px;
+}
+@media (max-width: 640px) {
+  .div {
+    margin-right: -5px;
+  }
+}
+.div-2 {
+  align-self: start;
+  display: flex;
+  margin-top: 11px;
+  width: 183px;
+  max-width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+}
+.div-3 {
+    border-radius: 10px;
+    background-color: #bcbcbc;
+    align-self: stretch;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    flex-direction: column;
+    background-image: url("https://if.fsm.undip.ac.id/id//assets/img/pengelola/kadep.png");
+    background-size: cover; /* To fill the entire area of the element with the image */
+    background-position: center; /* To center the image within the element */
+}
+
+
+.div-4 {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+}
+.div-5 {
+  color: #606060;
+  align-self: start;
+  white-space: nowrap;
+  font: 700 16px Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-5 {
+    white-space: initial;
+  }
+}
+.div-6 {
+  color: #bcbcbc;
+  align-self: start;
+  white-space: nowrap;
+  font: 700 14px Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-6 {
+    white-space: initial;
+  }
+}
+.div-7 {
+align-self: start;
+display: flex;
+width: 235px;
+max-width: 100%;
+align-items: flex-start;
+gap: 9px;
+margin: 10px 0;
+}
+.div-8 {
+border-radius: 20px;
+background-color: #bcbcbc;
+width: 140px;
+height: 30px;
+display: flex;
+justify-content: center; /* Horizontally center text */
+align-items: flex-end; /* Vertically center text */
+padding: 0px 20px;
+white-space: nowrap; /* Prevent text from wrapping */
+}
+
+
+.div-9 {
+color: #888;
+text-align: center;
+align-self: center;
+white-space: nowrap;
+font: 700 14px Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+.div-9 {
+white-space: initial;
+}
+}
+.div-10 {
+border-radius: 20px;
+background-color: #bcbcbc;
+width: 140px;
+height: 30px;
+display: flex;
+
+justify-content: center; /* Horizontally center text */
+align-items: flex-end; /* Vertically center text */
+padding: 0px 30px;
+white-space: nowrap; /* Prevent text from wrapping */
+}
+.div-11 {
+color: #888;
+text-align: center;
+align-self: center;
+white-space: nowrap;
+font: 700 14px Helvetica, sans-serif;
+}
+@media (max-width: 991px) {
+.div-11 {
+white-space: initial;
+}
+}
+
+

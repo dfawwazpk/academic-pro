@@ -1,85 +1,97 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<link rel="stylesheet" href="style.css">
+<main class="d-flex flex-nowrap">
     <div class="container">
-        <a class="navbar-brand gittext-white" href="/">AcademicPro</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+        <h1 class="visually-hidden">Sidebars examples</h1>
 
-                @if(auth()->guard('operator')->check())
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Daftar Mahasiswa") ? 'active' : '' }}" href="/daftar/mahasiswa">Daftar Mahasiswa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Daftar Dosen") ? 'active' : '' }}" href="/daftar/dosen">Daftar Dosen</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Buat Akun Mahasiswa") ? 'active' : '' }}" href="/buat/mahasiswa">Buat Akun Mahasiswa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Buat Akun Dosen") ? 'active' : '' }}" href="/buat/dosen">Buat Akun Dosen</a>
-                </li>
-                @endif
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32">
+                    <use xlink:href="" />
+                </svg>
+                <span class="fs-4">AcademicPro</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
 
-                @if(auth()->guard('dosen')->check())
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Progress Mahasiswa") ? 'active' : '' }}" href="/">Progress Mahasiswa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "PKL") ? 'active' : '' }}" href="/">PKL</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Skripsi") ? 'active' : '' }}" href="/">Skripsi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Verifikasi IRS") ? 'active' : '' }}" href="/">Verifikasi IRS</a>
-                </li>
-                @endif
-
-                @if(auth()->guard('mahasiswa')->check())
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "IRS") ? 'active' : '' }}" href="/">IRS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "KHS") ? 'active' : '' }}" href="/">KHS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "PKL") ? 'active' : '' }}" href="/">PKL</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Skripsi") ? 'active' : '' }}" href="/">Skripsi</a>
-                </li>
+                @if (auth()->guard('operator')->check())
+                    <li>
+                        <a class="nav-link"{{ $title === 'Dashboard' ? 'active' : '' }}" href="/dashboard">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#home" />
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white" {{ $title === 'Daftar Mahasiswa' ? 'active' : '' }}"
+                            href="/">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#table" />
+                            </svg>
+                            Daftar Mahasiswa
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white" {{ $title === 'Daftar Dosen' ? 'active' : '' }}"
+                            href="/">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#grid" />
+                            </svg>
+                            Daftar Dosen
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white" {{ $title === 'Buat Akun Mahasiswa' ? 'active' : '' }}"
+                            href="/">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#people-circle" />
+                            </svg>
+                            Buat Akun Mahasiswa
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white" {{ $title === 'Buat Akun Dosen' ? 'active' : '' }}"
+                            href="/">
+                            <svg class="bi pe-none me-2" width="16" height="16">
+                                <use xlink:href="#people-circle" />
+                            </svg>
+                            Buat Akun Dosen
+                        </a>
+                    </li>
                 @endif
             </ul>
-            <ul class="navbar-nav ms-auto">
-                @auth
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ auth()->user()->nama_lengkap }}
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/edit-akun">Edit akun</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-                    </ul>
-                </li>
-                @else
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "Login") ? 'active' : '' }}" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
-                </li>
+            <hr>
+
+            <div class="div">
+                <div class="div-2">
+                    <div class="div-3"></div>
+                    <div class="div-4">
+                        @auth
+                            <div class="div-5">
+                                <a href="#" class="d-flex align-items-center text-black text-decoration-none"
+                                    aria-expanded="false">
+                                    {{ auth()->user()->nama_lengkap }}
+                                </a>
+                            </div>
+                            <div class="div-6">NIP Operator</div>
+                        </div>
+                    </div>
+                    <div class="div-7">
+                        <div class="div-8">
+                            <li><a class="d-flex align-items-center text-black text-decoration-none" href="#">Edit
+                                    Profil</a></li>
+                        </div>
+                        <div class="div-10">
+                            <li><a class="d-flex align-items-center text-black text-decoration-none"
+                                    href="/logout">Keluar</a></li>
+                        </div>
+                    </div>
                 @endauth
-            </ul>
-            
+
+            </div>
         </div>
     </div>
-</nav>
+    <div class="b-example-divider b-example-vr">
+      
+    </div>
+</main>
