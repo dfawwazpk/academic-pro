@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Operator;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        Operator::create($validatedData);
 
         return redirect('/login')->with('success', 'Akun berhasil dibuat! Silahkan login.');
     }

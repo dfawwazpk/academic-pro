@@ -42,6 +42,7 @@ class LoginController extends Controller
     {
         Auth::guard('operator')->logout();
         Auth::guard('dosen')->logout();
+        Auth::guard('mahasiswa')->logout();
         $request->session()->invalidate();
         $request->session()->regenerate();
         return redirect('/login');
