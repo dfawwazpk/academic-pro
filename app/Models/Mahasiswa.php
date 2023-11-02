@@ -16,22 +16,14 @@ class Mahasiswa extends Authenticatable
     ];
 
     protected $table = 'mahasiswa';
-    protected $primaryKey = 'nim';
-    public $incrementing = false;
+    protected $primaryKey = 'id';
+    public $incrementing = true;
 
     protected $fillable = [
         'nim',
-        'nama_lengkap',
-        'email',
-        'password',
-        'tanggal_lahir',
-        'alamat',
-        'kabupaten_kota',
-        'provinsi',
+        'nama',
         'angkatan',
-        'jalur_masuk',
-        'nomor_hp',
+        'dosen_wali',
         'status',
-        'avatar',
     ];
 }
