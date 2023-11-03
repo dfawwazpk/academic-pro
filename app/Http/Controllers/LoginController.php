@@ -22,15 +22,7 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::guard('operator')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('dashboard');
-        }
-        if (Auth::guard('dosen')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('dashboard');
-        }
-        if (Auth::guard('mahasiswa')->attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
@@ -40,9 +32,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('operator')->logout();
-        Auth::guard('dosen')->logout();
-        Auth::guard('mahasiswa')->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerate();
         return redirect('/login');

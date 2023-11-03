@@ -13,10 +13,8 @@ class Operator extends Model
     public $incrementing = false;
 
     protected $fillable = [
+        'id',
         'nip',
-        'nama_lengkap',
-        'email',
-        'password',
-        'avatar',
+        'nama',
     ];
 }

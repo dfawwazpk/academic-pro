@@ -26,7 +26,6 @@ class User extends Authenticatable
 
     protected $table = 'users';
     public $incrementing = true;
-
     protected $guarded = [];
 
     /**
@@ -43,7 +42,7 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
 }

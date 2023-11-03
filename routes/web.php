@@ -25,7 +25,7 @@ Route::get('laravel', function () {
     ]);
 });
 
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate']);
@@ -35,7 +35,7 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'store']);
 
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 //operator daftar
 Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class, 'index'])->middleware('auth:operator');
