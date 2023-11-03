@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('khs', function (Blueprint $table) {
             $table->id();
-            $table->int('semester', 2);
-            $table->int('sks_semester', 3);
-            $table->int('sks_total', 3);
+            $table->integer('semester');
+            $table->integer('sks_semester');
+            $table->integer('sks_total');
             $table->float('ips');
             $table->float('ipk');
             $table->string('file', 255);
-            $table->foreignId('mahasiswa_id');
+            $table->unsignedBigInteger('mahasiswa_id');
 
-            $table->primary('id');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
             $table->timestamps();
         });

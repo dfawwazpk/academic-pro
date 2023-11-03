@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('operator', function (Blueprint $table) {
-            $table->foreignId('id');
+            $table->unsignedBigInteger('id');
             $table->string('nip', 18);
             $table->string('nama', 100);
 

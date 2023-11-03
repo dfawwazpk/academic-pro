@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('pkl', function (Blueprint $table) {
             $table->id();
             $table->string('status', 6);
-            $table->int('nilai', 3);
+            $table->integer('nilai');
             $table->string('file', 255);
-            $table->foreignId('mahasiswa_id');
+            $table->unsignedBigInteger('mahasiswa_id');
 
-            $table->primary('id');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
             $table->timestamps();
         });

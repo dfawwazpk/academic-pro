@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('irs', function (Blueprint $table) {
             $table->id();
-            $table->int('semester', 2);
-            $table->int('sks_diambil', 3);
+            $table->integer('semester');
+            $table->integer('sks_diambil');
             $table->string('status', 10);
             $table->string('file', 255);
-            $table->foreignId('mahasiswa_id');
+            $table->unsignedBigInteger('mahasiswa_id');
 
-            $table->primary('id');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
             $table->timestamps();
         });

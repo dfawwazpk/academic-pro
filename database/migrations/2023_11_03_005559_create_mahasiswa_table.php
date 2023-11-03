@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->foreignId('id');
+            $table->unsignedBigInteger('id');
             $table->string('nim', 14);
             $table->string('nama', 100);
             $table->date('tanggal_lahir');
@@ -25,12 +25,10 @@ return new class extends Migration
             $table->string('angkatan', 4);
             $table->string('jalur_masuk', 7);
             $table->string('status', 15);
-            $table->foreignId('dosen_wali');
-            
+
             $table->primary('id');
             $table->unique('nim');
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('dosen_wali')->references('id')->on('dosen')->onDelete('restrict');
             $table->timestamps();
         });
     }
