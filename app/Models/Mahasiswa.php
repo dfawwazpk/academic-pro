@@ -3,21 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class Mahasiswa extends Authenticatable
+class Mahasiswa extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    protected $hidden = [
-        'password',
-    ];
+    use HasFactory;
 
     protected $table = 'mahasiswa';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
+    public $incrementing = false;
 
     protected $fillable = [
         'nim',

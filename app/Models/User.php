@@ -24,9 +24,8 @@ class User extends Authenticatable
     //     'password',
     // ];
 
-    public $timestamps = false;
-
-    protected $table = 'operator';
+    protected $table = 'users';
+    public $incrementing = true;
 
     protected $guarded = [];
 
@@ -37,7 +36,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**

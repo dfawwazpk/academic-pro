@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dosen', function (Blueprint $table) {
-            $table->foreignId('id');
-            $table->string('nip', 18);
-            $table->string('nama', 100);
+        Schema::create('irs', function (Blueprint $table) {
+            $table->id();
+            $table->int('semester', 2);
+            $table->int('sks_diambil', 3);
+            $table->string('status', 10);
+            $table->string('file', 255);
+            $table->foreignId('mahasiswa_id');
 
             $table->primary('id');
-            $table->unique('nip');
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('irs');
     }
 };
