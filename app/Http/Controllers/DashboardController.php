@@ -8,17 +8,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if (Auth::guard('operator')->check()) {
+        if (Auth::user()->role_id==1) {
             return view('operator.dashboard', [
             "title" => "Dashboard"
             ]);
         }
-        if (Auth::guard('dosen')->check()) {
+        if (Auth::user()->role_id==3) {
             return view('dosen.dashboard', [
             "title" => "Dashboard"
             ]);
         }
-        if (Auth::guard('mahasiswa')->check()) {
+        if (Auth::user()->role_id==4) {
             return view('mahasiswa.dashboard', [
             "title" => "Dashboard"
             ]);
