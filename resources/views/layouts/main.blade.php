@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <main class=" d-flex flex-nowrap justify-content-between" style="width: 100%">
+    {{-- <main class=" d-flex flex-nowrap justify-content-between" style="width: 100%">
         <div class="" style="width: fit-content">
             <h1 class="visually-hidden">Sidebars examples</h1>
-            {{-- sidebar --}}
+            {{-- sidebar s--}}
             @auth
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
                     <a href="/"
@@ -106,9 +106,8 @@
                     </div>
                 </div>
             @endauth
-        </div>
+        </div> --}}
         @yield('container')
-
         <div class="b-example-divider b-example-vr">
 
         </div>
