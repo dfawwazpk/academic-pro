@@ -18,6 +18,7 @@ class DaftarMahasiswaController extends Controller
     function index()
     {
         // Tampilkan daftar IRS
+        return view("operator/daftar/mahasiswa");
         $entry_awal = Mahasiswa::all();
     }
 
