@@ -67,9 +67,9 @@
             <label for="status" class="form-label">Status</label>
             <select id="status" name="status" class="form-select @error('status') is-invalid @enderror" value="{{ old('status') }}">
                 <option value="" selected disabled>Pilih status</option>
-                <option value="1">Aktif</option>
-                <option value="2">Nonaktif</option>
-                <option value="3">Cuti</option>
+                @foreach ($status as $stat)
+                    <option value="{{ $stat->id }}"> {{ $stat->name }}</option>
+                @endforeach
             </select>
             @error('status')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -80,9 +80,9 @@
             <label for="jalur_masuk" class="form-label">Jalur masuk</label>
             <select id="jalur_masuk" name="jalur_masuk" class="form-select @error('jalur_masuk') is-invalid @enderror" value="{{ old('jalur_masuk') }}">
                 <option value="" selected disabled>Pilih jalur masuk</option>
-                <option value="1">SNBP</option>
-                <option value="2">SNBT</option>
-                <option value="3">Mandiri</option>
+                @foreach ($jalur_masuk as $jalur)
+                    <option value="{{ $jalur->id }}"> {{ $jalur->name }}</option>
+                @endforeach
             </select>
             @error('jalur_masuk')
             <div class="invalid-feedback">{{ $message }}</div>

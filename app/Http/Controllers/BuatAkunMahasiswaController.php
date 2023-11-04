@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\StatusMahasiswa;
+use App\Models\JalurMasuk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,9 +17,13 @@ class BuatAkunMahasiswaController extends Controller
 {
     function index(){
         $dosen_wali = Dosen::all('id', 'nama');
+        $status = StatusMahasiswa::all('id', 'name');
+        $jalur_masuk = JalurMasuk::all('id', 'name');
         return view('operator.buat.mahasiswa',[
             "title" => "Buat Akun Mahasiswa",
-            "dosen_wali" => $dosen_wali
+            "dosen_wali" => $dosen_wali,
+            "status" => $status,
+            "jalur_masuk" => $jalur_masuk
         ]);
     }
 
