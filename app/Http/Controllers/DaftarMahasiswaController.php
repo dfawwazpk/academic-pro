@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Auth;
 
 class DaftarMahasiswaController extends Controller
 {
+    function index()
+    {
+        // Tampilkan daftar IRS
+        $entry_awal = Mahasiswa::all();
+    }
+
     function editData()
     {
         $user = Auth::user();
