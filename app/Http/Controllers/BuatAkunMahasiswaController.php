@@ -76,5 +76,7 @@ class BuatAkunMahasiswaController extends Controller
         $mahasiswa->jalur_masuk = $request->jalur_masuk;
         $mahasiswa->dosen_wali = $request->dosen_wali;
         $mahasiswa->save();
+
+        return redirect('/buat/mahasiswa')->with('success', 'Akun mahasiswa baru berhasil dibuat!');
     }
 }

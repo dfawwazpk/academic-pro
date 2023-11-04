@@ -15,6 +15,12 @@
 </script>
 <h1>Buat akun mahasiswa baru</h1>
 <div class="row g-5">
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
   <form action="/buat/mahasiswa" method="post">
     @csrf
     <div class="col-md-7 col-lg-8">
