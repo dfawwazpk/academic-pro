@@ -9,6 +9,8 @@ use App\Http\Controllers\DaftarMahasiswaController;
 use App\Http\Controllers\DaftarDosenController;
 use App\Http\Controllers\BuatAkunDosenController;
 use App\Http\Controllers\BuatAkunMahasiswaController;
+use App\Http\Controllers\EntryIRS;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,3 +53,7 @@ Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('aut
 //login pertama mahasiswa
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
 Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updateProfile'])->name('update-profile');
+
+//entry irs
+Route::get('/entry/irs', [EntryIRS::class, 'index']);
+Route::post('/entry/irs', [EntryIRS::class, 'doEntryIRS'])->name('entry-irs.store');
