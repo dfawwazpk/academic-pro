@@ -15,7 +15,7 @@
 </script>
 <h1>Buat akun mahasiswa baru</h1>
 <div class="row g-5">
-  <form action="/edit-akun" method="post">
+  <form action="/buat/mahasiswa" method="post">
     @csrf
     <div class="col-md-7 col-lg-8">
       <div class="row g-3">
@@ -74,6 +74,19 @@
                 <option value="1">SNBP</option>
                 <option value="2">SNBT</option>
                 <option value="3">Mandiri</option>
+            </select>
+            @error('jalur_masuk')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-12">
+            <label for="dosen_wali" class="form-label">Dosen wali</label>
+            <select id="dosen_wali" name="dosen_wali" class="form-select @error('dosen_wali') is-invalid @enderror" value="{{ old('dosen_wali') }}">
+                <option value="" selected disabled>Pilih dosen wali</option>
+                @foreach ($dosen_wali as $doswal)
+                    <option value="{{ $doswal->id }}"> {{ $doswal->nama }}</option>
+                @endforeach
             </select>
             @error('jalur_masuk')
             <div class="invalid-feedback">{{ $message }}</div>

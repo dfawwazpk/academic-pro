@@ -13,6 +13,7 @@ class Mahasiswa extends Model
     public $incrementing = false;
 
     protected $fillable = [
+        'id',
         'nim',
         'nama',
         'tanggal_lahir',

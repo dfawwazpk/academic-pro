@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class BuatAkunMahasiswaController extends Controller
 {
     function index(){
-        return view('operator/buat/mahasiswa',[
+        $dosen_wali = Dosen::all('id', 'nama');
+        return view('operator.buat.mahasiswa',[
             "title" => "Buat Akun Mahasiswa",
+            "dosen_wali" => $dosen_wali
         ]);
     }
 
@@ -46,15 +51,31 @@ class BuatAkunMahasiswaController extends Controller
 
     function doCreate(Request $request)
     {
-        $validated = $request->validate([
-            'nim'          => 'required|string|unique:mahasiswa',
+        $request->validate([
+            'nim'          => 'required|numeric|digits:14|unique:mahasiswa',
             'nama'         => 'required|string',
-            'angkatan'     => 'required|numeric',
-            'dosen_wali'   => 'required|string',
-            //'status'       => 'required',
+            'email'        => 'required|email:dns|unique:mahasiswa',
+            'angkatan'     => 'required|numeric|digits:4',
+            'status'       => 'required|numeric|digits:1',
+            'jalur_masuk'  => 'required|numeric|digits:1',
+            'dosen_wali'   => 'required|numeric',
         ]);
-        $mahasiswa = Mahasiswa::create($validated);
-        error_log($mahasiswa);
+        $validated = $request->validated();
+
+        $akun_mahasiswa = new User;
+        $akun_mahasiswa->email = $validated->email;
+        $akun_mahasiswa->password = Hash::make('password');
+        $akun_mahasiswa->role_id = 4;
+        $akun_mahasiswa->save();
+
+        $mahasiswa = new Mahasiswa;
+        $mahasiswa->id = User::where('email', $validated->email)->value('id');
+        $mahasiswa->nim = $validated->nim;
+        $mahasiswa->nama = $validated->nama;
+        $mahasiswa->angkatan = $validated->angkatan;
+        $mahasiswa->status = $validated->status;
+        $mahasiswa->jalur_masuk = $validated->jalur_masuk;
+        $mahasiswa->dosen_wali = $validated->dosen_wali;
         $mahasiswa->save();
     }
 }

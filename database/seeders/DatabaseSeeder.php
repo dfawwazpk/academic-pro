@@ -100,19 +100,40 @@ class DatabaseSeeder extends Seeder
         
         DB::table('users')->truncate();
         DB::table('operator')->truncate();
+        DB::table('dosen')->truncate();
 
-        DB::table('users')->insert([
+        DB::table('users')->insert(
+            [
             'email' => 'atmin@academic.pro',
             'password' => Hash::make('password'),
             'role_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
-        ]);
+            ]
+        );
+
+        DB::table('users')->insert(
+            [
+            'email' => 'dosen@academic.pro',
+            'password' => Hash::make('password'),
+            'role_id' => 3,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+        );
 
         DB::table('operator')->insert([
             'id' => User::where('email', 'atmin@academic.pro')->value('id'),
             'nip' => '696969696969696969',
             'nama' => 'Atmin bin Admin',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('operator')->insert([
+            'id' => User::where('email', 'dosen@academic.pro')->value('id'),
+            'nip' => '969696969696969696',
+            'nama' => 'Dr. Dosen bin Dosen, S.T., M.Cs.',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

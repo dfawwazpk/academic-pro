@@ -41,6 +41,8 @@ Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class, 'index'])->mid
 Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
 //operator buat akun
 Route::get('buat/mahasiswa', [BuatAkunMahasiswaController::class,'index'])->middleware('auth','operator');
+Route::post('buat/mahasiswa', [BuatAkunMahasiswaController::class,'doCreate'])->middleware('auth','operator');
+
 Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
 
 Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
