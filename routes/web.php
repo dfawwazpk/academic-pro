@@ -8,7 +8,7 @@ use App\Http\Controllers\EditAkunController;
 use App\Http\Controllers\DaftarMahasiswaController;
 use App\Http\Controllers\DaftarDosenController;
 use App\Http\Controllers\BuatAkunDosenController;
-use App\Http\Controllers\BuatAkunMahasiswaController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\EntryIRS;
 
 /*
@@ -27,30 +27,35 @@ Route::get('laravel', function () {
     ]);
 });
 
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth', 'all');
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('login', [LoginController::class, 'authenticate']);
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('register', [RegisterController::class, 'index']);
-Route::post('register', [RegisterController::class, 'store']);
-
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
-//operator daftar
-Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class, 'index'])->middleware('auth','operator');
+
+
+
+//operator list akun
+Route::get('daftar/mahasiswa', [MahasiswaController::class, 'list'])->middleware('auth','operator');
 Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
 //operator buat akun
-Route::get('/buat/mahasiswa', [BuatAkunMahasiswaController::class,'index'])->middleware('auth','operator');
-Route::post('/buat/mahasiswa', [BuatAkunMahasiswaController::class,'doCreate'])->middleware('auth','operator');
+Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware('auth','operator');
+Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middleware('auth','operator');
 
 Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
 
-Route::get('/edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
-Route::post('/edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');
+Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
+Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');
+
+
 
 //login pertama mahasiswa
+Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth');
+Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth');
+
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
 Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updateProfile'])->name('update-profile');
