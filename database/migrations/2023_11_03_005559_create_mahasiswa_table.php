@@ -17,11 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id');
             $table->string('nim', 14);
             $table->string('nama', 100);
-            $table->date('tanggal_lahir');
-            $table->string('no_hp', 20);
-            $table->string('alamat', 200);
-            $table->string('kabupaten_kota', 50);
-            $table->string('provinsi', 50);
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('no_hp', 20)->nullable();
+            $table->string('alamat', 200)->nullable();
+            $table->string('kabupaten_kota', 50)->nullable();
+            $table->string('provinsi', 50)->nullable();
             $table->string('angkatan', 4);
             $table->string('jalur_masuk', 7);
             $table->string('status', 15);

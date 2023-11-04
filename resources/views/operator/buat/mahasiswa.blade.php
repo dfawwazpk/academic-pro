@@ -48,6 +48,9 @@
             <label for="angkatan" class="form-label">Angkatan</label>
             <select id="angkatan" name="angkatan" class="form-select @error('angkatan') is-invalid @enderror" value="{{ old('angkatan') }}">
                 <option value="" selected disabled>Pilih angkatan</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
             </select>
             @error('angkatan')
             <div class="invalid-feedback">{{ $message }}</div>

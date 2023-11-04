@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        DB::table('operator')->insert([
+        DB::table('dosen')->insert([
             'id' => User::where('email', 'dosen@academic.pro')->value('id'),
             'nip' => '969696969696969696',
             'nama' => 'Dr. Dosen bin Dosen, S.T., M.Cs.',

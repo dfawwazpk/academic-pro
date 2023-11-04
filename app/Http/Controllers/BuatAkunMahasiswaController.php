@@ -51,31 +51,30 @@ class BuatAkunMahasiswaController extends Controller
 
     function doCreate(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nim'          => 'required|numeric|digits:14|unique:mahasiswa',
             'nama'         => 'required|string',
-            'email'        => 'required|email:dns|unique:mahasiswa',
+            'email'        => 'required|email:dns|unique:users',
             'angkatan'     => 'required|numeric|digits:4',
             'status'       => 'required|numeric|digits:1',
             'jalur_masuk'  => 'required|numeric|digits:1',
             'dosen_wali'   => 'required|numeric',
         ]);
-        $validated = $request->validated();
 
         $akun_mahasiswa = new User;
-        $akun_mahasiswa->email = $validated->email;
+        $akun_mahasiswa->email = $request->email;
         $akun_mahasiswa->password = Hash::make('password');
         $akun_mahasiswa->role_id = 4;
         $akun_mahasiswa->save();
 
         $mahasiswa = new Mahasiswa;
-        $mahasiswa->id = User::where('email', $validated->email)->value('id');
-        $mahasiswa->nim = $validated->nim;
-        $mahasiswa->nama = $validated->nama;
-        $mahasiswa->angkatan = $validated->angkatan;
-        $mahasiswa->status = $validated->status;
-        $mahasiswa->jalur_masuk = $validated->jalur_masuk;
-        $mahasiswa->dosen_wali = $validated->dosen_wali;
+        $mahasiswa->id = User::where('email', $request->email)->value('id');
+        $mahasiswa->nim = $request->nim;
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->angkatan = $request->angkatan;
+        $mahasiswa->status = $request->status;
+        $mahasiswa->jalur_masuk = $request->jalur_masuk;
+        $mahasiswa->dosen_wali = $request->dosen_wali;
         $mahasiswa->save();
     }
 }
