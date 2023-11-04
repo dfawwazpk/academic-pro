@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($jalurmasuk as $item) {
-            Role::insert([
+            JalurMasuk::insert([
                 'name' => $item['name'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -87,7 +87,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($statusmhs as $item) {
-            Role::insert([
+            StatusMahasiswa::insert([
                 'name' => $item['name'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
