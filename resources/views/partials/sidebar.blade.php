@@ -13,7 +13,7 @@
         @if (auth()->user()->role_id == 1)
         <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
             <a href="#">
-                <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+                <a class="flex flex-col items-center mx-4  text-3xl font-bold">AcademicPro</a>
             </a>
     
             <div class="flex flex-col justify-between flex-1 mt-6">
@@ -69,11 +69,12 @@
                     <div class="flex flex-col items-center mt-4">
                         
                       <div class="h-16 w-16 rounded-full overflow-hidden ">
-                            <img src="https://via.placeholder.com/150" alt="John Doe">
+                            <img src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13" alt="John Doe">
                         </div>
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13">John Doe</span>
                         <div class="flex space-x-2 mt-2">
-                            <a href="#" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
+                            <a href="/edit-akun" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
+
                             <a href="/logout" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Logout</a>
                         </div>
                     </div>
@@ -98,7 +99,7 @@
         @if (auth()->user()->role_id == 2)  
         <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
             <a href="#">
-                <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+                <a class="flex flex-col items-center mx-4 text-3xl font-bold">AcademicPro</a>
             </a>
     
             <div class="flex flex-col justify-between flex-1 mt-6">
@@ -166,7 +167,7 @@
             @if (auth()->user()->role_id == 3)  
             <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                 <a href="#">
-                    <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+                    <a class="flex flex-col items-center mx-4 text-3xl font-bold">AcademicPro</a>
                 </a>
         
                 <div class="flex flex-col justify-between flex-1 mt-6">
@@ -250,7 +251,7 @@
             @if (auth()->user()->role_id == 4)  
             <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                 <a href="#">
-                    <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+                    <a class="flex flex-col items-center mx-4 text-3xl font-bold">AcademicPro</a>
                 </a>
         
                 <div class="flex flex-col justify-between flex-1 mt-6">

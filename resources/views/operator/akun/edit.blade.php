@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('partials.sidebar')
 
 @section('container')
 <h1>Edit akun</h1>
