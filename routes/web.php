@@ -47,3 +47,9 @@ Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('
 
 Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
 Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');
+
+//login pertama mahasiswa
+Route::get('/dashboard', [MahasiswaController::class, 'dashboard'])->name('dashboard');
+Route::get('/data-mahasiswa', [MahasiswaController::class, 'dataMahasiswa'])->name('data-mahasiswa');
+Route::get('/edit-profile/{id}', [MahasiswaController::class, 'editProfile'])->name('edit-profile');
+Route::post('/update-profile/{id}', [MahasiswaController::class, 'updateProfile'])->name('update-profile');
