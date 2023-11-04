@@ -27,21 +27,21 @@ Route::get('laravel', function () {
 
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('login', [LoginController::class, 'authenticate']);
 
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
 
-Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::get('register', [RegisterController::class, 'index']);
 Route::post('register', [RegisterController::class, 'store']);
 
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
 //operator daftar
-Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class, 'index'])->middleware('auth:operator');
-Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth:operator');
+Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class, 'index'])->middleware('auth','operator');
+Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
 //operator buat akun
-Route::get('buat/mahasiswa', [BuatAkunMahasiswaController::class,'index'])->middleware('auth:operator');
-Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth:operator');
+Route::get('buat/mahasiswa', [BuatAkunMahasiswaController::class,'index'])->middleware('auth','operator');
+Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
+
 Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
 Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');

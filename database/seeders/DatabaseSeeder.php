@@ -7,6 +7,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Role;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +20,33 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+        Role::truncate();
+        Schema::enableForeignKeyConstraints();
+
+        $roles = [
+            [
+                'name' => 'operator',
+            ],
+            [
+                'name' => 'departemen',
+            ],
+            [
+                'name' => 'dosen',
+            ],
+            [
+                'name' => 'mahasiswa',
+            ],
+        ];
+
+        foreach ($roles as $item) {
+            Role::insert([
+                'name' => $item['name'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         
         DB::table('users')->truncate();

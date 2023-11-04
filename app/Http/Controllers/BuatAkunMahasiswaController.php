@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class BuatAkunMahasiswaController extends Controller
 {
-    // function index(){
-    //     return view('operator/buatAkun/mahasiswa',[
-    //         "title" => "Buat Akun Mahasiswa",
-    //     ]);
-    // }
+    function index(){
+        return view('operator/buat/mahasiswa',[
+            "title" => "Buat Akun Mahasiswa",
+        ]);
+    }
 
     function list(Request $request)
     {
