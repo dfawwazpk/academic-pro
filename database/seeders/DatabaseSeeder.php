@@ -3,11 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\JalurMasuk;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\StatusMahasiswa;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 
@@ -20,8 +23,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        #MEMASUKKAN JALUR MASUK DAN STATUS MAHASISWA
+        
         Schema::disableForeignKeyConstraints();
         Role::truncate();
+        JalurMasuk::truncate();
+        StatusMahasiswa::truncate();
         Schema::enableForeignKeyConstraints();
 
         $roles = [
@@ -39,6 +46,30 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $jalurmasuk = [
+            [
+                'name' => 'SNBP',
+            ],
+            [
+                'name' => 'SNBT',
+            ],
+            [
+                'name' => 'Mandiri',
+            ],
+        ];
+
+        $statusmhs = [
+            [
+                'name' => 'Aktif',
+            ],
+            [
+                'name' => 'Nonaktif',
+            ],
+            [
+                'name' => 'Cuti',
+            ],
+        ];
+
         foreach ($roles as $item) {
             Role::insert([
                 'name' => $item['name'],
@@ -47,12 +78,29 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        foreach ($jalurmasuk as $item) {
+            Role::insert([
+                'name' => $item['name'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        foreach ($statusmhs as $item) {
+            Role::insert([
+                'name' => $item['name'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        # MEMBUAT AKUN DUMMY
+
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         
         DB::table('users')->truncate();
         DB::table('operator')->truncate();
 
-        # akun admin dummy
         DB::table('users')->insert([
             'email' => 'atmin@academic.pro',
             'password' => Hash::make('password'),
