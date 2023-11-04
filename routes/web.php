@@ -27,10 +27,10 @@ Route::get('laravel', function () {
 
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('login', [LoginController::class, 'authenticate']);
 
-Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('register', [RegisterController::class, 'index']);
 Route::post('register', [RegisterController::class, 'store']);
