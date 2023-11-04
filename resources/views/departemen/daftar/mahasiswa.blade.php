@@ -1,5 +1,5 @@
 @extends('partials.sidebar')
 
 @section('container')
-<h1>ini daftar Dosen</h1>
+<h1>Daftar Mahasiswa</h1>
 @endsection

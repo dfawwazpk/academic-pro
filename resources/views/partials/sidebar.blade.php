@@ -7,121 +7,326 @@
     <title>AcademicPro</title>
 </head>
 <body>
-    <div class="sidebar">
-                @auth
-                <div class="flex flex-col bg-gray-200 h-screen w-64 gap-2">
-                    {{-- SideBar Operator --}}
-                    @if (auth()->user()->role_id == 1)
-                    <a class="flex flex-col bg-neutral-950 h-16 items-center justify-center rounded-ee-xl font-black">AcademicPro</a>
-                    <a href="/dashboard" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl" href="/dashboard">Dashboard</a>
-                    <a href="/daftar/mahasiswa" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Daftar Mahasiswa</a>
-                    <a href="/daftar/dosen" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Daftar Dosen</a>
-                    <a href="#" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl"href="/buat/mahasiswa">Buat Akun Mahasiswa</a>
-                    <a href="#" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Buat Akun Dosen</a>
-                    
-                    <div class="bg-zinc-700 h-24 m-2 flex flex-col rounded-xl mt-80">
-                        <div class="flex items-center">
-                            <div class="box-content h-5 w-5 p-5">
-                                <img src="public/img/sekdep.png" alt="Aang">
-                            </div>
-                            <div class="text-xs ml-2">
-                                {{auth()->user()->nama_lengkap  }} 
-                                <div>Nip Operator</div>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <a href="#" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl ml-5">Edit Profile</a>
-                            <a href="/logout" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl mr-5">Keluar</a>
-                        </div>
-                    
-                    </div>
-                    @endif
-                @endauth
-                 {{-- SideBar Departemen --}}
-                 @auth
-                 @if (auth()->user()->role_id == 2)
-                 <div class="flex flex-col bg-gray-200 h-screen w-64 gap-2">
-                     <a class="flex flex-col bg-neutral-950 h-16 items-center justify-center rounded-ee-xl font-black">AcademicPro</a>
-                     <a href="/dashboard" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Dashboard</a>
-                     <a href="/daftar/mahasiswa" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Daftar Mahasiswa</a>
-                     <a href="/daftar/dosen" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Daftar Dosen</a>
+    {{-- Sidebar Operator --}}
+    <div class="flex bg-base-200">
+        @auth
+        @if (auth()->user()->role_id == 1)
+        <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+            <a href="#">
+                <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+            </a>
+    
+            <div class="flex flex-col justify-between flex-1 mt-6">
+                <nav>
+                    <a href="/dashboard" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('dashboard') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
 
-                 </div>
-                 <div class="bg-zinc-700 h-24 m-2 flex flex-col rounded-xl mt-80">
-                     <div class="flex items-center">
-                         <div class="box-content h-5 w-5 p-5">
-                             <img src="public/img/sekdep.png" alt="Aang">
-                         </div>
-                         <div class="text-xs ml-2">
-                             {{ auth()->user()->nama_lengkap }}
-                             <div>Nama Fakultas</div>
-                         </div>
-                     </div>
-                     <div class="flex space-x-2">
-                         <a href="#" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl ml-5">Edit Profile</a>
-                         <a href="/logout" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl mr-5">Keluar</a>
-                     </div>
-                 </div>
-                 @endif
-                 @endauth
-                    {{-- SideBar Dosen --}}
-                    @auth
-                    @if (auth()->user()->role_id == 3)
-                    <div class="flex flex-col bg-gray-200 h-screen w-64 gap-2">
-                        <a class="flex flex-col bg-neutral-950 h-16 items-center justify-center rounded-ee-xl font-black">AcademicPro</a>
-                        <a href="/dashboard" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Dashboard</a>
-                        <a href="/daftar/mahasiswa" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Progress Mahasiswa</a>
-                        <a href="/daftar/dosen" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">PKL</a>
-                        <a href="#" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Skripsi</a>
-                        <a href="#" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Verifikasi IRS</a>
-                    </div>
-                    <div class="bg-zinc-700 h-24 m-2 flex flex-col rounded-xl mt-80">
-                        <div class="flex items-center">
-                            <div class="box-content h-5 w-5 p-5">
-                                <img src="public/img/sekdep.png" alt="Aang">
-                            </div>
-                            <div class="text-xs ml-2">
-                                {{ auth()->user()->nama_lengkap }}
-                                <div>Nip Dosen</div>
-                            </div>
+                        <span class="mx-4 font-medium">Dashboard</span>
+                    </a>
+
+                    <a href="/daftar/mahasiswa" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="mx-4 font-medium">Daftar Mahasiswa</span>
+                    </a>
+
+                    <a href="/daftar/dosen" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span href="/daftar/dosen" class="mx-4 font-medium">Daftar Dosen</span>
+                    </a>
+
+                    <a href="/buat/mahasiswa"class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span class="flex items-center mx-4 font-medium">Buat Akun Mahasiswa</span>
+                    </a>
+
+                    <a href="/buat/dosen"class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span href="/buat/dosen" class="flex items-center mx-4 font-medium">Buat Akun Dosen</span>
+                    </a>
+                </nav>
+    
+                <a href="#" class="flex items-center px-4 -mx-2">
+    
+                    <div class="flex flex-col items-center mt-4">
+                        
+                      <div class="h-16 w-16 rounded-full overflow-hidden ">
+                            <img src="https://via.placeholder.com/150" alt="John Doe">
                         </div>
-                        <div class="flex space-x-2">
-                            <a href="#" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl ml-5">Edit Profile</a>
-                            <a href="/logout" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl mr-5">Keluar</a>
-                        </div>
-                    </div>
-                    @endif
-                    @endauth
-                    {{-- SideBar Mahasiswa --}}
-                    @auth
-                    @if (auth()->user()->role_id == 4)
-                    <div class="flex flex-col bg-gray-200 h-screen w-64 gap-2">
-                        <a class="flex flex-col bg-neutral-950 h-16 items-center justify-center rounded-ee-xl font-black">AcademicPro</a>
-                        <a href="/dashboard" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl" href="/dashboard">Dashboard</a>
-                        <a href="/daftar/mahasiswa" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl"href="">IRS</a>
-                        <a href="/daftar/dosen" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl"href="">KHS</a>
-                        <a href="#" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl"href="">PKL</a>
-                        <a href="#" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl"href="">Skripsi</a>
-                    </div>
-                    <div class="bg-zinc-700 h-24 m-2 flex flex-col rounded-xl mt-80">
-                        <div class="flex items-center">
-                            <div class="box-content h-5 w-5 p-5">
-                                <img src="public/img/sekdep.png" alt="Aang">
-                            </div>
-                            <div class="text-xs ml-2">
-                                {{ auth()->user()->nama_lengkap }}
-                                <div>NIM Mahasiswa</div>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <a href="#" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl ml-5">Edit Profile</a>
-                            <a href="/logout" class="bg-zinc-50 m-1 h-5 w-24 text-xs flex items-center justify-center rounded-xl mr-5">Keluar</a>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+                        <div class="flex space-x-2 mt-2">
+                            <a href="#" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
+                            <a href="/logout" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Logout</a>
                         </div>
                     </div>
-                    @endif
-                    @endauth
+                </a>
+    
             </div>
-        </div>
+        </aside>
+        
+        {{--<main class="flex-1 flex justify-center items-center"> --}}
+        <main class="flex-1 mx-5">
+            {{-- //Content --}}
+           {{-- <div class="flex-1 flex justify-center items-center">--}}
+            @yield('container')
+            </div>
+        </main>
     </div>
+    @endif
+    @endauth
+    {{-- Sidebar Departemen --}}   
+    <div class="flex bg-base-200">
+    @auth
+        @if (auth()->user()->role_id == 2)  
+        <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+            <a href="#">
+                <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+            </a>
+    
+            <div class="flex flex-col justify-between flex-1 mt-6">
+                <nav>
+                    <a href="/dashboard" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('dashboard') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span class="mx-4 font-medium">Dashboard</span>
+                    </a>
+
+                    <a href="/daftar/mahasiswa" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="mx-4 font-medium">Daftar Mahasiswa</span>
+                    </a>
+
+                    <a href="/daftar/dosen" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span href="/daftar/dosen" class="mx-4 font-medium">Daftar Dosen</span>
+                    </a>
+
+                </nav>
+    
+                <a href="#" class="flex items-center px-4 -mx-2">
+    
+                    <div class="flex flex-col items-center mt-4">
+                        
+                      <div class="h-16 w-16 rounded-full overflow-hidden ">
+                            <img src="https://via.placeholder.com/150" alt="John Doe">
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+                        <div class="flex space-x-2 mt-2">
+                            <a href="#" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
+                            <a href="/logout" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Logout</a>
+                        </div>
+                    </div>
+                </a>
+    
+            </div>
+        </aside>
+
+        {{--<main class="flex-1 flex justify-center items-center"> --}}
+        <main class="flex-1 mx-5">
+            {{-- //Content --}}
+           {{-- <div class="flex-1 flex justify-center items-center">--}}
+            @yield('container')
+        </main>  
+    </div> 
+    @endif
+    @endauth
+
+    {{-- Sidebar Dosen --}}
+    <div class="flex bg-base-200">
+        @auth
+            @if (auth()->user()->role_id == 3)  
+            <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+                <a href="#">
+                    <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+                </a>
+        
+                <div class="flex flex-col justify-between flex-1 mt-6">
+                    <nav>
+                        <a href="/dashboard" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('dashboard') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span class="mx-4 font-medium">Dashboard</span>
+                        </a>
+    
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="mx-4 font-medium">Progress Mahasiswa</span>
+                        </a>
+    
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span href="/daftar/dosen" class="mx-4 font-medium">PKL</span>
+                        </a>
+                        
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span href="/daftar/dosen" class="mx-4 font-medium">Skripsi</span>
+                        </a>
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span href="/daftar/dosen" class="mx-4 font-medium">Verifikasi IRS</span>
+                        </a>
+    
+                    </nav>
+        
+                    <a href="#" class="flex items-center px-4 -mx-2">
+        
+                        <div class="flex flex-col items-center mt-4">
+                            
+                          <div class="h-16 w-16 rounded-full overflow-hidden ">
+                                <img src="https://via.placeholder.com/150" alt="John Doe">
+                            </div>
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+                            <div class="flex space-x-2 mt-2">
+                                <a href="#" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
+                                <a href="/logout" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Logout</a>
+                            </div>
+                        </div>
+                    </a>
+        
+                </div>
+            </aside>
+    
+            {{--<main class="flex-1 flex justify-center items-center"> --}}
+            <main class="flex-1 mx-5">
+                {{-- //Content --}}
+               {{-- <div class="flex-1 flex justify-center items-center">--}}
+                @yield('container')
+            </main>  
+        </div> 
+        @endif
+        @endauth
+    {{-- Sidebar Mahasiswa --}}    
+    <div class="flex bg-base-200">
+        @auth
+            @if (auth()->user()->role_id == 4)  
+            <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+                <a href="#">
+                    <a class="flex flex-col items-center mx-4 font-bold">AcademicPro</a>
+                </a>
+        
+                <div class="flex flex-col justify-between flex-1 mt-6">
+                    <nav>
+                        <a href="/dashboard" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('dashboard') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span class="mx-4 font-medium">Dashboard</span>
+                        </a>
+    
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="mx-4 font-medium">IRS</span>
+                        </a>
+    
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span href="/daftar/dosen" class="mx-4 font-medium">KHS</span>
+                        </a>
+                        
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span href="/daftar/dosen" class="mx-4 font-medium">PKL</span>
+                        </a>
+                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+    
+                            <span href="/daftar/dosen" class="mx-4 font-medium">Skripsi</span>
+                        </a>
+    
+                    </nav>
+        
+                    <a href="#" class="flex items-center px-4 -mx-2">
+        
+                        <div class="flex flex-col items-center mt-4">
+                            
+                          <div class="h-16 w-16 rounded-full overflow-hidden ">
+                                <img src="https://via.placeholder.com/150" alt="John Doe">
+                            </div>
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+                            <div class="flex space-x-2 mt-2">
+                                <a href="#" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
+                                <a href="/logout" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Logout</a>
+                            </div>
+                        </div>
+                    </a>
+        
+                </div>
+            </aside>
+    
+            {{--<main class="flex-1 flex justify-center items-center"> --}}
+            <main class="flex-1 mx-5">
+                {{-- //Content --}}
+               {{-- <div class="flex-1 flex justify-center items-center">--}}
+                @yield('container')
+            </main>  
+        </div> 
+        @endif
+        @endauth         
 </body>
 </html>
