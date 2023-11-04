@@ -13,12 +13,12 @@
             <div class="flex flex-col">
                 <div class="flex flex-1">
                     <div class="flex flex-col bg-gray-200 h-screen w-64 gap-2">
-                        <button class="flex flex-col bg-neutral-950 h-16 items-center justify-center rounded-ee-xl font-black">AcademicPro</button>
-                        <button href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Dashboard</button>
-                        <button href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">IRS</button>
-                        <button href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">KHS</button>
-                        <button href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">PKL</button>
-                        <button href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Skripsi</button>
+                        <a class="flex flex-col bg-neutral-950 h-16 items-center justify-center rounded-ee-xl font-black">AcademicPro</s>
+                        <a href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Dashboard</a>
+                        <a href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Daftar Mahasiswa</a>
+                        <a href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Daftar Dosen</a>
+                        <a href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Buat Akun Mahasiswa</a>
+                        <a href="" class="bg-zinc-700 w-full h-10 flex items-center justify-center rounded-r-xl">Buat Akun Dosen</a>
             
                         <div class="bg-zinc-700 h-24 m-2 flex flex-col rounded-xl mt-80">
                             <div class="flex items-center">

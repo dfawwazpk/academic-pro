@@ -106,7 +106,7 @@
                     </div>
                 </div>
             @endauth
-        </div> --}}
+        </div>
         @yield('container')
         <div class="b-example-divider b-example-vr">
 
