@@ -13,6 +13,11 @@ class DashboardController extends Controller
             "title" => "Dashboard"
             ]);
         }
+        if (Auth::user()->role_id==2) {
+            return view('departemen.dashboard', [
+            "title" => "Dashboard"
+            ]);
+        }
         if (Auth::user()->role_id==3) {
             return view('dosen.dashboard', [
             "title" => "Dashboard"
