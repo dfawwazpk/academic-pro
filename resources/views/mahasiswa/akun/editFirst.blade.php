@@ -106,7 +106,7 @@
                     </div>
 
                     <div class="flex justify-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </form>

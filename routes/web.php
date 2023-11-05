@@ -36,6 +36,9 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middle
 
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth', 'all');
 
+Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth', 'all');
+Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth', 'all');
+
 
 
 //operator list akun
@@ -46,9 +49,6 @@ Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware(
 Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middleware('auth','operator');
 
 Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
-
-Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth', 'all');
-Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth', 'all');
 
 
 
