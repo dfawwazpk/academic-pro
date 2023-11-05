@@ -27,6 +27,8 @@ Route::get('laravel', function () {
     ]);
 });
 
+//-------------------------------- SEMUA AKUN --------------------------------//
+
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth', 'all');
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -39,20 +41,21 @@ Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth
 Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth', 'all');
 Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth', 'all');
 
+//-------------------------------- OPERATOR --------------------------------//
 
-
-//operator list akun
+//LIST AKUN
 Route::get('daftar/mahasiswa', [MahasiswaController::class, 'list'])->middleware('auth','operator');
 Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
-//operator buat akun
+
+//BUAT AKUN
 Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware('auth','operator');
 Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middleware('auth','operator');
 
 Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
 
+//-------------------------------- MAHASISWA --------------------------------//
 
-
-//login pertama mahasiswa
+//LOGIN PERTAMA
 Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth','mahasiswa_firsttime');
 Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth','mahasiswa_firsttime');
 

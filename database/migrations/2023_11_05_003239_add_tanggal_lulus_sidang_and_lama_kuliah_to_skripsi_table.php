@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('skripsi', function (Blueprint $table) {
+            $table->date('tanggal_lulus_sidang')->after('nilai');
+            $table->integer('lama_studi')->after('tanggal_lulus_sidang');
+        });
     }
 
     /**
@@ -23,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('skripsi', function (Blueprint $table) {
+            $table->dropColumn('tanggal_lulus_sidang');
+            $table->dropColumn('lama_studi');
+        });
     }
 };

@@ -67,9 +67,14 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="kabupaten_kota" class="block text-grey-darker text-sm font-bold mb-2">Kabupaten/Kota</label>
-                            <input type="text" name="kabupaten_kota" class="border rounded w-full py-2 px-3 text-white-darker @error('kabupaten_kota') is-invalid @else  @enderror" id="kabupaten_kota" placeholder="Pilih kabupaten/kota" value="{{ old('kabupaten_kota') }}">
-                            @error('kabupaten_kota')
+                            <label for="provinsi" class="block text-grey-darker text-sm font-bold mb-2">Provinsi</label>
+                            <select id="provinsi" name="provinsi" class="border rounded w-full py-2 px-3 text-white-darker @error('provinsi') @else  is-invalid @enderror" value="{{ old('provinsi') }}">
+                                <option value="" selected disabled>Pilih provinsi</option>
+                                @foreach ($provinsi as $prov)
+                                    <option value="{{ $prov->kode_prov }}"> {{ $prov->nama_prov }}</option>
+                                @endforeach
+                            </select>
+                            @error('provinsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -77,8 +82,13 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="provinsi" class="block text-grey-darker text-sm font-bold mb-2">Provinsi</label>
-                            <input type="text" name="provinsi" class="border rounded w-full py-2 px-3 text-white-darker @error('provinsi') is-invalid @else  @enderror" id="provinsi" placeholder="Pilih provinsi" value="{{ old('provinsi') }}">
+                            <label for="kabupaten_kota" class="block text-grey-darker text-sm font-bold mb-2">Kabupaten/Kota</label>
+                            <select id="kabupaten_kota" name="kabupaten_kota" class="border rounded w-full py-2 px-3 text-white-darker @error('kabupaten_kota') @else  is-invalid @enderror" value="{{ old('kabupaten_kota') }}">
+                                <option value="" selected disabled>Pilih kabupaten/kota</option>
+                                @foreach ($kabupaten_kota as $kabs)
+                                    <option value="{{ $kabs->kode_kab }}"> {{ $kabs->nama_kab }}</option>
+                                @endforeach
+                            </select>
                             @error('provinsi')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

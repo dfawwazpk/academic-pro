@@ -6,6 +6,8 @@ use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\StatusMahasiswa;
 use App\Models\JalurMasuk;
+use App\Models\KabupatenKota;
+use App\Models\Provinsi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -61,11 +63,15 @@ class MahasiswaController extends Controller
         $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
         $nama = Mahasiswa::where('id', Auth::user()->id)->value('nama');
         $angkatan = Mahasiswa::where('id', Auth::user()->id)->value('angkatan');
+        $provinsi = Provinsi::all('kode_prov', 'nama_prov');
+        $kabupaten_kota = KabupatenKota::all('kode_kab', 'nama_kab');
         return view('mahasiswa.akun.editFirst',[
             "title" => "Lengkapi Data",
             "nim" => $nim,
             "nama" => $nama,
-            "angkatan" => $angkatan
+            "angkatan" => $angkatan,
+            "provinsi" => $provinsi,
+            "kabupaten_kota" => $kabupaten_kota
         ]);
     }
 
