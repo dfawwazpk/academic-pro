@@ -34,7 +34,7 @@ Route::post('login', [LoginController::class, 'authenticate']);
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth', 'all');
 
 
 
@@ -47,14 +47,14 @@ Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middlewa
 
 Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
 
-Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth:operator,dosen,mahasiswa');
-Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth:operator,dosen,mahasiswa');
+Route::get('edit-akun', [EditAkunController::class, 'index'])->middleware('auth', 'all');
+Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('auth', 'all');
 
 
 
 //login pertama mahasiswa
-Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth');
-Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth');
+Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth','mahasiswa_firsttime');
+Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth','mahasiswa_firsttime');
 
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');

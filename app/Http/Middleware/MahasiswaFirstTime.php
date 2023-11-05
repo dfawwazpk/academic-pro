@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Mahasiswa;
 
-class All
+class MahasiswaFirstTime
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class All
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->role_id != 4) {
-            return $next($request);
+            return redirect()->intended('dashboard');
         }
         else{
             $mahasiswa = Mahasiswa::where('id', Auth::user()->id)->first();
@@ -29,10 +29,10 @@ class All
                !empty($mahasiswa->alamat) &&
                !empty($mahasiswa->kabupaten_kota) &&
                !empty($mahasiswa->provinsi)){
-                return $next($request);
+                return redirect()->intended('dashboard');
             }
             else{
-                return redirect()->intended('first-time-login')->with('warning', 'Harap lengkapi data pribadi Anda terlebih dahulu.');
+                return $next($request);
             }
         }
     }

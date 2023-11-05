@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Operator
+class Departemen
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class Operator
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role_id != 1) {
+        if (Auth::user()->role_id != 2) {
             return redirect()->intended('dashboard');
         }
         return $next($request);

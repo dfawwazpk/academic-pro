@@ -140,15 +140,4 @@ class MahasiswaController extends Controller
 
         return redirect('/buat/mahasiswa')->with('success', 'Akun mahasiswa baru berhasil dibuat!');
     }
-
-    static function isDataComplete()
-    {
-        $mahasiswa = Mahasiswa::where('id', Auth::user()->id);
-        return !empty($mahasiswa->nama) &&
-               !empty($mahasiswa->tanggal_lahir) &&
-               !empty($mahasiswa->no_hp) &&
-               !empty($mahasiswa->alamat) &&
-               !empty($mahasiswa->kabupaten_kota) &&
-               !empty($mahasiswa->provinsi);
-    }
 }

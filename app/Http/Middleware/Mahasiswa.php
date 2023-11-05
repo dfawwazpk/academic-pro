@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\MahasiswaController;
+use App\Models\Mahasiswa as MahasiswaModel;
 
 class Mahasiswa
 {
@@ -19,16 +19,21 @@ class Mahasiswa
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->role_id != 4) {
-            return redirect()->route('dashboard');
+            return redirect()->intended('dashboard');
         }
         else{
-            if (MahasiswaController::isDataComplete()) {
+            $mahasiswa = MahasiswaModel::where('id', Auth::user()->id)->first();
+            if(!empty($mahasiswa->nama) &&
+               !empty($mahasiswa->tanggal_lahir) &&
+               !empty($mahasiswa->no_hp) &&
+               !empty($mahasiswa->alamat) &&
+               !empty($mahasiswa->kabupaten_kota) &&
+               !empty($mahasiswa->provinsi)){
                 return $next($request);
             }
             else{
                 return redirect()->intended('first-time-login')->with('warning', 'Harap lengkapi data pribadi Anda terlebih dahulu.');
             }
         }
-        
     }
 }

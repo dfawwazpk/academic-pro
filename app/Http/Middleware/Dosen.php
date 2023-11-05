@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Operator
+class Dosen
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class Operator
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role_id != 1) {
-            return redirect()->intended('dashboard');
+        if (Auth::user()->role_id != 3) {
+            return redirect()->route('dashboard');
         }
         return $next($request);
     }
