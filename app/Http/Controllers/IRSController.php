@@ -11,7 +11,6 @@ class IRSController extends Controller
 {
     function index()
     {
-        // Tampilkan daftar IRS
         $irsList = Irs::all();
 
         return view('irs.index', ['irsList' => $irsList]);
