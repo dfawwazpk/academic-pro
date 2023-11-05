@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\IRS;
-use App\Models\Mahasiswa;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
-class EntryIRS extends Controller
+class IRSController extends Controller
 {
     function index()
     {
@@ -43,27 +39,27 @@ class EntryIRS extends Controller
     }
     
 
-    function entryIRS(){
-        $entryIRS = IRS::all();
-        
-        return view('entryIRS.create', ['entryIRS' => $entryIRS]);
+    function buatIRS(){
+        return view('mahasiswa.buat.irs');
     }
 
-    function doEntryIRS(Request $request)
+    function doBuatIRS(Request $request)
     {
-        // Validasi inputan
-        $validatedData = $request->validate([
+        $request->validate([
             'semester' => 'required|integer',
-            'sks_diambil' => 'required|integer',
-            'status' => 'required|string',
-            'file' => 'required|string',
-            'mahasiswa_id' => 'required|integer',
+            'sks' => 'required|integer',
+            'scan_irs' => 'required|file|mimes:pdf|max:2048',
         ]);
     
-        // Buat catatan IRS baru
-        IRS::create($validatedData);
+        $irs = new IRS;
+        $irs->semester = $request->semester;
+        $irs->sks_diambil = $request->sks;
+        $irs->status = 1;
+        $irs->file = $request->file('scan_irs')->store('irs', 'public');
+        $irs->mahasiswa_id = Auth::user()->id;
+        $irs->save();
     
-        return redirect('/entry/irs')->with('success', 'IRS telah berhasil dibuat.');
+        return redirect('/buat/irs')->with('success', 'IRS telah berhasil dibuat.');
     }
     
 }

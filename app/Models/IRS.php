@@ -10,7 +10,7 @@ class IRS extends Model
     use HasFactory;
 
     protected $table = 'irs';
-    public $incrementing = false;
+    public $incrementing = true;
 
     protected $fillable = [
         'semester',

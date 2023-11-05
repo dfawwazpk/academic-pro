@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('sks_total');
             $table->float('ips');
             $table->float('ipk');
+            $table->unsignedBigInteger('status');
             $table->string('file', 255);
             $table->unsignedBigInteger('mahasiswa_id');
 

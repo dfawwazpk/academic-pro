@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\StatusBerkas;
 use App\Models\StatusMahasiswa;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
@@ -69,6 +70,18 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Cuti',
+            ],
+        ];
+
+        $statusberkas = [
+            [
+                'name' => 'Menunggu Persetujuan',
+            ],
+            [
+                'name' => 'Disetujui',
+            ],
+            [
+                'name' => 'Ditolak',
             ],
         ];
 
@@ -2802,6 +2815,14 @@ class DatabaseSeeder extends Seeder
 
         foreach ($statusmhs as $item) {
             StatusMahasiswa::insert([
+                'name' => $item['name'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        foreach ($statusberkas as $item) {
+            StatusBerkas::insert([
                 'name' => $item['name'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

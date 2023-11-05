@@ -9,7 +9,7 @@ use App\Http\Controllers\DaftarMahasiswaController;
 use App\Http\Controllers\DaftarDosenController;
 use App\Http\Controllers\BuatAkunDosenController;
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\EntryIRS;
+use App\Http\Controllers\IRSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,10 +59,10 @@ Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('
 Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth','mahasiswa_firsttime');
 Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth','mahasiswa_firsttime');
 
+//ENTRY IRS
+Route::get('buat/irs', [IRSController::class, 'buatIRS'])->middleware('auth','mahasiswa');
+Route::post('buat/irs', [IRSController::class, 'doBuatIRS'])->middleware('auth','mahasiswa');
+
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
 Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updateProfile'])->name('update-profile');
-
-//entry irs
-Route::get('/entry/irs', [EntryIRS::class, 'index']);
-Route::post('/entry/irs', [EntryIRS::class, 'doEntryIRS'])->name('entry-irs.store');

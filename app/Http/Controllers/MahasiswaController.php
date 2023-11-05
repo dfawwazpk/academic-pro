@@ -82,8 +82,8 @@ class MahasiswaController extends Controller
             'tanggal_lahir'         => 'required|date',
             'no_hp'                 => 'required|numeric',
             'alamat'                => 'required|string',
-            'kabupaten_kota'        => 'required|string',
-            'provinsi'              => 'required|string',
+            'kabupaten_kota'        => 'required|numeric',
+            'provinsi'              => 'required|numeric',
             'password'              => 'required|min:8',
             'password_confirmation' => 'required|same:password|min:8',
         ]);

@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pkl', function (Blueprint $table) {
+        Schema::create('status_berkas', function (Blueprint $table) {
             $table->id();
-            $table->string('status_pkl', 6);
-            $table->integer('nilai');
-            $table->unsignedBigInteger('status');
-            $table->string('file', 255);
-            $table->unsignedBigInteger('mahasiswa_id');
-
-            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pkl');
+        Schema::dropIfExists('status_berkas');
     }
 };

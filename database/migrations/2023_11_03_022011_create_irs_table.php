@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('semester');
             $table->integer('sks_diambil');
-            $table->string('status', 10);
+            $table->unsignedBigInteger('status');
             $table->string('file', 255);
             $table->unsignedBigInteger('mahasiswa_id');
 

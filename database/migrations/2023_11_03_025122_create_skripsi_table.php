@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('skripsi', function (Blueprint $table) {
             $table->id();
-            $table->string('status', 6);
+            $table->string('status_skripsi', 6);
             $table->integer('nilai');
+            $table->unsignedBigInteger('status');
             $table->string('file', 255);
             $table->unsignedBigInteger('mahasiswa_id');
 
