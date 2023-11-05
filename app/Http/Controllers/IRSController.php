@@ -46,8 +46,8 @@ class IRSController extends Controller
     function doBuatIRS(Request $request)
     {
         $request->validate([
-            'semester' => 'required|integer',
-            'sks' => 'required|integer',
+            'semester' => 'required|numeric',
+            'sks' => 'required|numeric',
             'scan_irs' => 'required|file|mimes:pdf|max:2048',
         ]);
     

@@ -31,12 +31,6 @@
                     <label for="password">Password</label>
                 </div>
                 <button class="btn btn-dark w-100 py-2" type="submit">Login</button>
-                <div class="d-flex">
-                    <hr class="my-auto flex-grow-1">
-                    <div class="px-4 mt-2 mb-2">Belum punya akun?</div>
-                    <hr class="my-auto flex-grow-1">
-                </div>
-                <a href="/register" class="btn btn-outline-dark w-100 py-2">Register</a>
             </form>
         </main>
     </div>
