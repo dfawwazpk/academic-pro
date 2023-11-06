@@ -1,8 +1,11 @@
 @extends('partials.sidebar')
 @section('container')
-
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-4">
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-10 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-4">
+<div class="relative bg-indigo-200 dark:bg-indigo-500 p-7 sm:p-7 rounded-sm overflow-hidden mb-10 mt-10">
+    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Buat Akun Mahasiswa {{-- {{ Auth::user()->name }} --}} </h1>
+    
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-5">
+    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-10 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group  col-span-4 ">
         @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -17,7 +20,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="nim" class="block text-grey-darker text-sm font-bold mb-2">NIM</label>
-                            <input type="text" name="nim" class="border rounded w-full py-2 px-3 text-white-darker @error('nim') is-invalid @else  @enderror" id="nim" placeholder="Masukkan NIM" value="{{ old('nim') }}">
+                            <input type="text" name="nim" class="border rounded w-full py-2 px-3 text-black @error('nim') is-invalid @else  @enderror" id="nim" placeholder="Masukkan NIM" value="{{ old('nim') }}">
                             @error('nim')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -27,7 +30,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="nama" class="block text-grey-darker text-sm font-bold mb-2">Nama Lengkap</label>
-                            <input type="text" name="nama" class="border rounded w-full py-2 px-3 text-white-darker @error('nama') is-invalid @else  @enderror" id="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}">
+                            <input type="text" name="nama" class="border rounded w-full py-2 px-3 text-black @error('nama') is-invalid @else  @enderror" id="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}">
                             @error('nama')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -36,7 +39,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="email" class="block text-grey-darker text-sm font-bold mb-2">Email</label>
-                            <input type="email" name="email" class="border rounded w-full py-2 px-3 text-white-darker @error('email') is-invalid @else  @enderror" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
+                            <input type="email" name="email" class="border rounded w-full py-2 px-3 text-black @error('email') is-invalid @else  @enderror" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
                             @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -46,7 +49,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="angkatan" class="block text-grey-darker text-sm font-bold mb-2">Angkatan</label>
-                            <select id="angkatan" name="angkatan" class="border rounded w-full py-2 px-3 text-white-darker @error('angkatan') @else  is-invalid @enderror" value="{{ old('angkatan') }}">
+                            <select id="angkatan" name="angkatan" class="border rounded w-full py-2 px-3 text-black @error('angkatan') @else  is-invalid @enderror" value="{{ old('angkatan') }}">
                                 <option value="" selected disabled>Pilih angkatan</option>
                                 <option value="2023">2023</option>
                                 <option value="2022">2022</option>
@@ -61,7 +64,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="status" class="block text-grey-darker text-sm font-bold mb-2">Status</label>
-                            <select id="status" name="status" class="border rounded w-full py-2 px-3 text-white-darker @error('status') @else  is-invalid @enderror" value="{{ old('status') }}">
+                            <select id="status" name="status" class="border rounded w-full py-2 px-3 text-black @error('status') @else  is-invalid @enderror" value="{{ old('status') }}">
                                 <option value="" selected disabled>Pilih status</option>
                                 @foreach ($status as $stat)
                                     <option value="{{ $stat->id }}"> {{ $stat->name }}</option>
@@ -76,7 +79,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="jalur_masuk" class="block text-grey-darker text-sm font-bold mb-2">Jalur masuk</label>
-                            <select id="jalur_masuk" name="jalur_masuk" class="border rounded w-full py-2 px-3 text-white-darker @error('jalur_masuk') @else  is-invalid @enderror" value="{{ old('jalur_masuk') }}">
+                            <select id="jalur_masuk" name="jalur_masuk" class="border rounded w-full py-2 px-3 text-black @error('jalur_masuk') @else  is-invalid @enderror" value="{{ old('jalur_masuk') }}">
                                 <option value="" selected disabled>Pilih jalur masuk</option>
                                 @foreach ($jalur_masuk as $jalur)
                                     <option value="{{ $jalur->id }}"> {{ $jalur->name }}</option>
@@ -91,7 +94,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="dosen_wali" class="block text-grey-darker text-sm font-bold mb-2">Dosen wali</label>
-                            <select id="dosen_wali" name="dosen_wali" class="border rounded w-full py-2 px-3 text-white-darker @error('dosen_wali') @else  is-invalid @enderror" value="{{ old('dosen_wali') }}">
+                            <select id="dosen_wali" name="dosen_wali" class="border rounded w-full py-2 px-3 text-black @error('dosen_wali') @else  is-invalid @enderror" value="{{ old('dosen_wali') }}">
                                 <option value="" selected disabled>Pilih dosen wali</option>
                                 @foreach ($dosen_wali as $doswal)
                                     <option value="{{ $doswal->id }}"> {{ $doswal->nama }}</option>
