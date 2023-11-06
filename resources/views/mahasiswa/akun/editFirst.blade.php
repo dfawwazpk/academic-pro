@@ -41,7 +41,8 @@
                     <div class="mb-2">
                         <div>
                             <label for="tanggal_lahir" class="block text-grey-darker text-sm font-bold mb-2">Tanggal Lahir</label>
-                            <input datepicker type="text" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-white-darker" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}">
+                            {{-- <input datepicker type="text" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-white-darker" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}"> --}}
+                            <input type="date" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-white-darker" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}">
                         </div>
                     </div>
 
