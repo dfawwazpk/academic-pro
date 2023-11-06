@@ -84,7 +84,7 @@
         </aside>
         
         {{--<main class="flex-1 flex justify-center items-center"> --}}
-        <main class="flex-1 mx-5">
+        <main class="flex-1 mx-5 max-h-screen overflow-y-scroll">
             {{-- //Content --}}
            {{-- <div class="flex-1 flex justify-center items-center">--}}
             @yield('container')
@@ -152,7 +152,7 @@
         </aside>
 
         {{--<main class="flex-1 flex justify-center items-center"> --}}
-        <main class="flex-1 mx-5">
+        <main class="flex-1 mx-5 max-h-screen overflow-y-scroll">
             {{-- //Content --}}
            {{-- <div class="flex-1 flex justify-center items-center">--}}
             @yield('container')
@@ -321,7 +321,7 @@
             </aside>
     
             {{--<main class="flex-1 flex justify-center items-center"> --}}
-            <main class="flex-1 mx-5">
+            <main class="flex-1 mx-5 max-h-screen overflow-y-scroll">
                 {{-- //Content --}}
                {{-- <div class="flex-1 flex justify-center items-center">--}}
                 @yield('container')

@@ -39,9 +39,9 @@
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
         <div class="flex justify-center w-15 h-14">
         </div>
-        <div class="text-center">
-            <p class="text-3xl text-center">Buat Akun Mahasiswa</p>
-            <p class="text-left">Buat akun baru untuk mahasiswa</p>
+        <div class="text-left">
+            <a href="/buat/mahasiswa" class="text-3xl text-left">Buat Akun Mahasiswa</a>
+            <p href="/buat/mahasiswa" class="text-left">Buat akun baru untuk mahasiswa</p>
         </div>
     </div>
 
