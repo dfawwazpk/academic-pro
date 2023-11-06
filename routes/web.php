@@ -11,6 +11,7 @@ use App\Http\Controllers\BuatAkunDosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\IRSController;
 use App\Http\Controllers\KHSController;
+use App\Http\Controllers\PKLController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,10 @@ Route::post('buat/irs', [IRSController::class, 'doBuatIRS'])->middleware('auth',
 //ENTRY KHS
 Route::get('buat/khs', [KHSController::class, 'buatKHS'])->middleware('auth','mahasiswa');
 Route::post('buat/khs', [KHSController::class, 'doBuatKHS'])->middleware('auth','mahasiswa');
+
+//ENTRY PKL
+Route::get('buat/pkl', [PKLController::class, 'buatPKL'])->middleware('auth','mahasiswa');
+Route::post('buat/pkl', [PKLController::class, 'doBuatPKL'])->middleware('auth','mahasiswa');
 
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
