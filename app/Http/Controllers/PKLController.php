@@ -45,15 +45,15 @@ class PKLController extends Controller
     function doBuatPKL(Request $request)
     {
         $request->validate([
-            'semester' => 'required|numeric',
-            'sks' => 'required|numeric',
+            'status_pkl' => 'required|string',
+            'status' => 'required|string',
             'scan_pkl' => 'required|file|mimes:pdf|max:2048',
         ]);
     
         $pkl = new PKL;
         $pkl->status_pkl = $request->status_pkl;
         // $pkl->nilai = $request->sks;
-        // $pkl->status = 1;
+        $pkl->status = 1;
         $pkl->file = $request->file('scan_pkl')->store('pkl', 'public');
         $pkl->mahasiswa_id = Auth::user()->id;
         $pkl->save();
