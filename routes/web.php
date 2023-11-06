@@ -73,6 +73,10 @@ Route::post('buat/khs', [KHSController::class, 'doBuatKHS'])->middleware('auth',
 Route::get('buat/pkl', [PKLController::class, 'buatPKL'])->middleware('auth','mahasiswa');
 Route::post('buat/pkl', [PKLController::class, 'doBuatPKL'])->middleware('auth','mahasiswa');
 
+//ENTRY SKRIPSI
+Route::get('buat/skripsi', [PKLController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
+Route::post('buat/skripsi', [PKLController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
+
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
 Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updateProfile'])->name('update-profile');
