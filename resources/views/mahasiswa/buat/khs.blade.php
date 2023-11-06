@@ -10,7 +10,7 @@
         </div>
         @endif
         <div class="flex justify-center items-center ">
-            <form action="/buat/irs" method="post" enctype="multipart/form-data">
+            <form action="/buat/khs" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 gap-8">
                     <!-- form fields -->
@@ -42,9 +42,9 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="sks" class="block text-grey-darker text-sm font-bold mb-2">Jumlah SKS diambil</label>
-                            <input type="text" name="sks" class="border rounded w-full py-2 px-3 text-white-darker @error('sks') is-invalid @else  @enderror" id="sks" placeholder="Masukkan jumlah SKS" value="{{ old('sks') }}">
-                            @error('sks')
+                            <label for="sks_semester" class="block text-grey-darker text-sm font-bold mb-2">Jumlah SKS semester</label>
+                            <input type="text" name="sks_semester" class="border rounded w-full py-2 px-3 text-white-darker @error('sks_semester') is-invalid @else  @enderror" id="sks_semester" placeholder="Masukkan jumlah SKS semester" value="{{ old('sks_semester') }}">
+                            @error('sks_semester')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -52,9 +52,39 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="scan_irs" class="block text-grey-darker text-sm font-bold mb-2">Upload scan IRS</label>
-                            <input type="file" name="scan_irs" class="border rounded w-full py-2 px-3 text-white-darker @error('scan_irs') is-invalid @else  @enderror" id="scan_irs">
-                            @error('scan_irs')
+                            <label for="sks_total" class="block text-grey-darker text-sm font-bold mb-2">Jumlah SKS kumulatif</label>
+                            <input type="text" name="sks_total" class="border rounded w-full py-2 px-3 text-white-darker @error('sks_total') is-invalid @else  @enderror" id="sks_total" placeholder="Masukkan jumlah SKS kumulatif" value="{{ old('sks_total') }}">
+                            @error('sks_total')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div>
+                            <label for="ips" class="block text-grey-darker text-sm font-bold mb-2">IPS</label>
+                            <input type="text" name="ips" class="border rounded w-full py-2 px-3 text-white-darker @error('ips') is-invalid @else  @enderror" id="ips" placeholder="Masukkan nilai IPS" value="{{ old('ips') }}">
+                            @error('ips')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div>
+                            <label for="ipk" class="block text-grey-darker text-sm font-bold mb-2">IPK</label>
+                            <input type="text" name="ipk" class="border rounded w-full py-2 px-3 text-white-darker @error('ipk') is-invalid @else  @enderror" id="ipk" placeholder="Masukkan nilai IPK" value="{{ old('ipk') }}">
+                            @error('ipk')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div>
+                            <label for="scan_khs" class="block text-grey-darker text-sm font-bold mb-2">Upload scan KHS</label>
+                            <input type="file" name="scan_khs" class="border rounded w-full py-2 px-3 text-white-darker @error('scan_khs') is-invalid @else  @enderror" id="scan_khs">
+                            @error('scan_khs')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

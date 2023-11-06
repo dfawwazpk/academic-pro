@@ -10,6 +10,7 @@ use App\Http\Controllers\DaftarDosenController;
 use App\Http\Controllers\BuatAkunDosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\IRSController;
+use App\Http\Controllers\KHSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,10 @@ Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->
 //ENTRY IRS
 Route::get('buat/irs', [IRSController::class, 'buatIRS'])->middleware('auth','mahasiswa');
 Route::post('buat/irs', [IRSController::class, 'doBuatIRS'])->middleware('auth','mahasiswa');
+
+//ENTRY KHS
+Route::get('buat/khs', [KHSController::class, 'buatKHS'])->middleware('auth','mahasiswa');
+Route::post('buat/khs', [KHSController::class, 'doBuatKHS'])->middleware('auth','mahasiswa');
 
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');

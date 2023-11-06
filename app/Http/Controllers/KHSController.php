@@ -49,13 +49,19 @@ class KHSController extends Controller
     {
         $request->validate([
             'semester' => 'required|numeric',
-            'sks' => 'required|numeric',
+            'sks_semester' => 'required|numeric',
+            'sks_total' => 'required|numeric',
+            'ips' => 'required|numeric',
+            'ipk' => 'required|numeric',
             'scan_khs' => 'required|file|mimes:pdf|max:2048',
         ]);
     
         $khs = new KHS;
         $khs->semester = $request->semester;
-        $khs->sks_diambil = $request->sks;
+        $khs->sks_semester = $request->sks_semester;
+        $khs->sks_total = $request->sks_total;
+        $khs->ips = $request->ips;
+        $khs->ipk = $request->ipk;
         $khs->status = 1;
         $khs->file = $request->file('scan_khs')->store('khs', 'public');
         $khs->mahasiswa_id = Auth::user()->id;
