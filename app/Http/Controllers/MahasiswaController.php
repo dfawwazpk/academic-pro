@@ -92,7 +92,7 @@ class MahasiswaController extends Controller
 
         $mahasiswa = Mahasiswa::where('id', Auth::user()->id)->first();
         $mahasiswa->nama = $request->nama;
-        $mahasiswa->tanggal_lahir = $request->tanggal_lahir;
+        $mahasiswa->tanggal_lahir = preg_replace('#(\d{2})/(\d{2})/(\d{4})\s(.*)#', '$3-$2-$1', $request->tanggal_lahir);
         $mahasiswa->no_hp = $request->no_hp;
         $mahasiswa->alamat = $request->alamat;
         $mahasiswa->kabupaten_kota = $request->kabupaten_kota;
