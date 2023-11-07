@@ -9,6 +9,7 @@ use App\Http\Controllers\DaftarMahasiswaController;
 use App\Http\Controllers\DaftarDosenController;
 use App\Http\Controllers\BuatAkunDosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\IRSController;
 use App\Http\Controllers\KHSController;
 use App\Http\Controllers\PKLController;
@@ -53,7 +54,8 @@ Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('
 Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware('auth','operator');
 Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middleware('auth','operator');
 
-Route::get('buat/dosen', [BuatAkunDosenController::class,'index'])->middleware('auth','operator');
+Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','operator');
+Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth','operator');
 
 //-------------------------------- MAHASISWA --------------------------------//
 

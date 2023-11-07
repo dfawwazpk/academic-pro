@@ -20,7 +20,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="nip" class="block text-grey-darker text-sm font-bold mb-2">NIP</label>
-                            <input type="text" name="nip" class="border rounded w-full py-2 px-3 text-white-darker @error('nip') is-invalid @else  @enderror" id="nip" placeholder="Masukkan NIP" value="{{ old('nip') }}">
+                            <input type="text" name="nip" class="border rounded w-full py-2 px-3 text-black @error('nip') is-invalid @else  @enderror" id="nip" placeholder="Masukkan NIP" value="{{ old('nip') }}">
                             @error('nip')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -30,8 +30,18 @@
                     <div class="mb-2">
                         <div>
                             <label for="nama" class="block text-grey-darker text-sm font-bold mb-2">Nama Lengkap</label>
-                            <input type="text" name="nama" class="border rounded w-full py-2 px-3 text-white-darker @error('nama') is-invalid @else  @enderror" id="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}">
+                            <input type="text" name="nama" class="border rounded w-full py-2 px-3 text-black @error('nama') is-invalid @else  @enderror" id="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}">
                             @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div>
+                            <label for="email" class="block text-grey-darker text-sm font-bold mb-2">Email</label>
+                            <input type="email" name="email" class="border rounded w-full py-2 px-3 text-black @error('email') is-invalid @else  @enderror" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
+                            @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

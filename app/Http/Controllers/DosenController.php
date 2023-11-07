@@ -1,97 +1,41 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Dosen;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class DosenController extends Controller
 {
-    public function index()
+    function create()
     {
-        $dosens = Dosen::all();
-        return view('dosens.index', compact('dosens'));
-    }
-
-    public function create()
-    {
-        return view('dosens.create');
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nip' => 'required|unique:dosens|max:255',
-            'nama_lengkap' => 'required',
-            'email' => 'required|unique:dosens|email|max:255',
-            'password' => 'required|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        return view('operator.buat.dosen', [
+            'title' => 'Buat Akun Dosen'
         ]);
+    }
+
+    function doCreate(Request $request)
+    {
+        $request->validate([
+            'nip'          => 'required|numeric|digits:18|unique:dosen',
+            'nama'         => 'required|string',
+        ]);
+
+        $akun_dosen = new User;
+        $akun_dosen->email = $request->email;
+        $akun_dosen->password = Hash::make('password');
+        $akun_dosen->role_id = 3;
+        $akun_dosen->save();
 
         $dosen = new Dosen;
+        $dosen->id = User::where('email', $request->email)->value('id');
         $dosen->nip = $request->nip;
-        $dosen->nama_lengkap = $request->nama_lengkap;
-        $dosen->email = $request->email;
-        $dosen->password = bcrypt($request->password);
-
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $avatar->storeAs('public/avatars', $filename);
-            $dosen->avatar = $filename;
-        }
-
+        $dosen->nama = $request->nama;
         $dosen->save();
 
-        return redirect()->route('dosens.index')
-            ->with('success', 'Dosen created successfully.');
-    }
-
-    public function show(Dosen $dosen)
-    {
-        return view('dosens.show', compact('dosen'));
-    }
-
-    public function edit(Dosen $dosen)
-    {
-        return view('dosens.edit', compact('dosen'));
-    }
-
-    public function update(Request $request, Dosen $dosen)
-    {
-        $validatedData = $request->validate([
-            'nip' => 'required|unique:dosens,nip,'.$dosen->id.'|max:255',
-            'nama_lengkap' => 'required',
-            'email' => 'required|unique:dosens,email,'.$dosen->id.'|email|max:255',
-            'password' => 'nullable|min:6',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $dosen->nip = $request->nip;
-        $dosen->nama_lengkap = $request->nama_lengkap;
-        $dosen->email = $request->email;
-
-        if (!empty($request->password)) {
-            $dosen->password = bcrypt($request->password);
-        }
-
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $avatar->storeAs('public/avatars', $filename);
-            $dosen->avatar = $filename;
-        }
-
-        $dosen->save();
-
-        return redirect()->route('dosens.index')
-            ->with('success', 'Dosen updated successfully.');
-    }
-
-    public function destroy(Dosen $dosen)
-    {
-        $dosen->delete();
-
-        return redirect()->route('dosens.index')
-            ->with('success', 'Dosen deleted successfully.');
+        return redirect('/buat/dosen')->with('success', 'Akun dosen baru berhasil dibuat!');
     }
 }
