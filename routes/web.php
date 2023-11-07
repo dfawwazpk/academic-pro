@@ -13,6 +13,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\IRSController;
 use App\Http\Controllers\KHSController;
 use App\Http\Controllers\PKLController;
+use App\Http\Controllers\VerifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,9 @@ Route::post('buat/pkl', [PKLController::class, 'doBuatPKL'])->middleware('auth',
 //ENTRY SKRIPSI
 Route::get('buat/skripsi', [PKLController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
 Route::post('buat/skripsi', [PKLController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
+
+//VERIFIKASI BERKAS
+Route::get('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
 
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
