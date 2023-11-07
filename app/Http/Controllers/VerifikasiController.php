@@ -7,6 +7,7 @@ use App\Models\IRS;
 use App\Models\KHS;
 use App\Models\PKL;
 use App\Models\Skripsi;
+use App\Models\StatusBerkas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -29,5 +30,19 @@ class VerifikasiController extends Controller
             'pklList' => $pklList,
             'skripsiList' => $skripsiList,
         ]);
+    }
+
+    function doVerifikasi($id)
+    {
+        $verifikasi = DB::select("SELECT * FROM status_berkas WHERE id = ?", [$id]);
+        if($verifikasi){
+            $query1 = DB::update("UPDATE irs SET status = 1 WHERE id = ?", [$id]);
+            $query2 = DB::update("UPDATE khs SET status = 1 WHERE id = ?", [$id]);
+            $query3 = DB::update("UPDATE pkl SET status = 1 WHERE id = ?", [$id]);
+            $query4 = DB::update("UPDATE skripsi SET status = 1 WHERE id = ?", [$id]);
+            return redirect()->route('/verifikasi-berkas')->with('success', 'Verifikasi telah berhasil dibuat.');
+        } else {
+            return redirect()->route('/verifikasi-berkas');
+        }
     }
 }
