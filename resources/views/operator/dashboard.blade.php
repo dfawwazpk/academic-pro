@@ -1,8 +1,8 @@
 @extends('partials.sidebar')
 @section('container')
 {{-- <h1>Ini dashboard operator.</h1> --}}
-<div class="relative bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
-    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Halo, John {{-- {{ Auth::user()->name }} --}} 👋</h1>
+<div class="relative bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8 mt-10">
+    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">{{ Auth::user()->nama }} 👋</h1>
     <p class="dark:text-indigo-200">Selamat Datang di AcademicPro!</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-4">

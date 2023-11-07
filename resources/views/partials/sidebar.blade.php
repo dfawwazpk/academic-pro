@@ -13,19 +13,16 @@
         @if (auth()->user()->role_id == 1)
         <aside class="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
             <a href="#">
-                <a class="flex flex-col items-center mx-4  text-3xl font-bold">AcademicPro</a>
+                <a class="flex flex-col items-center mx-4 text-white text-3xl font-bold">AcademicPro</a>
             </a>
     
             <div class="flex flex-col justify-between flex-1 mt-6">
                 <nav>
                     <a href="/dashboard" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('dashboard') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-
-                        <span class="mx-4 font-medium">Dashboard</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path color=white stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                          </svg>
+                        <span class="mx-4 font-medium text-color=white">Dashboard</span>
                     </a>
 
                     <a href="/daftar/mahasiswa" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
@@ -46,21 +43,21 @@
                     </a>
 
                     <a href="/buat/mahasiswa"class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path color=white stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                          </svg>
+                          
 
-                        <span class="flex items-center mx-4 font-medium">Buat Akun Mahasiswa</span>
+                        <span class="flex items-center mx-4 font-medium text-color=white">Buat Akun Mahasiswa</span>
                     </a>
 
                     <a href="/buat/dosen"class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path color=white stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                          </svg>
+                          
 
-                        <span href="/buat/dosen" class="flex items-center mx-4 font-medium">Buat Akun Dosen</span>
+                        <span href="/buat/dosen" class="flex items-center mx-4 text-color=white font-medium">Buat Akun Dosen</span>
                     </a>
                 </nav>
     
@@ -84,7 +81,7 @@
         </aside>
         
         {{--<main class="flex-1 flex justify-center items-center"> --}}
-        <main class="flex-1 mx-5 max-h-screen overflow-y-scroll">
+        <main class="flex-1 mx-2 max-h-screen max-w-screen overflow-y-scroll">
             {{-- //Content --}}
            {{-- <div class="flex-1 flex justify-center items-center">--}}
             @yield('container')
