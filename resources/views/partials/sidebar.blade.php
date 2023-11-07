@@ -234,7 +234,7 @@
             </aside>
     
             {{--<main class="flex-1 flex justify-center items-center"> --}}
-            <main class="flex-1 mx-5">
+            <main class="flex-1 mx-5 max-h-screen max-w-screen overflow-y-scroll">
                 {{-- //Content --}}
                {{-- <div class="flex-1 flex justify-center items-center">--}}
                 @yield('container')
@@ -263,7 +263,7 @@
                             <span class="mx-4 font-medium">Dashboard</span>
                         </a>
     
-                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/mahasiswa') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <a href="/buat/irs" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/irs') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -271,7 +271,7 @@
                             <span class="mx-4 font-medium">IRS</span>
                         </a>
     
-                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <a href="/buat/khs" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/khs') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -280,7 +280,7 @@
                             <span href="/daftar/dosen" class="mx-4 font-medium">KHS</span>
                         </a>
                         
-                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <a href="/buat/pkl" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/pkl') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -288,7 +288,7 @@
     
                             <span href="/daftar/dosen" class="mx-4 font-medium">PKL</span>
                         </a>
-                        <a href="" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('daftar/dosen') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
+                        <a href="/buat/skripsi" class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 {{ request()->is('buat/skripsi') ? 'bg-gray-200 dark:bg-gray-800' : '' }}" href="#">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -318,7 +318,7 @@
             </aside>
     
             {{--<main class="flex-1 flex justify-center items-center"> --}}
-            <main class="flex-1 mx-5 max-h-screen overflow-y-scroll">
+            <main class="flex-1 mx-2 max-h-screen max-w-screen">
                 {{-- //Content --}}
                {{-- <div class="flex-1 flex justify-center items-center">--}}
                 @yield('container')

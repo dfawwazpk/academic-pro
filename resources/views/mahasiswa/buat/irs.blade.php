@@ -10,31 +10,16 @@
         </div>
         @endif
         <div class="flex justify-center items-center ">
-            <form action="/buat/irs" method="post" enctype="multipart/form-data">
+            <form action="/buat/khs" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 gap-8">
                     <!-- form fields -->
+
                     <div class="mb-2">
                         <div>
-                            <label for="semester" class="block text-grey-darker text-sm font-bold mb-2">Semester</label>
-                            <select id="semester" name="semester" class="border rounded w-full py-2 px-3 text-white-darker @error('semester') @else  is-invalid @enderror" value="{{ old('semester') }}">
-                                <option value="" selected disabled>Pilih semester</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                            </select>
-                            @error('semester')
+                            <label for="sks_semester" class="block text-grey-darker text-sm font-bold mb-2">Semester Aktif</label>
+                            <input type="text" name="sks_semester" class="border rounded w-full py-2 px-3 text-white-darker @error('sks_semester') is-invalid @else  @enderror" id="sks_semester" placeholder="Masukkan jumlah SKS semester" value="{{ old('sks_semester') }}">
+                            @error('sks_semester')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -42,19 +27,20 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="sks" class="block text-grey-darker text-sm font-bold mb-2">Jumlah SKS diambil</label>
-                            <input type="text" name="sks" class="border rounded w-full py-2 px-3 text-white-darker @error('sks') is-invalid @else  @enderror" id="sks" placeholder="Masukkan jumlah SKS" value="{{ old('sks') }}">
-                            @error('sks')
+                            <label for="sks_total" class="block text-grey-darker text-sm font-bold mb-2">Jumlah SKS Diambil</label>
+                            <input type="text" name="sks_total" class="border rounded w-full py-2 px-3 text-white-darker @error('sks_total') is-invalid @else  @enderror" id="sks_total" placeholder="Masukkan jumlah SKS kumulatif" value="{{ old('sks_total') }}">
+                            @error('sks_total')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
 
+
                     <div class="mb-2">
                         <div>
-                            <label for="scan_irs" class="block text-grey-darker text-sm font-bold mb-2">Upload scan IRS</label>
-                            <input type="file" name="scan_irs" class="border rounded w-full py-2 px-3 text-white-darker @error('scan_irs') is-invalid @else  @enderror" id="scan_irs">
-                            @error('scan_irs')
+                            <label for="scan_khs" class="block text-grey-darker text-sm font-bold mb-2">Upload scan IRS</label>
+                            <input type="file" name="scan_khs" class="border rounded w-full py-2 px-3 text-white-darker @error('scan_khs') is-invalid @else  @enderror" id="scan_khs">
+                            @error('scan_khs')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
