@@ -19,11 +19,11 @@ class VerifikasiController extends Controller
 {
     function index()
     {
-        $irsList = Irs::all();
-        $khsList = KHS::all();
-        $pklList = PKL::all();
-        $skripsiList = Skripsi::all();
-
+        $irsList = IRS::where('status', 1)->get();
+        $khsList = KHS::where('status', 1)->get();
+        $pklList = PKL::where('status', 1)->get();
+        $skripsiList = Skripsi::where('status', 1)->get();
+    
         return view('verifikasi.index', [
             'irsList' => $irsList,
             'khsList' => $khsList,
@@ -31,6 +31,7 @@ class VerifikasiController extends Controller
             'skripsiList' => $skripsiList,
         ]);
     }
+    
 
     function doVerifikasi($id)
     {
