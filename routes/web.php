@@ -13,6 +13,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\IRSController;
 use App\Http\Controllers\KHSController;
 use App\Http\Controllers\PKLController;
+use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\VerifikasiController;
 
 /*
@@ -77,8 +78,8 @@ Route::get('buat/pkl', [PKLController::class, 'buatPKL'])->middleware('auth','ma
 Route::post('buat/pkl', [PKLController::class, 'doBuatPKL'])->middleware('auth','mahasiswa');
 
 //ENTRY SKRIPSI
-Route::get('buat/skripsi', [PKLController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
-Route::post('buat/skripsi', [PKLController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
+Route::get('buat/skripsi', [SkripsiController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
+Route::post('buat/skripsi', [SkripsiController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
 
 //VERIFIKASI BERKAS
 Route::get('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
