@@ -10,7 +10,7 @@
         </div>
         @endif
         <div class="flex justify-center items-center ">
-            <form action="/buat/khs" method="post" enctype="multipart/form-data">
+            <form action="/buat/irs" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 gap-8">
                     <!-- form fields -->
@@ -38,9 +38,9 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="scan_khs" class="block text-grey-darker text-sm font-bold mb-2">Upload scan IRS</label>
-                            <input type="file" name="scan_khs" class="border rounded w-full py-2 px-3 text-white-darker @error('scan_khs') is-invalid @else  @enderror" id="scan_khs">
-                            @error('scan_khs')
+                            <label for="scan_irs" class="block text-grey-darker text-sm font-bold mb-2">Upload scan IRS</label>
+                            <input type="file" name="scan_khs" class="border rounded w-full py-2 px-3 text-white-darker @error('scan_irs') is-invalid @else  @enderror" id="scan_irs">
+                            @error('scan_irs')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
