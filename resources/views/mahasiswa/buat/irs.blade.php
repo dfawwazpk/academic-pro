@@ -18,7 +18,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="sks_semester" class="block text-grey-darker text-sm font-bold mb-2">Semester Aktif</label>
-                            <input type="text" name="sks_semester" class="border rounded w-full py-2 px-3 text-white-darker @error('sks_semester') is-invalid @else  @enderror" id="sks_semester" placeholder="Masukkan jumlah SKS semester" value="{{ old('sks_semester') }}">
+                            <input type="text" name="sks_semester" class="border rounded w-full py-2 px-3 text-black @error('sks_semester') is-invalid @else  @enderror" id="sks_semester" placeholder="Masukkan jumlah SKS semester" value="{{ old('sks_semester') }}">
                             @error('sks_semester')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -28,7 +28,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="sks_total" class="block text-grey-darker text-sm font-bold mb-2">Jumlah SKS Diambil</label>
-                            <input type="text" name="sks_total" class="border rounded w-full py-2 px-3 text-white-darker @error('sks_total') is-invalid @else  @enderror" id="sks_total" placeholder="Masukkan jumlah SKS kumulatif" value="{{ old('sks_total') }}">
+                            <input type="text" name="sks_total" class="border rounded w-full py-2 px-3 text-black @error('sks_total') is-invalid @else  @enderror" id="sks_total" placeholder="Masukkan jumlah SKS kumulatif" value="{{ old('sks_total') }}">
                             @error('sks_total')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

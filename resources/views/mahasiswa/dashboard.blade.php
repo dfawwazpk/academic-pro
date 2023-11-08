@@ -11,8 +11,8 @@
         <div class="flex justify-center w-15 h-14">
         </div>
         <div class="text-center">
-            <p class="text-3xl text-center">Buat Akun Dosen</p>
-            <p class="text-left">Buat akun baru untuk dosen</p>
+            <p class="text-3xl text-left">Cek Data IRS</p>
+            <p class="text-left">Cek Isian Rencana Studi anda</p>
         </div>
     </div>
 
@@ -32,8 +32,8 @@
         <div class="flex justify-center w-15 h-14">
         </div>
         <div class="text-center">
-            <p class="text-3xl text-center">Buat Akun Dosen</p>
-            <p class="text-left">Buat akun baru untuk dosen</p>
+            <p class="text-3xl text-left">Cek Data KHS</p>
+            <p class="text-left">Cek data kartu hasil studi anda</p>
         </div>
     </div>
     
@@ -41,8 +41,8 @@
         <div class="flex justify-center w-15 h-14">
         </div>
         <div class="text-center">
-            <p class="text-3xl text-center">Buat Akun Dosen</p>
-            <p class="text-left">Buat akun baru untuk dosen</p>
+            <p class="text-3xl text-center-left">Input data skripsi</p>
+            <p class="text-left">Masukkan data skripsi anda</p>
         </div>
     </div>
 
@@ -67,8 +67,8 @@
         <div class="flex justify-center w-15 h-14">
         </div>
         <div class="text-center">
-            <p class="text-3xl text-center">Buat Akun Dosen</p>
-            <p class="text-left">Buat akun baru untuk dosen</p>
+            <p class="text-3xl text-left">Input data PKL</p>
+            <p class="text-left">Masukkan data praktik kerja lapangan anda</p>
         </div>
     </div>
 

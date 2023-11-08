@@ -1,5 +1,7 @@
-@extends('partials.sidebar')
 
+@extends('partials.sidebar')
 @section('container')
-    <h1>Ini dashboard dosen.</h1>
+<h1>Ini Dashboard Dosen</h1>
 @endsection
+
+

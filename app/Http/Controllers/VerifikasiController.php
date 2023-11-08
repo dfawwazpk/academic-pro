@@ -24,7 +24,7 @@ class VerifikasiController extends Controller
         $pklList = PKL::where('status', 1)->get();
         $skripsiList = Skripsi::where('status', 1)->get();
     
-        return view('verifikasi.index', [
+        return view('dosen.verifikasi.index', [
             'irsList' => $irsList,
             'khsList' => $khsList,
             'pklList' => $pklList,
