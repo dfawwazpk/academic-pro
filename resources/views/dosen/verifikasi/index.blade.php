@@ -86,270 +86,61 @@
                                 </th> 
                             </tr>
                         </thead>
+
+                        @foreach ($irsList as $irs)
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
+
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>24060121140156</span>
+                                        <span>{{ $mahasiswaList->where('id', $irs->mahasiswa_id)->first()->value('nim') }}</span>
                                     </div>
                                 </td>
+
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $mahasiswaList->where('id', $irs->mahasiswa_id)->first()->value('nama') }}</h2>
                                         </div>
                                     </div>
                                 </td>
-                                
+
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $irs->value('semester') }}</h2>
                                         </div>
                                     </div>
                                 </td>
-                                <td href ="" class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
                                         </div>
                                     </button>
-                                    
                                 </td>
+
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+                                    
+                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
                                         </div>
-                                        
                                     </button>
-                                    <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+
+                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
                                         </div>
-                                        
                                     </button>
-                                    </div>
-                                           {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Download
-                                        </button>
-                                        --}}
-                                    
+
                                 </td>
                             </tr>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-    
-                                            <span>24060121140523</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Imroatus Zadin</h2>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center ">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td href ="" class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                            <div class="inline-flex items-center gap-x-2">
-                                                <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
-                                            </div>
-                                        </button>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                            <div class="inline-flex items-center gap-x-2">
-                                                <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
-                                            </div>
-                                            
-                                        </button>
-                                        <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                            <div class="inline-flex items-center gap-x-2">
-                                                <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
-                                            </div>
-                                            
-                                        </button>
-                                        </div>
-                                               {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Download
-                                            </button>
-                                            --}}
-                                        
-                                    </td>
-                                </tr>
-                                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                    <tr>
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                            <div class="inline-flex items-center gap-x-3">
-                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-        
-                                                <span>24060121140523</span>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center gap-x-2">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Vastia Kobo</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center ">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td href ="" class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                            <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                <div class="inline-flex items-center gap-x-2">
-                                                    <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
-                                                </div>
-                                            </button>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                            <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                <div class="inline-flex items-center gap-x-2">
-                                                    <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
-                                                </div>
-                                                
-                                            </button>
-                                            <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                <div class="inline-flex items-center gap-x-2">
-                                                    <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
-                                                </div>
-                                                
-                                            </button>
-                                            </div>
-                                                   {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                    Download
-                                                </button>
-                                                --}}
-                                            
-                                        </td>
-                                    </tr>    
-                            
-                                    <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                        <tr>
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                <div class="inline-flex items-center gap-x-3">
-                                                    <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-            
-                                                    <span>24060121140523</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center gap-x-2">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Kureiji Ollie</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center ">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td href ="" class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                    <div class="inline-flex items-center gap-x-2">
-                                                        <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
-                                                    </div>
-                                                </button>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                    <div class="inline-flex items-center gap-x-2">
-                                                        <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
-                                                    </div>
-                                                    
-                                                </button>
-                                                <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                    <div class="inline-flex items-center gap-x-2">
-                                                        <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
-                                                    </div>
-                                                    
-                                                </button>
-                                                </div>
-                                                       {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                        Download
-                                                    </button>
-                                                    --}}
-                                                
-                                            </td>
-                            
-                                                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                                    <tr>
-                                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                            <div class="inline-flex items-center gap-x-3">
-                                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-                        
-                                                                <span>24060121140156</span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            <div class="flex items-center gap-x-2">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        
-                                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            <div class="flex items-center ">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td href ="" class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                            <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                                <div class="inline-flex items-center gap-x-2">
-                                                                    <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
-                                                                </div>
-                                                            </button>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                            <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                                <div class="inline-flex items-center gap-x-2">
-                                                                    <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
-                                                                </div>
-                                                                
-                                                            </button>
-                                                            <button class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                                                <div class="inline-flex items-center gap-x-2">
-                                                                    <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
-                                                                </div>
-                                                                
-                                                            </button>
-                                                            </div>
-                                                                   {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                                    Download
-                                                                </button>
-                                                                --}}
-                                                            
-                                                        </td>
-                                                    </tr>
                         </tbody>
+                        @endforeach
+
                     </table>
                 </div>
             </div>
