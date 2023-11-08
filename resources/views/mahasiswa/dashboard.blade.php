@@ -50,16 +50,16 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">567</p>
-            <p>Mahasiswa</p>
+            <p class="text-5xl justify-center text-center">3,69</p>
+            <p>IPK</p>
         </div>
     </div>
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">557</p>
-            <p class="text justify-center">Dosen</p>
+            <p class="text-5xl justify-center text-center">3,50</p>
+            <p class="text justify-center">IPS</p>
         </div>
     </div>
 

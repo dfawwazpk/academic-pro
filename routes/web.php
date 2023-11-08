@@ -65,6 +65,7 @@ Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth
 Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth','mahasiswa_firsttime');
 Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth','mahasiswa_firsttime');
 
+
 //ENTRY IRS
 Route::get('buat/irs', [IRSController::class, 'buatIRS'])->middleware('auth','mahasiswa');
 Route::post('buat/irs', [IRSController::class, 'doBuatIRS'])->middleware('auth','mahasiswa');
