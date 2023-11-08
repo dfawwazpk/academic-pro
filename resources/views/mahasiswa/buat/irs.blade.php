@@ -18,7 +18,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="semester" class="block text-grey-darker text-sm font-bold mb-2">Semester Aktif</label>
-                            <input type="text" name="semester" class="border rounded w-full py-2 px-3 text-black @error('semester') is-invalid @else  @enderror" id="semester" placeholder="Masukkan jumlah SKS semester" value="{{ old('semester') }}">
+                            <input type="text" name="semester" class="border rounded w-full py-2 px-3 text-black @error('semester') is-invalid @else  @enderror" id="semester" placeholder="Masukkan semester aktif" value="{{ old('semester') }}">
                             @error('semester')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
