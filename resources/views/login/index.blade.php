@@ -12,7 +12,7 @@
   <section class="flex flex-col md:flex-row h-screen items-center">
   
       <div class="bg-black hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-        <img src="https://if.fsm.undip.ac.id/id//assets/img/slider_home/slide1.png" alt="" class="w-full h-full object-cover">
+        <img src="https://if.fsm.undip.ac.id/id/assets/img/banner/undipwp1.png" alt="" class="w-full h-full object-cover">
       </div>
     
       <div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12

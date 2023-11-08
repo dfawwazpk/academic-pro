@@ -43,6 +43,9 @@
                             <label for="tanggal_lahir" class="block text-grey-darker text-sm font-bold mb-2">Tanggal Lahir</label>
                             {{-- <input datepicker type="text" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-white-darker" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}"> --}}
                             <input type="date" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-black" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}">
+                            @error('tanggal_lahir')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -90,7 +93,7 @@
                                     <option value="{{ $kabs->kode_kab }}"> {{ $kabs->nama_kab }}</option>
                                 @endforeach
                             </select>
-                            @error('provinsi')
+                            @error('kabupaten_kota')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
