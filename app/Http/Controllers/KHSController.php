@@ -45,6 +45,10 @@ class KHSController extends Controller
         return view('mahasiswa.buat.khs');
     }
 
+    function riwayatKHS(){
+        return view('mahasiswa.riwayat.khs');
+    }
+
     function doBuatKHS(Request $request)
     {
         $request->validate([

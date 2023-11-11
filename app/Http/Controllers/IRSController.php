@@ -42,6 +42,10 @@ class IRSController extends Controller
         return view('mahasiswa.buat.irs');
     }
 
+    function riwayatIRS(){
+        return view('mahasiswa.riwayat.irs');
+    }
+
     function doBuatIRS(Request $request)
     {
         $request->validate([
