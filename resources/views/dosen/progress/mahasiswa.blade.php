@@ -2,24 +2,13 @@
 
 @section('container')
 <div class="relative bg-indigo-200 dark:bg-indigo-500 p-7 sm:p-7 rounded-sm overflow-hidden mb-10 mt-10">
-    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Verifikasi IRS {{-- {{ Auth::user()->name }} --}} </h1>
+    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Rekap Prestasi Akademik {{-- {{ Auth::user()->name }} --}} </h1>
     
 </div>
-
-<div class="grid grid-cols-2">
-    <div class="col-start-2">
-        <div class="grid grid-cols-3">
-            <button class="btn btn-xs btn-neutral rounded-full">Unduh IRS</button>
-            <button class="btn btn-xs btn-neutral rounded-full">Setujui</button>
-            <button class="btn btn-xs btn-neutral rounded-full">Tolak</button>
-        </div>
-    </div>
-</div>
-
 {{-- Nav Diatas Tabel --}}
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 p-4 gap-4">
     <div class="mb-2 col-span-3 flex">
-        <div class="w-3/4">
+        <div class="w-2/4">
             <input type="text" name="nim" class="border rounded-full w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIM/Nama" value="{{ old('nim') }}">
             @error('nim')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -37,6 +26,17 @@
                 <option value="6">6</option>
                 <option value="7">7</option>
                 <option value="8">8</option>
+            </select>
+            @error('angkatan')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="w-1/4">
+            <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
+                <option value="" selected disabled>Status</option>
+                <option value="">Aktif</option>
+                <option value="">Non-Aktif</option>
+                <option value="">Cuti</option>
             </select>
             @error('angkatan')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -78,7 +78,7 @@
                                 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class= "flex items-center gap-x-2">
-                                    <span>Semester</span>
+                                    <span>Angkatan</span>
                                     <svg xmlns="http://www.w3.org/2000/svg"  height="1em"  viewBox="0 0 320 512" fill="white">
                                         <path d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z" />
                                     </svg>
@@ -86,32 +86,46 @@
                                 </th> 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class= "flex items-center gap-x-2">
-                                    <span>IRS</span>
+                                    <span>Semester</span>
                                     </div>
                                 </th> 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class= "flex items-center gap-x-2">
-                                    <span>Aksi</span>
+                                    <span>Status</span>
                                     </div>
                                 </th> 
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class= "flex items-center gap-x-2">
+                                    <span>IPK</span>
+                                    </div>
+                                </th> 
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class= "flex items-center gap-x-2">
+                                    <span>SKS</span>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class= "flex items-center gap-x-2">
+                                    <span>Detail</span>
+                                    </div>
+                                </th>  
                             </tr>
                         </thead>
 
-                        @foreach ($irsList as $irs)
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-                                        <span>{{ $mahasiswaList->where('id', $irs->mahasiswa_id)->first()->value('nim') }}</span>
+                                        <h1>asd</h1>
                                     </div>
                                 </td>
 
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $mahasiswaList->where('id', $irs->mahasiswa_id)->first()->value('nama') }}</h2>
+                                            <h1>asd</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -119,12 +133,49 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $irs->value('semester') }}</h2>
+                                            <h1>asd</h1>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                    <div class="flex items-center ">
+                                        <div>
+                                            <h1>1</h1>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                    <div class="flex items-center ">
+                                        <div>
+                                            <h1>asd</h1>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                    <div class="flex items-center ">
+                                        <div>
+                                            <h1>asd</h1>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                    <div class="flex items-center ">
+                                        <div>
+                                            <h1>asd</h1>
                                         </div>
                                     </div>
                                 </td>
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <a href ="/detail/mahasiswa" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">detail
+                                    </a>
+                                </td>
+
+                                {{-- <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                     <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
@@ -144,13 +195,11 @@
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
                                         </div>
-                                    </button>
+                                    </button> --}}
 
                                 </td>
                             </tr>
                         </tbody>
-                        @endforeach
-
                     </table>
                 </div>
             </div>
