@@ -175,7 +175,6 @@
                                             <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
                                         </div>
                                     </button> --}}
-
                                 </td>
                             </tr>
                         </tbody>
@@ -184,7 +183,5 @@
             </div>
         </div>
     </div>
-
-
 </section>
 @endsection
