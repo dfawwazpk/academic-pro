@@ -15,6 +15,7 @@ use App\Http\Controllers\KHSController;
 use App\Http\Controllers\PKLController;
 use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\VerifikasiController;
+use App\Models\PKL;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,15 +71,16 @@ Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->
 Route::get('buat/irs', [IRSController::class, 'buatIRS'])->middleware('auth','mahasiswa');
 Route::post('buat/irs', [IRSController::class, 'doBuatIRS'])->middleware('auth','mahasiswa');
 
-//RIWAYAT IRS
+//RIWAYAT MAHASISWA
 Route::get('riwayat/irs',[IRSController::class,'riwayatIRS'])->middleware('auth','mahasiswa');
+Route::get('riwayat/khs',[KHSController::class,'riwayatKHS'])->middleware('auth','mahasiswa');
+Route::get('riwayat/pkl',[PKLController::class,'riwayatPKL'])->middleware('auth','mahasiswa');
+Route::get('riwayat/skripsi',[SKRIPSIController::class,'riwayatSKRIPSI'])->middleware('auth','mahasiswa');
 
 //ENTRY KHS
 Route::get('buat/khs', [KHSController::class, 'buatKHS'])->middleware('auth','mahasiswa');
 Route::post('buat/khs', [KHSController::class, 'doBuatKHS'])->middleware('auth','mahasiswa');
 
-//RIWAYAT KHS
-Route::get('riwayat/khs',[KHSController::class,'riwayatKHS'])->middleware('auth','mahasiswa');
 
 //ENTRY PKL
 Route::get('buat/pkl', [PKLController::class, 'buatPKL'])->middleware('auth','mahasiswa');

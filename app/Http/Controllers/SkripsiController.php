@@ -44,6 +44,10 @@ class SkripsiController extends Controller
         return view('mahasiswa.buat.skripsi');
     }
 
+    function riwayatSKRIPSI(){
+        return view('mahasiswa.riwayat.skripsi');
+    }
+
     function doBuatSkripsi(Request $request)
     {
         $request->validate([

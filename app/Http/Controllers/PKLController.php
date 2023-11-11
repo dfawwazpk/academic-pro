@@ -42,6 +42,10 @@ class PKLController extends Controller
         return view('mahasiswa.buat.pkl');
     }
 
+    function riwayatPKL(){
+        return view('mahasiswa.riwayat.pkl');
+    }
+
     function doBuatPKL(Request $request)
     {
         $request->validate([
