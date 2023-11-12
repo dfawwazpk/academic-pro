@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+//use App\Http\Middleware\Operator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Operator;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -9,8 +13,13 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->role_id==1) {
+            $namaOp = Operator::where('id', Auth::user()->id)->value('nama');
+            $nipOp = Operator::where('id', Auth::user()->id)->value('nip');
+
             return view('operator.dashboard', [
-            "title" => "Dashboard"
+            "title" => "Dashboard",
+            "nama" => $namaOp,
+            "nim" => $nipOp,
             ]);
         }
         if (Auth::user()->role_id==2) {
@@ -23,10 +32,16 @@ class DashboardController extends Controller
             "title" => "Dashboard"
             ]);
         }
-        if (Auth::user()->role_id==4) {
+        if (Auth::user()->role_id == 4) {
+            $nama = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+            $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
+
             return view('mahasiswa.dashboard', [
-            "title" => "Dashboard"
+                "title" => "Dashboard",
+                "nama" => $nama,
+                "nim" => $nim,
             ]);
         }
+        
     }
 }
