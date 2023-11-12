@@ -53,10 +53,11 @@ Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('aut
 Route::get('daftar/mahasiswa', [MahasiswaController::class, 'list'])->middleware('auth','operator');
 Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
 
-//BUAT AKUN
+//BUAT AKUN MAHASISWA
 Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware('auth','operator');
 Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middleware('auth','operator');
 
+//BUAT AKUN DOSEN
 Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','operator');
 Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth','operator');
 
@@ -66,45 +67,41 @@ Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth
 Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth','mahasiswa_firsttime');
 Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth','mahasiswa_firsttime');
 
-
-//ENTRY IRS
+//IRS
+Route::get('riwayat/irs',[IRSController::class,'riwayatIRS'])->middleware('auth','mahasiswa');
 Route::get('buat/irs', [IRSController::class, 'buatIRS'])->middleware('auth','mahasiswa');
 Route::post('buat/irs', [IRSController::class, 'doBuatIRS'])->middleware('auth','mahasiswa');
 
-//RIWAYAT MAHASISWA
-Route::get('riwayat/irs',[IRSController::class,'riwayatIRS'])->middleware('auth','mahasiswa');
+//KHS
 Route::get('riwayat/khs',[KHSController::class,'riwayatKHS'])->middleware('auth','mahasiswa');
-Route::get('riwayat/pkl',[PKLController::class,'riwayatPKL'])->middleware('auth','mahasiswa');
-Route::get('riwayat/skripsi',[SKRIPSIController::class,'riwayatSKRIPSI'])->middleware('auth','mahasiswa');
-
-//ENTRY KHS
 Route::get('buat/khs', [KHSController::class, 'buatKHS'])->middleware('auth','mahasiswa');
 Route::post('buat/khs', [KHSController::class, 'doBuatKHS'])->middleware('auth','mahasiswa');
 
-
-//ENTRY PKL
+//PKL
+Route::get('riwayat/pkl',[PKLController::class,'riwayatPKL'])->middleware('auth','mahasiswa');
 Route::get('buat/pkl', [PKLController::class, 'buatPKL'])->middleware('auth','mahasiswa');
 Route::post('buat/pkl', [PKLController::class, 'doBuatPKL'])->middleware('auth','mahasiswa');
 
-//ENTRY SKRIPSI
+//SKRIPSI
+Route::get('riwayat/skripsi',[SKRIPSIController::class,'riwayatSKRIPSI'])->middleware('auth','mahasiswa');
 Route::get('buat/skripsi', [SkripsiController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
 Route::post('buat/skripsi', [SkripsiController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
 
-
-
+//EDIT PROFILE
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
 Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
 Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updateProfile'])->name('update-profile');
 
 //-------------------------------- DOSEN --------------------------------//
-//VERIFIKASI BERKAS
 
+//VERIFIKASI BERKAS
 Route::get('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
 Route::post('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
 
 //PROGRESS MAHASISWA
 Route::get('progress/mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
 Route::get('detail/mahasiswa', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');
+
 //REKAP MAHASISWA
 Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
 Route::get('/rekap/skripsi', [DosenController::class, 'rekapSkripsi'])->middleware('auth','dosen');

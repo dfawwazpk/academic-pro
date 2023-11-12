@@ -9,7 +9,7 @@
 <div class="grid grid-cols-5 gap-4">
     <div class="text-sm md:text-2xl text-black font-bold mb-1">Riwayat IRS</div>
     <div class="place-self-center col-start-3 px-5 w-auto h-auto font-bold text-white bg-gray-500 rounded-full">
-        <a href="/buat/irs">Input Irs</a>
+        <a href="/buat/irs">Input IRS</a>
     </div>
 </div>
 <div class="grid grid-cols-5 grid-rows-3 gap-4">
@@ -32,14 +32,6 @@
                                         </div>
                                         
                                     </th>
-                                    <th scope="col" class="px-3.5 py-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 flex items-center">
-                                        <div class= "flex items-center gap-x-2">
-                                        <span>IPS</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"  height="1em"  viewBox="0 0 320 512" fill="white">
-                                            <path d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z" />
-                                        </svg>
-                                        </div>
-                                    </th>
                                     
                                     <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         <div class= "flex items-center gap-x-2">
@@ -51,7 +43,7 @@
                                     </th> 
                                     <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         <div class= "flex items-center gap-x-2">
-                                        <span>IRS</span>
+                                        <span>Status berkas</span>
                                         </div>
                                     </th> 
  
@@ -60,29 +52,30 @@
     
 
                             <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+
+                                @foreach ($irsList as $irs)
                                 <tr>
-    
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                        <span>1</span>
-                                    </td>
-                                    
-    
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">4.00</h2>
-                                            </div>
-                                        </div>
+                                        <span>{{ $irs->semester }}</span>
                                     </td>
     
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                         <div class="flex items-center ">
                                             <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white">21</h2>
+                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $irs->sks_diambil }}</h2>
                                             </div>
                                         </div>
                                     </td>
+
+                                    @if ($irs->status == 1)
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 dark:bg-gray-800">
     
+                                            <h2 class="text-sm font-normal">Menunggu persetujuan</h2>
+                                        </div>
+                                    </td>
+
+                                    @elseif ($irs->status == 2)
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,132 +85,8 @@
                                             <h2 class="text-sm font-normal">Disetujui</h2>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                
-                                    <tr>
-    
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                            <span>2</span>
-                                        </td>
-                                        
-        
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center gap-x-2">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">4.00</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-        
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center ">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">24</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-        
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                            <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-        
-                                                <h2 class="text-sm font-normal">Disetujui</h2>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    
-                                        <tr>
-    
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                <span>3</span>
-                                            </td>
-                                            
-            
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center gap-x-2">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">4.00</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-            
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center ">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white">24</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-            
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-            
-                                                    <h2 class="text-sm font-normal">Disetujui</h2>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <tr>
-    
-                                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                    <span>4</span>
-                                                </td>
-                                                
-                
-                                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                    <div class="flex items-center gap-x-2">
-                                                        <div>
-                                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">4.00</h2>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                
-                                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                    <div class="flex items-center ">
-                                                        <div>
-                                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">18</h2>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                
-                                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
-                
-                                                        <h2 class="text-sm font-normal">Disetujui</h2>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                        <span>5</span>
-                                    </td>
-                                    
-    
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">4.00</h2>
-                                            </div>
-                                        </div>
-                                    </td>
-    
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center ">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white">22</h2>
-                                            </div>
-                                        </div>
-                                    </td>
+
+                                    @elseif ($irs->status == 3)
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                         <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -227,7 +96,10 @@
                                             <h2 class="text-sm font-normal">Ditolak</h2>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
