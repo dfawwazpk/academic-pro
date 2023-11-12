@@ -83,7 +83,7 @@ Route::get('buat/pkl', [PKLController::class, 'buatPKL'])->middleware('auth','ma
 Route::post('buat/pkl', [PKLController::class, 'doBuatPKL'])->middleware('auth','mahasiswa');
 
 //SKRIPSI
-Route::get('riwayat/skripsi',[SKRIPSIController::class,'riwayatSKRIPSI'])->middleware('auth','mahasiswa');
+Route::get('riwayat/skripsi',[SkripsiController::class,'riwayatSkripsi'])->middleware('auth','mahasiswa');
 Route::get('buat/skripsi', [SkripsiController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
 Route::post('buat/skripsi', [SkripsiController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
 
@@ -94,9 +94,15 @@ Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updatePr
 
 //-------------------------------- DOSEN --------------------------------//
 
-//VERIFIKASI BERKAS
-Route::get('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
-Route::post('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
+//VERIFIKASI IRS
+Route::get('verifikasi/irs', [VerifikasiController::class, 'listIRS'])->middleware('auth','dosen');
+Route::get('verifikasi/irs/setujui/{id}', [VerifikasiController::class, 'doSetujuiIRS'])->middleware('auth','dosen');
+Route::get('verifikasi/irs/tolak/{id}', [VerifikasiController::class, 'doTolakIRS'])->middleware('auth','dosen');
+
+//VERIFIKASI KHS
+Route::get('verifikasi/khs', [VerifikasiController::class, 'listKHS'])->middleware('auth','dosen');
+Route::get('verifikasi/khs/setujui/{id}', [VerifikasiController::class, 'doSetujuiKHS'])->middleware('auth','dosen');
+Route::get('verifikasi/khs/tolak/{id}', [VerifikasiController::class, 'doTolakKHS'])->middleware('auth','dosen');
 
 //PROGRESS MAHASISWA
 Route::get('progress/mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');

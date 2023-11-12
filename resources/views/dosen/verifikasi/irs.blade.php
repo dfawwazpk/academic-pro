@@ -9,9 +9,9 @@
 <div class="grid grid-cols-2">
     <div class="col-start-2">
         <div class="grid grid-cols-3">
-            <button class="btn btn-xs btn-neutral rounded-full">Unduh IRS</button>
-            <button class="btn btn-xs btn-neutral rounded-full">Setujui</button>
-            <button class="btn btn-xs btn-neutral rounded-full">Tolak</button>
+            <button class="btn btn-xs btn-neutral rounded-full">Unduh terpilih</button>
+            <button class="btn btn-xs btn-neutral rounded-full">Setujui terpilih</button>
+            <button class="btn btn-xs btn-neutral rounded-full">Tolak terpilih</button>
         </div>
     </div>
 </div>
@@ -86,7 +86,7 @@
                                 </th> 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class= "flex items-center gap-x-2">
-                                    <span>IRS</span>
+                                    <span>Berkas</span>
                                     </div>
                                 </th> 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -97,21 +97,22 @@
                             </tr>
                         </thead>
 
-                        @foreach ($irsList as $irs)
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                        
+                        @foreach ($mahasiswaList as $mahasiswa)
+                            @foreach ($irsList->where('mahasiswa_id', $mahasiswa->id) as $irs)
                             <tr>
-
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-                                        <span>{{ $mahasiswaList->where('id', $irs->mahasiswa_id)->first()->value('nim') }}</span>
+                                        <span>{{ $mahasiswa->nim }}</span>
                                     </div>
                                 </td>
 
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $mahasiswaList->where('id', $irs->mahasiswa_id)->first()->value('nama') }}</h2>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $mahasiswa->nama }}</h2>
                                         </div>
                                     </div>
                                 </td>
@@ -119,38 +120,39 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $irs->value('semester') }}</h2>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $irs->semester }}</h2>
                                         </div>
                                     </div>
                                 </td>
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+                                    <a href ="{{ asset('storage/' . $irs->file) }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
                                         </div>
-                                    </button>
+                                    </a>
                                 </td>
 
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     
-                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+                                    <a href ="/verifikasi/irs/setujui/{{ $irs->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
                                         </div>
-                                    </button>
+                                    </a>
 
-                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+                                    <a href ="/verifikasi/irs/tolak/{{ $irs->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
                                         </div>
-                                    </button>
+                                    </a>
 
                                 </td>
                             </tr>
-                        </tbody>
+                            @endforeach
                         @endforeach
 
+                        </tbody>
                     </table>
                 </div>
             </div>

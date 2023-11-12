@@ -17,35 +17,61 @@ use Illuminate\Support\Facades\Auth;
 
 class VerifikasiController extends Controller
 {
-    function index()
+    function listIRS()
     {
-        $mahasiswaList = Mahasiswa::all();
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $irsList = IRS::where('status', 1)->get();
-        $khsList = KHS::where('status', 1)->get();
-        $pklList = PKL::where('status', 1)->get();
-        $skripsiList = Skripsi::where('status', 1)->get();
     
-        return view('dosen.verifikasi.index', [
+        return view('dosen.verifikasi.irs', [
             'mahasiswaList' => $mahasiswaList,
             'irsList' => $irsList,
-            'khsList' => $khsList,
-            'pklList' => $pklList,
-            'skripsiList' => $skripsiList,
         ]);
     }
     
-
-    function doVerifikasi($id)
+    function doSetujuiIRS($id)
     {
-        $verifikasi = DB::select("SELECT * FROM status_berkas WHERE id = ?", [$id]);
-        if($verifikasi){
-            $query1 = DB::update("UPDATE irs SET status = 1 WHERE id = ?", [$id]);
-            $query2 = DB::update("UPDATE khs SET status = 1 WHERE id = ?", [$id]);
-            $query3 = DB::update("UPDATE pkl SET status = 1 WHERE id = ?", [$id]);
-            $query4 = DB::update("UPDATE skripsi SET status = 1 WHERE id = ?", [$id]);
-            return redirect()->route('/verifikasi-berkas')->with('success', 'Verifikasi telah berhasil dibuat.');
-        } else {
-            return redirect()->route('/verifikasi-berkas');
-        }
+        $irs = IRS::where('id', $id)->first();
+        $irs->status = 2;
+        $irs->save();
+
+        return redirect('verifikasi/irs');
+    }
+
+    function doTolakIRS($id)
+    {
+        $irs = IRS::where('id', $id)->first();
+        $irs->status = 3;
+        $irs->save();
+
+        return redirect('verifikasi/irs');
+    }
+
+    function listKHS()
+    {
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $khsList = KHS::where('status', 1)->get();
+    
+        return view('dosen.verifikasi.khs', [
+            'mahasiswaList' => $mahasiswaList,
+            'khsList' => $khsList,
+        ]);
+    }
+
+    function doSetujuiKHS($id)
+    {
+        $khs = KHS::where('id', $id)->first();
+        $khs->status = 2;
+        $khs->save();
+
+        return redirect('verifikasi/khs');
+    }
+
+    function doTolakKHS($id)
+    {
+        $khs = IRS::where('id', $id)->first();
+        $khs->status = 3;
+        $khs->save();
+
+        return redirect('verifikasi/khs');
     }
 }
