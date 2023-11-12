@@ -101,3 +101,10 @@ Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updatePr
 
 Route::get('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
 Route::post('/verifikasi-berkas', [VerifikasiController::class, 'index'])->middleware('auth','dosen');
+
+//PROGRESS MAHASISWA
+Route::get('progress/mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
+Route::get('detail/mahasiswa', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');
+//REKAP MAHASISWA
+Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
+Route::get('/rekap/skripsi', [DosenController::class, 'rekapSkripsi'])->middleware('auth','dosen');

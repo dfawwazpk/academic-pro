@@ -5,46 +5,42 @@
     <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Daftar Mahasiswa {{-- {{ Auth::user()->name }} --}} </h1>
     
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 col-span-4 p-4 gap-4">
-
-    <div class="col-span-4 p-4">
-        <div class="w-1/4">
-        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-            <span>
-                Ganti Status
-            </span>
-        </a>
-        </div>
-        <div class="w-1/2">
-            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-                <span>
-                    Hapus Akun
-                </span>
-            </a>
-        </div>
-        <div class="w-1/2">
-            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-                <span>
-                    Tambah Akun
-                </span>
-            </a>
+<div class="grid grid-cols-2 p-4 gap-4">
+    <div class="col-start-2">
+        <div class="grid grid-cols-3">
+            <div class="col-start-1">
+                <button href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                    <span>
+                        Ganti Status
+                    </span>
+                </button>
             </div>
+            <div class="col-start-2">
+                <button class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                    <span>Hapus Akun</span>
+                </button>
+            </div>
+            <div class="col-start-3">
+                <a href="/buat/mahasiswa" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                    <span>Tambah Akun</span>
+                </a>
+            </div>
+        </div>
     </div>
-
 </div>
 
 {{-- Nav Diatas Tabel --}}
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
     <div class="mb-2 col-span-5 flex items-center">
         <div class="w-1/2">
-            <input type="text" name="nim" class="border rounded w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIM/Nama" value="{{ old('nim') }}">
+            <input type="text" name="nim" class="border rounded-full w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIM/Nama" value="{{ old('nim') }}">
             @error('nim')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
         <div class="w-1/2 ml-4">
-            <select id="angkatan" name="angkatan" class="border rounded w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
+            <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
                 <option value="" selected disabled>Semester</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -60,7 +56,7 @@
             @enderror
         </div>
         <div class="w-1/2 ml-4">
-            <select id="status" name="status" class="border rounded w-full py-2 px-3 text-black @error('status') @else is-invalid @enderror" value="{{ old('status') }}">
+            <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black @error('status') @else is-invalid @enderror" value="{{ old('status') }}">
                 <option value="" selected disabled>Status</option>
                 <option value="Aktif">Aktif</option>
                 <option value="Cuti">Cuti</option>
@@ -70,7 +66,7 @@
             @enderror
         </div>
             <div class="w-1/2 ml-4">
-            <select id="jalur-masuk" name="jalur-masuk" class="border rounded w-full py-2 px-3 text-black @error('jalur-masuk') @else is-invalid @enderror" value="{{ old('jalur-masuk') }}">
+            <select id="jalur-masuk" name="jalur-masuk" class="border rounded-full w-full py-2 px-3 text-black @error('jalur-masuk') @else is-invalid @enderror" value="{{ old('jalur-masuk') }}">
                 <option value="" selected disabled>Jalur Masuk</option>
                 <option value="SNBP">SNBP</option>
                 <option value="SNBT">SNBT</option>

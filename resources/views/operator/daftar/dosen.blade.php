@@ -5,39 +5,21 @@
     <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Daftar Dosen {{-- {{ Auth::user()->name }} --}} </h1>
     
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 col-span-4 p-4 gap-4">
-    <div class="grid grid-cols-5 gap-4">
-        <!-- First and Second grids (empty in this example) -->
-        <div class="hidden sm:block col-span-1"></div>
-        <div class="hidden sm:block col-span-1"></div>
-        
-        <!-- Third grid (col-span-4) -->
-        <div class="hidden sm:block col-span-1"></div>
-        <div class="hidden sm:block col-span-1"></div>
-
-        
-        <!-- Fourth and Fifth grids (empty in this example) -->
-        <div class="col-span-1 sm:hidden"></div>
-        <div class="col-span-1 sm:hidden"></div>
-    </div>
-
-    <div class="col-span-4 p-4">
-        <div class="w-1/2">
-            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-                <span>
-                    Hapus Akun
-                </span>
-            </a>
-        </div>
-        <div class="w-1/2">
-            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-                <span>
-                    Tambah Akun
-                </span>
-            </a>
+<div class="grid grid-cols-2 p-4 gap-4">
+    <div class="col-start-2">
+        <div class="grid grid-cols-3">
+            <div class="col-start-2">
+                <button class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                    <span>Hapus Akun</span>
+                </button>
             </div>
+            <div class="col-start-3">
+                <a href="/buat/dosen" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                    <span>Tambah Akun</span>
+                </a>
+            </div>
+        </div>
     </div>
-
 </div>
 
 {{-- Nav Diatas Tabel --}}

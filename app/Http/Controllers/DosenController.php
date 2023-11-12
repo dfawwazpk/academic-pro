@@ -17,6 +17,20 @@ class DosenController extends Controller
         ]);
     }
 
+    function progressMahasiswa(){
+        return view('dosen.progress.mahasiswa');
+    }
+    function detailMahasiswa(){
+        return view('dosen.detail.mahasiswa');
+    }
+
+    function rekapPKL(){
+        return view('dosen.rekap.pkl');
+    }
+    function rekapSkripsi(){
+        return view('dosen.rekap.skripsi');
+    }
+
     function doCreate(Request $request)
     {
         $request->validate([
