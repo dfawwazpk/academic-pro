@@ -50,7 +50,7 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">3,69</p>
+            <p class="text-5xl justify-center text-center">{{ $ipk }}</p>
             <p>IPK</p>
         </div>
     </div>
@@ -58,7 +58,7 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">3,50</p>
+            <p class="text-5xl justify-center text-center">{{ $ips }}</p>
             <p class="text justify-center">IPS</p>
         </div>
     </div>

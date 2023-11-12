@@ -134,7 +134,7 @@
                     <div class="h-16 w-16 rounded-full overflow-hidden ">
                             <img src="https://via.placeholder.com/150" alt="John Doe">
                         </div>
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200">John Doe</span>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200">{{$nama}}</span>
                         <div class="flex space-x-2 mt-2">
                             <a href="#" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
                             <a href="/logout" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Logout</a>
