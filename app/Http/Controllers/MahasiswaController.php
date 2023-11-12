@@ -54,7 +54,7 @@ class MahasiswaController extends Controller
             return redirect()->route('dashboard')->with('info', 'Anda telah melengkapi data pribadi.');
         }
 
-        return view('mahasiswa.editData', ['mahasiswa' => $mahasiswa]);
+        return view('mahasiswa.editData', ['mahasiswa' => $mahasiswa, 'nama' => $user->nama]);
     }
 
     function updateFirst(){
