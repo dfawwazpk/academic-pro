@@ -109,6 +109,11 @@ Route::get('verifikasi/pkl', [VerifikasiController::class, 'listPKL'])->middlewa
 Route::get('verifikasi/pkl/setujui/{id}', [VerifikasiController::class, 'doSetujuiPKL'])->middleware('auth','dosen');
 Route::get('verifikasi/pkl/tolak/{id}', [VerifikasiController::class, 'doTolakPKL'])->middleware('auth','dosen');
 
+//VERIFIKASI Skripsi
+Route::get('verifikasi/skripsi', [VerifikasiController::class, 'listSkripsi'])->middleware('auth','dosen');
+Route::get('verifikasi/skripsi/setujui/{id}', [VerifikasiController::class, 'doSetujuiSkripsi'])->middleware('auth','dosen');
+Route::get('verifikasi/skripsi/tolak/{id}', [VerifikasiController::class, 'doTolakSkripsi'])->middleware('auth','dosen');
+
 //PROGRESS MAHASISWA
 Route::get('progress/mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
 Route::get('detail/mahasiswa', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');

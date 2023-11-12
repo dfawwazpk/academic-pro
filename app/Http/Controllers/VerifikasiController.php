@@ -103,4 +103,33 @@ class VerifikasiController extends Controller
 
         return redirect('verifikasi/pkl');
     }
+
+    function listSkripsi()
+    {
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $skripsiList = Skripsi::where('status', 1)->get();
+    
+        return view('dosen.verifikasi.skripsi', [
+            'mahasiswaList' => $mahasiswaList,
+            'skripsiList' => $skripsiList,
+        ]);
+    }
+    
+    function doSetujuiSkripsi($id)
+    {
+        $skripsi = Skripsi::where('id', $id)->first();
+        $skripsi->status = 2;
+        $skripsi->save();
+
+        return redirect('verifikasi/pkl');
+    }
+
+    function doTolakSkripsi($id)
+    {
+        $skripsi = Skripsi::where('id', $id)->first();
+        $skripsi->status = 3;
+        $skripsi->save();
+
+        return redirect('verifikasi/skripsi');
+    }
 }
