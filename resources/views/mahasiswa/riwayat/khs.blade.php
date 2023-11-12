@@ -51,7 +51,7 @@
                                     </th> 
                                     <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         <div class= "flex items-center gap-x-2">
-                                        <span>Status berkas</span>
+                                        <span>Status Berkas</span>
                                         </div>
                                     </th> 
  

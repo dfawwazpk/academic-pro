@@ -74,4 +74,33 @@ class VerifikasiController extends Controller
 
         return redirect('verifikasi/khs');
     }
+
+    function listPKL()
+    {
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $pklList = PKL::where('status', 1)->get();
+    
+        return view('dosen.verifikasi.pkl', [
+            'mahasiswaList' => $mahasiswaList,
+            'pklList' => $pklList,
+        ]);
+    }
+    
+    function doSetujuiPKL($id)
+    {
+        $pkl = PKL::where('id', $id)->first();
+        $pkl->status = 2;
+        $pkl->save();
+
+        return redirect('verifikasi/pkl');
+    }
+
+    function doTolakPKL($id)
+    {
+        $pkl = PKL::where('id', $id)->first();
+        $pkl->status = 3;
+        $pkl->save();
+
+        return redirect('verifikasi/pkl');
+    }
 }

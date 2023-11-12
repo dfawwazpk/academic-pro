@@ -104,6 +104,11 @@ Route::get('verifikasi/khs', [VerifikasiController::class, 'listKHS'])->middlewa
 Route::get('verifikasi/khs/setujui/{id}', [VerifikasiController::class, 'doSetujuiKHS'])->middleware('auth','dosen');
 Route::get('verifikasi/khs/tolak/{id}', [VerifikasiController::class, 'doTolakKHS'])->middleware('auth','dosen');
 
+//VERIFIKASI PKL
+Route::get('verifikasi/pkl', [VerifikasiController::class, 'listPKL'])->middleware('auth','dosen');
+Route::get('verifikasi/pkl/setujui/{id}', [VerifikasiController::class, 'doSetujuiPKL'])->middleware('auth','dosen');
+Route::get('verifikasi/pkl/tolak/{id}', [VerifikasiController::class, 'doTolakPKL'])->middleware('auth','dosen');
+
 //PROGRESS MAHASISWA
 Route::get('progress/mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
 Route::get('detail/mahasiswa', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');

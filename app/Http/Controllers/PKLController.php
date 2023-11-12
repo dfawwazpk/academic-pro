@@ -9,57 +9,40 @@ use Illuminate\Support\Facades\Auth;
 
 class PKLController extends Controller
 {
-    function index()
-    {
-        $pklList = PKL::all();
-
-        return view('pkl.index', ['pklList' => $pklList]);
+    function riwayatPKL(){
+        $pklList = PKL::where('mahasiswa_id', Auth::user()->id)->get();
+        return view('mahasiswa.riwayat.pkl', [
+            'pklList' => $pklList,
+        ]);
     }
-
-    function list(Request $request)
-    {
-        $pkl = DB::select(
-            "SELECT status_pkl, nilai, status, file FROM pkl
-            WHERE status_pkl LIKE '%$request->s%' 
-            OR nilai LIKE '%$request->int%'
-            OR status LIKE '%$request->s%'
-            OR file LIKE '%$request->s%'",
-        );
-
-        return view('entryPKL.list', ['pkl' => $pkl]);
-    }
-
-    function show()
-    {
-        $pkl = DB::select(
-            "SELECT semester, sks_diambil, status FROM pkl"
-        );
-        return view('entryPKL.show', ['pkl' => $pkl]);
-    }
-    
 
     function buatPKL(){
         return view('mahasiswa.buat.pkl');
-    }
-
-    function riwayatPKL(){
-        return view('mahasiswa.riwayat.pkl');
     }
 
     function doBuatPKL(Request $request)
     {
         $request->validate([
             'status_pkl' => 'required|string',
-            'status' => 'required|string',
             'scan_pkl' => 'required|file|mimes:pdf|max:2048',
         ]);
+
+        if ($request->status_pkl == "Lulus") {
+            $request->validate([
+                'nilai' => 'required|numeric',
+            ]);
+        }
     
         $pkl = new PKL;
         $pkl->status_pkl = $request->status_pkl;
-        // $pkl->nilai = $request->sks;
         $pkl->status = 1;
         $pkl->file = $request->file('scan_pkl')->store('pkl', 'public');
         $pkl->mahasiswa_id = Auth::user()->id;
+
+        if ($request->status_pkl == "Lulus") {
+            $pkl->nilai = $request->nilai;
+        }
+
         $pkl->save();
     
         return redirect('/buat/pkl')->with('success', 'PKL telah berhasil dibuat.');
