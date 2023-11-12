@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use App\Http\Middleware\Operator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Operator;
 use App\Models\Dosen;
 // use App\Models\;
@@ -16,13 +17,15 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->role_id==1) {
-            $namaOp = Operator::where('id', Auth::user()->id)->value('nama');
-            $nipOp = Operator::where('id', Auth::user()->id)->value('nip');
+            $nama = Operator::where('id', Auth::user()->id)->value('nama');
+            $nip = Operator::where('id', Auth::user()->id)->value('nip');
+            $email = User::where('id', Auth::user()->id)->value('email');
 
             return view('operator.dashboard', [
             "title" => "Dashboard",
-            "nama" => $namaOp,
-            "nim" => $nipOp,
+            "nama" => $nama,
+            "nim" => $nip,
+            "email" => $email,
             ]);
         }
         if (Auth::user()->role_id==2) {
@@ -31,8 +34,13 @@ class DashboardController extends Controller
             ]);
         }
         if (Auth::user()->role_id==3) {
+            $nama = Dosen::where('id', Auth::user()->id)->value('nama');
+            $nip = Dosen::where('id', Auth::user()->id)->value('nip');
+
             return view('dosen.dashboard', [
-            "title" => "Dashboard"
+            "title" => "Dashboard",
+            "nama" => $nama,
+            "nip" => $nip,
             ]);
         }
         if (Auth::user()->role_id == 4) {
