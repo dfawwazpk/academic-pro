@@ -61,6 +61,9 @@ Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middlewa
 Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','operator');
 Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth','operator');
 
+//LIST MAHASISWA
+Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class,'list'])->middleware('auth','operator');
+
 //-------------------------------- MAHASISWA --------------------------------//
 
 //LOGIN PERTAMA
