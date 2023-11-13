@@ -20,12 +20,16 @@ class DashboardController extends Controller
             $nama = Operator::where('id', Auth::user()->id)->value('nama');
             $nip = Operator::where('id', Auth::user()->id)->value('nip');
             $email = User::where('id', Auth::user()->id)->value('email');
+            $jumlahMhs = Mahasiswa::count();
+            $jumlahDsn = Dosen::count();
 
             return view('operator.dashboard', [
             "title" => "Dashboard",
             "nama" => $nama,
             "nim" => $nip,
             "email" => $email,
+            "jumlahMhs" => $jumlahMhs,
+            "jumlahDsn" => $jumlahDsn,
             ]);
         }
         if (Auth::user()->role_id==2) {

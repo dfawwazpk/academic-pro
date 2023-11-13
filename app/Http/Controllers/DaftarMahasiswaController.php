@@ -17,8 +17,19 @@ class DaftarMahasiswaController extends Controller
 {
     function index(){
     
-        return view("operator/daftar/dosen",[
-            "title"=> "Daftar Dosen",
+        return view("operator/daftar/mahasiswa",[
+            "title"=> "Daftar Mahasiswa",
         ]);
-   }
+    }
+
+   function searchMahasiswa(Request $request){
+        $keyword = $request->input('keyword');
+        $results = [];
+        if ($keyword !== '') {
+            $results = Mahasiswa::where('nama', 'like', '%' . $keyword . '%')->get();
+        } 
+        else {
+        $results = '';
+        }
+    }
 }
