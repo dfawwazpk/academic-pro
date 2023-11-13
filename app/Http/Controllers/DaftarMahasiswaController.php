@@ -22,30 +22,29 @@ class DaftarMahasiswaController extends Controller
         ]);
     }
 
-    function list(){
-        $list = Mahasiswa::select('nim', 'nama', 'angkatan', 'semester', 'status', 'jalur_masuk')->get();
-        return view('list.mahasiswa', [
-            'list' => $list,
-        ]);
-    }
-    
+//     // function list(){
+//     //     $list = Mahasiswa::all();
+//     //     return view('list.mahasiswa', [
+//     //         'list' => $list,
+//     //     ]);
+//     // }
 
-   function searchMahasiswa(Request $request){
-        $keyword = $request->input('keyword');
-        $results = [];
-        if ($keyword !== '') {
-            $results = Mahasiswa::where('nama', 'like', '%' . $keyword . '%')
-            ->orWhere('nim', 'like', '%' . $keyword . '%')
-            ->get();
-        } 
-        else {
-        $results = '';
-        }
+//    function searchMahasiswa(Request $request){
+//         $keyword = $request->input('keyword');
+//         $results = [];
+//         if ($keyword !== '') {
+//             $results = Mahasiswa::where('nama', 'like', '%' . $keyword . '%')
+//             ->orWhere('nim', 'like', '%' . $keyword . '%')
+//             ->get();
+//         } 
+//         else {
+//         $results = '';
+//         }
 
-        return view("operator/daftar/mahasiswa", [
-            "title" => "Daftar Mahasiswa",
-            "results" => $results,
-            "keyword" => $keyword,
-        ]);
-    }
+//         return view("operator/daftar/mahasiswa", [
+//             "title" => "Daftar Mahasiswa",
+//             "results" => $results,
+//             "keyword" => $keyword,
+//         ]);
+//     }
 }
