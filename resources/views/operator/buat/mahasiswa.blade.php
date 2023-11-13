@@ -36,15 +36,6 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mb-2">
-                        <div>
-                            <label for="email" class="block text-grey-darker text-sm font-bold mb-2">Email</label>
-                            <input type="email" name="email" class="border rounded w-full py-2 px-3 text-black @error('email') is-invalid @else  @enderror" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
-                            @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
 
                     <div class="mb-2">
                         <div>
@@ -64,15 +55,9 @@
                     <div class="mb-2">
                         <div>
                             <label for="status" class="block text-grey-darker text-sm font-bold mb-2">Status</label>
-                            <select id="status" name="status" class="border rounded w-full py-2 px-3 text-black @error('status') @else  is-invalid @enderror" value="{{ old('status') }}">
-                                <option value="" selected disabled>Pilih status</option>
-                                @foreach ($status as $stat)
-                                    <option value="{{ $stat->id }}"> {{ $stat->name }}</option>
-                                @endforeach
+                            <select id="status" name="status" class="border rounded w-full py-2 px-3 text-black @error('status') @else  is-invalid @enderror" value="" disabled>
+                                <option value="1" selected>Aktif</option>
                             </select>
-                            @error('status')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                         </div>
                     </div>
 

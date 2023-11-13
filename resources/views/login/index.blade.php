@@ -36,7 +36,7 @@
               @csrf
               <div>
               <label class="block text-gray-700">Email</label>
-              <input type="email" name="email" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" @error('email') is-invalid @enderror" id="email" placeholder="Masukan Email Anda" @error('email') is-invalid @enderror" autofocus value="{{ old('email') }}" autocomplete required>
+              <input type="text" name="email" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" @error('email') is-invalid @enderror" id="email" placeholder="Masukan Email Anda" @error('email') is-invalid @enderror" autofocus value="{{ old('email') }}" autocomplete required>
             </div>
     
             <div class="mt-4">

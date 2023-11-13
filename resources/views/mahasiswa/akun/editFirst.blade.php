@@ -33,6 +33,16 @@
 
                     <div class="mb-2">
                         <div>
+                            <label for="email" class="block text-grey-darker text-sm font-bold mb-2">Email</label>
+                            <input type="email" name="email" class="border rounded w-full py-2 px-3 text-black @error('email') is-invalid @else  @enderror" id="email" placeholder="Masukkan Email" value="">
+                            @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div>
                             <label for="angkatan" class="block text-grey-darker text-sm font-bold mb-2">Angkatan</label>
                             <input type="text" name="angkatan" class="border rounded w-full py-2 px-3 text-black" id="angkatan" placeholder="" value="{{ $angkatan }}" disabled>
                         </div>

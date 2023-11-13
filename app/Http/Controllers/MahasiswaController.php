@@ -77,6 +77,7 @@ class MahasiswaController extends Controller
     {
         $request->validate([
             'nama'                  => 'required|string',
+            'email'                 => 'required|email:dns|unique:users',
             'tanggal_lahir'         => 'required|date',
             'no_hp'                 => 'required|numeric',
             'alamat'                => 'required|string',
@@ -87,6 +88,7 @@ class MahasiswaController extends Controller
         ]);
 
         $akun_mahasiswa = User::where('id', Auth::user()->id)->first();
+        $akun_mahasiswa->email = $request->email;
         $akun_mahasiswa->password = Hash::make($request->password);
         $akun_mahasiswa->save();
 
@@ -104,12 +106,10 @@ class MahasiswaController extends Controller
 
     function create(){
         $dosen_wali = Dosen::all('id', 'nama');
-        $status = StatusMahasiswa::all('id', 'name');
         $jalur_masuk = JalurMasuk::all('id', 'name');
         return view('operator.buat.mahasiswa',[
             "title" => "Buat Akun Mahasiswa",
             "dosen_wali" => $dosen_wali,
-            "status" => $status,
             "jalur_masuk" => $jalur_masuk
         ]);
     }
@@ -119,25 +119,23 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim'          => 'required|numeric|digits:14|unique:mahasiswa',
             'nama'         => 'required|string',
-            'email'        => 'required|email:dns|unique:users',
             'angkatan'     => 'required|numeric|digits:4',
-            'status'       => 'required|numeric|digits:1',
             'jalur_masuk'  => 'required|numeric|digits:1',
             'dosen_wali'   => 'required|numeric',
         ]);
 
         $akun_mahasiswa = new User;
-        $akun_mahasiswa->email = $request->email;
+        $akun_mahasiswa->email = $request->nim;
         $akun_mahasiswa->password = Hash::make('password');
         $akun_mahasiswa->role_id = 4;
         $akun_mahasiswa->save();
 
         $mahasiswa = new Mahasiswa;
-        $mahasiswa->id = User::where('email', $request->email)->value('id');
+        $mahasiswa->id = User::where('email', $request->nim)->value('id');
         $mahasiswa->nim = $request->nim;
         $mahasiswa->nama = $request->nama;
         $mahasiswa->angkatan = $request->angkatan;
-        $mahasiswa->status = $request->status;
+        $mahasiswa->status = 1;
         $mahasiswa->jalur_masuk = $request->jalur_masuk;
         $mahasiswa->dosen_wali = $request->dosen_wali;
         $mahasiswa->save();
