@@ -10,7 +10,7 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">567</p>
+            <p class="text-5xl justify-center text-center">{{$jumlahMhs}}</p>
             <p>Mahasiswa</p>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">557</p>
+            <p class="text-5xl justify-center text-center">{{$jumlahDsn}}</p>
             <p class="text justify-center">Dosen</p>
         </div>
     </div>
