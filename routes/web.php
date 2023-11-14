@@ -16,6 +16,7 @@ use App\Http\Controllers\PKLController;
 use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\VerifikasiController;
 use App\Models\PKL;
+use App\Http\Controllers\DepartemenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,3 +125,9 @@ Route::get('detail/mahasiswa', [DosenController::class, 'detailMahasiswa'])->mid
 //REKAP MAHASISWA
 Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
 Route::get('/rekap/skripsi', [DosenController::class, 'rekapSkripsi'])->middleware('auth','dosen');
+
+//-------------------------------- DEPARTEMEN --------------------------------//
+
+//LIST AKUN
+Route::get('daftar/mahasiswa', [DepartemenController::class, 'listMahasiswa'])->middleware('auth','departemen');
+Route::get('daftar/dosen', [DepartemenController::class,'listDosen'])->middleware('auth','departemen');
