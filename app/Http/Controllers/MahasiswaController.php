@@ -7,6 +7,7 @@ use App\Models\Mahasiswa;
 use App\Models\StatusMahasiswa;
 use App\Models\JalurMasuk;
 use App\Models\KabupatenKota;
+use App\Models\Operator;
 use App\Models\Provinsi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -65,6 +66,7 @@ class MahasiswaController extends Controller
         $kabupaten_kota = KabupatenKota::all('kode_kab', 'nama_kab');
         return view('mahasiswa.akun.editFirst',[
             "title" => "Lengkapi Data",
+            "loggedInAccountName" => '',
             "nim" => $nim,
             "nama" => $nama,
             "angkatan" => $angkatan,
@@ -107,10 +109,12 @@ class MahasiswaController extends Controller
     function create(){
         $dosen_wali = Dosen::all('id', 'nama');
         $jalur_masuk = JalurMasuk::all('id', 'name');
+        $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
         return view('operator.buat.mahasiswa',[
             "title" => "Buat Akun Mahasiswa",
+            "loggedInAccountName" => $loggedInAccountName,
             "dosen_wali" => $dosen_wali,
-            "jalur_masuk" => $jalur_masuk
+            "jalur_masuk" => $jalur_masuk,
         ]);
     }
 

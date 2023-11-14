@@ -10,25 +10,43 @@ use Illuminate\Support\Facades\Auth;
 
 class DosenController extends Controller
 {
-    function create()
-    {
-        return view('operator.buat.dosen', [
-            'title' => 'Buat Akun Dosen'
+    function progressMahasiswa(){
+        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        return view('dosen.progress.mahasiswa', [
+            'title' => 'Progress Mahasiswa',
+            'loggedInAccountName' => $loggedInAccountName
+        ]);
+    }
+    function detailMahasiswa(){
+        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        return view('dosen.detail.mahasiswa', [
+            'title' => 'Detail Mahasiswa',
+            'loggedInAccountName' => $loggedInAccountName
         ]);
     }
 
-    function progressMahasiswa(){
-        return view('dosen.progress.mahasiswa');
-    }
-    function detailMahasiswa(){
-        return view('dosen.detail.mahasiswa');
-    }
-
     function rekapPKL(){
-        return view('dosen.rekap.pkl');
+        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        return view('dosen.rekap.pkl', [
+            'title' => 'Rekap PKL',
+            'loggedInAccountName' => $loggedInAccountName
+        ]);
     }
     function rekapSkripsi(){
-        return view('dosen.rekap.skripsi');
+        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        return view('dosen.rekap.skripsi', [
+            'title' => 'Rekap Skripsi',
+            'loggedInAccountName' => $loggedInAccountName
+        ]);
+    }
+
+    function create()
+    {
+        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        return view('operator.buat.dosen', [
+            'title' => 'Buat Akun Dosen',
+            'loggedInAccountName' => $loggedInAccountName
+        ]);
     }
 
     function doCreate(Request $request)

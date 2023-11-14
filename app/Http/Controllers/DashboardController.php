@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->role_id==1) {
-            $nama = Operator::where('id', Auth::user()->id)->value('nama');
+            $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
             $nip = Operator::where('id', Auth::user()->id)->value('nip');
             $email = User::where('id', Auth::user()->id)->value('email');
             $jumlahMhs = Mahasiswa::count();
@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
             return view('operator.dashboard', [
             "title" => "Dashboard",
-            "nama" => $nama,
+            "loggedInAccountName" => $loggedInAccountName,
             "nim" => $nip,
             "email" => $email,
             "jumlahMhs" => $jumlahMhs,
@@ -38,24 +38,24 @@ class DashboardController extends Controller
             ]);
         }
         if (Auth::user()->role_id==3) {
-            $nama = Dosen::where('id', Auth::user()->id)->value('nama');
+            $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
             $nip = Dosen::where('id', Auth::user()->id)->value('nip');
 
             return view('dosen.dashboard', [
             "title" => "Dashboard",
-            "nama" => $nama,
+            "loggedInAccountName" => $loggedInAccountName,
             "nip" => $nip,
             ]);
         }
         if (Auth::user()->role_id == 4) {
-            $nama = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+            $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
             $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
             $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->value('ipk');
             $ips = KHS::where('mahasiswa_id', Auth::user()->id)->value('ips');
 
             return view('mahasiswa.dashboard', [
                 "title" => "Dashboard",
-                "nama" => $nama,
+                "loggedInAccountName" => $loggedInAccountName,
                 "nim" => $nim,
                 "ipk" => $ipk,
                 "ips" => $ips,

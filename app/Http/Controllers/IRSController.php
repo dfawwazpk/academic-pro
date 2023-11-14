@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\IRS;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -10,14 +11,21 @@ use Illuminate\Support\Facades\Auth;
 class IRSController extends Controller
 {
     function riwayatIRS(){
+        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
         $irsList = IRS::where('mahasiswa_id', Auth::user()->id)->get();
         return view('mahasiswa.riwayat.irs', [
-            'irsList' => $irsList,
+            "title" => "Riwayat IRS",
+            "loggedInAccountName" => $loggedInAccountName,
+            'irsList' => $irsList
         ]);
     }
 
     function buatIRS(){
-        return view('mahasiswa.buat.irs');
+        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        return view('mahasiswa.buat.irs', [
+            "title" => "Buat IRS",
+            "loggedInAccountName" => $loggedInAccountName
+        ]);
     }
 
     function doBuatIRS(Request $request)
