@@ -23,8 +23,18 @@ class DaftarMahasiswaController extends Controller
     }
 
     function list(){
-        $list = Mahasiswa::all();
-        return view('list.mahasiswa', [
+        $list = Mahasiswa::select(
+                        'mahasiswa.nim',
+                        'mahasiswa.nama',
+                        'mahasiswa.angkatan',
+                        'irs.semester',
+                        'mahasiswa.status',
+                        'mahasiswa.jalur_masuk',
+                    )
+                    ->leftJoin('irs', 'mahasiswa.id', '=', 'irs.mahasiswa_id')
+                    ->get();
+    
+        return view('operator/daftar/mahasiswa', [
             'list' => $list,
         ]);
     }

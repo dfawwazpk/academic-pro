@@ -62,7 +62,7 @@ Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','
 Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth','operator');
 
 //LIST MAHASISWA
-// Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class,'list'])->middleware('auth','operator');
+Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class,'list'])->middleware('auth','operator');
 
 //-------------------------------- MAHASISWA --------------------------------//
 
