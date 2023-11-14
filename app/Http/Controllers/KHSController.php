@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KHS;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -10,14 +11,21 @@ use Illuminate\Support\Facades\Auth;
 class KHSController extends Controller
 {
     function riwayatKHS(){
+        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
         $khsList = KHS::where('mahasiswa_id', Auth::user()->id)->get();
         return view('mahasiswa.riwayat.khs', [
+            "title" => "Riwayat KHS",
+            "loggedInAccountName" => $loggedInAccountName,
             'khsList' => $khsList,
         ]);
     }
 
     function buatKHS(){
-        return view('mahasiswa.buat.khs');
+        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        return view('mahasiswa.buat.khs', [
+            "title" => "Buat KHS",
+            "loggedInAccountName" => $loggedInAccountName
+        ]);
     }
 
     function doBuatKHS(Request $request)
