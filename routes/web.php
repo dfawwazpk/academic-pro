@@ -17,6 +17,7 @@ use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\VerifikasiController;
 use App\Models\PKL;
 use App\Http\Controllers\DepartemenController;
+use App\Http\Controllers\OperatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('aut
 //-------------------------------- OPERATOR --------------------------------//
 
 //LIST AKUN
-Route::get('daftar/mahasiswa', [MahasiswaController::class, 'list'])->middleware('auth','operator');
+Route::get('daftar/mahasiswa', [OperatorController::class, 'listMahasiswa'])->middleware('auth','operator');
 Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
 
 //BUAT AKUN MAHASISWA
@@ -63,7 +64,7 @@ Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','
 Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth','operator');
 
 //LIST MAHASISWA
-Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class,'list'])->middleware('auth','operator');
+//Route::get('daftar/mahasiswa', [DaftarMahasiswaController::class,'list'])->middleware('auth','operator');
 
 //-------------------------------- MAHASISWA --------------------------------//
 
@@ -119,8 +120,8 @@ Route::get('verifikasi/skripsi/setujui/{id}', [VerifikasiController::class, 'doS
 Route::get('verifikasi/skripsi/tolak/{id}', [VerifikasiController::class, 'doTolakSkripsi'])->middleware('auth','dosen');
 
 //PROGRESS MAHASISWA
-Route::get('progress/mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
-Route::get('detail/mahasiswa', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');
+Route::get('progress-mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
+Route::get('progress-mahasiswa/{id}', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');
 
 //REKAP MAHASISWA
 Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
