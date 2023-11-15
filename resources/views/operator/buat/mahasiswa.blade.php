@@ -20,7 +20,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="nim" class="block text-grey-darker text-sm font-bold mb-2">NIM</label>
-                            <input type="text" name="nim" class="border rounded w-full py-2 px-3 text-black @error('nim') is-invalid @else  @enderror" id="nim" placeholder="Masukkan NIM" value="{{ old('nim') }}">
+                            <input type="text" name="nim" class="border rounded w-full py-2 px-3 text-black @error('nim') is-invalid @else  @enderror" id="nim" placeholder="Masukkan NIM" value="{{ old('nim') }}" maxlength="14">
                             @error('nim')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

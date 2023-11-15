@@ -141,7 +141,7 @@
                                         </div>
                                     </a>
 
-                                    <a href ="/verifikasi/irs/tolak/{{ $irs->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
+                                    <a href ="/verifikasi/irs/tolak/{{ $irs->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-red-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
                                         </div>
