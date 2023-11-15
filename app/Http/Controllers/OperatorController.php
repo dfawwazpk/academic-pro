@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\IRS;
 use App\Models\JalurMasuk;
 use App\Models\KHS;
@@ -26,6 +27,16 @@ class OperatorController extends Controller
             'irsList' => $irsList,
             'statusList' => $statusList,
             'jalurMasukList' => $jalurMasukList
+        ]);
+    }
+
+    function listDosen(){
+        $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
+        $dosenList = Dosen::all();
+        return view('operator.daftar.dosen', [
+            'title' => 'Daftar Dosen',
+            'loggedInAccountName' => $loggedInAccountName,
+            'dosenList' => $dosenList
         ]);
     }
 }

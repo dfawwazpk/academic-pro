@@ -53,7 +53,7 @@ Route::post('edit-akun', [EditAkunController::class, 'update'])->middleware('aut
 
 //LIST AKUN
 Route::get('daftar/mahasiswa', [OperatorController::class, 'listMahasiswa'])->middleware('auth','operator');
-Route::get('daftar/dosen', [DaftarDosenController::class,'index'])->middleware('auth','operator');
+Route::get('daftar/dosen', [OperatorController::class,'listDosen'])->middleware('auth','operator');
 
 //BUAT AKUN MAHASISWA
 Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware('auth','operator');
