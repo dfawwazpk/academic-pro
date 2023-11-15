@@ -2,6 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Models\IRS;
+use App\Models\KHS;
+use App\Models\Mahasiswa;
+use App\Models\StatusMahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +16,17 @@ class DosenController extends Controller
 {
     function progressMahasiswa(){
         $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $irsList = IRS::where('status', 2)->latest('created_at')->get();
+        $statusList = StatusMahasiswa::all();
+        $khsList = KHS::where('status', 2)->latest('created_at')->get();
         return view('dosen.progress.mahasiswa', [
             'title' => 'Progress Mahasiswa',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccountName' => $loggedInAccountName,
+            'mahasiswaList' => $mahasiswaList,
+            'irsList' => $irsList,
+            'statusList' => $statusList,
+            'khsList' => $khsList
         ]);
     }
     function detailMahasiswa(){

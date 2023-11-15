@@ -113,19 +113,21 @@
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+
+                            @foreach ($mahasiswaList as $mahasiswa)
                             <tr>
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-                                        <h1>asd</h1>
+                                        <h1>{{ $mahasiswa->nim }}</h1>  
                                     </div>
                                 </td>
 
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
                                         <div>
-                                            <h1>asd</h1>
+                                            <h1>{{ $mahasiswa->nama }}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -133,7 +135,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h1>asd</h1>
+                                            <h1>{{ $mahasiswa->angkatan }}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -141,7 +143,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h1>1</h1>
+                                            <h1>{{ $irsList->where('mahasiswa_id', $mahasiswa->id)->take(1)->value('semester') ?? 1}}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -149,7 +151,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h1>asd</h1>
+                                            <h1>{{ $statusList->where('id', $mahasiswa->status)->value('name') }}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -157,7 +159,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h1>asd</h1>
+                                            <h1>{{ number_format($khsList->where('mahasiswa_id', $mahasiswa->id)->take(1)->value('ipk'), 2, '.', ',') ?? '0.00' }}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -165,7 +167,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center ">
                                         <div>
-                                            <h1>asd</h1>
+                                            <h1>{{ $khsList->where('mahasiswa_id', $mahasiswa->id)->take(1)->value('sks_total') ?? '0' }}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -175,30 +177,9 @@
                                     </a>
                                 </td>
 
-                                {{-- <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                        <div class="inline-flex items-center gap-x-2">
-                                            <h2 class="text-sm font-normal text-emerald-100">Unduh</h2>
-                                        </div>
-                                    </button>
-                                </td>
-
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    
-                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                        <div class="inline-flex items-center gap-x-2">
-                                            <h2 class="text-sm font-normal text-emerald-100">Setujui</h2>
-                                        </div>
-                                    </button>
-
-                                    <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
-                                        <div class="inline-flex items-center gap-x-2">
-                                            <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
-                                        </div>
-                                    </button> --}}
-
-                                </td>
                             </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
