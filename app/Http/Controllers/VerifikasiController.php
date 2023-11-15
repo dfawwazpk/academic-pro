@@ -75,7 +75,7 @@ class VerifikasiController extends Controller
 
     function doTolakKHS($id)
     {
-        $khs = IRS::where('id', $id)->first();
+        $khs = KHS::where('id', $id)->first();
         $khs->status = 3;
         $khs->save();
 
