@@ -3,7 +3,6 @@
 @section('container')
 <div class="relative bg-indigo-200 dark:bg-indigo-500 p-7 sm:p-7 rounded-sm overflow-hidden mb-10 mt-10">
     <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Rekap Prestasi Akademik {{-- {{ Auth::user()->name }} --}} </h1>
-    
 </div>
 {{-- Nav Diatas Tabel --}}
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 p-4 gap-4">
@@ -105,8 +104,8 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class= "flex items-center gap-x-2">
-                                    <span>Detail</span>
+                                    <div class="flex items-center gap-x-2">
+                                    <a>Detail</a>
                                     </div>
                                 </th>  
                             </tr>

@@ -123,6 +123,9 @@ Route::get('verifikasi/skripsi/tolak/{id}', [VerifikasiController::class, 'doTol
 Route::get('progress-mahasiswa', [DosenController::class, 'progressMahasiswa'])->middleware('auth','dosen');
 Route::get('progress-mahasiswa/{id}', [DosenController::class, 'detailMahasiswa'])->middleware('auth','dosen');
 
+//DETAIL MAHASISWA
+Route::get('detail/mahasiswa' ,[DosenController::class,'detailMahasiswa'])->middleware('auth','dosen');
+
 //REKAP MAHASISWA
 Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
 Route::get('/rekap/skripsi', [DosenController::class, 'rekapSkripsi'])->middleware('auth','dosen');
