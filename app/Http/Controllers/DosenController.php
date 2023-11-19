@@ -5,6 +5,7 @@ use App\Models\Dosen;
 use App\Models\IRS;
 use App\Models\KHS;
 use App\Models\Mahasiswa;
+use App\Models\Operator;
 use App\Models\StatusMahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,14 +16,14 @@ use Illuminate\Support\Facades\Auth;
 class DosenController extends Controller
 {
     function progressMahasiswa(){
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->filter(request(['search', 'angkatan', 'status']))->get();
         $irsList = IRS::where('status', 2)->latest('created_at')->get();
         $statusList = StatusMahasiswa::all();
         $khsList = KHS::where('status', 2)->latest('created_at')->get();
         return view('dosen.progress.mahasiswa', [
             'title' => 'Progress Mahasiswa',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'irsList' => $irsList,
             'statusList' => $statusList,
@@ -30,34 +31,34 @@ class DosenController extends Controller
         ]);
     }
     function detailMahasiswa(){
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.detail.mahasiswa', [
             'title' => 'Detail Mahasiswa',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccount' => $loggedInAccount
         ]);
     }
 
     function rekapPKL(){
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.rekap.pkl', [
             'title' => 'Rekap PKL',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccount' => $loggedInAccount
         ]);
     }
     function rekapSkripsi(){
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.rekap.skripsi', [
             'title' => 'Rekap Skripsi',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccount' => $loggedInAccount
         ]);
     }
 
     function create()
     {
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Operator::where('id', Auth::user()->id);
         return view('operator.buat.dosen', [
             'title' => 'Buat Akun Dosen',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccount' => $loggedInAccount
         ]);
     }
 

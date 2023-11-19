@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->role_id==1) {
-            $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
+            $loggedInAccount = Operator::where('id', Auth::user()->id);
             $nip = Operator::where('id', Auth::user()->id)->value('nip');
             $email = User::where('id', Auth::user()->id)->value('email');
             $jumlahMhs = Mahasiswa::count();
@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
             return view('operator.dashboard', [
             "title" => "Dashboard",
-            "loggedInAccountName" => $loggedInAccountName,
+            "loggedInAccount" => $loggedInAccount,
             "nim" => $nip,
             "email" => $email,
             "jumlahMhs" => $jumlahMhs,
@@ -38,25 +38,21 @@ class DashboardController extends Controller
             ]);
         }
         if (Auth::user()->role_id==3) {
-            $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
-            $nip = Dosen::where('id', Auth::user()->id)->value('nip');
+            $loggedInAccount = Dosen::where('id', Auth::user()->id);
 
             return view('dosen.dashboard', [
             "title" => "Dashboard",
-            "loggedInAccountName" => $loggedInAccountName,
-            "nip" => $nip,
+            "loggedInAccount" => $loggedInAccount,
             ]);
         }
         if (Auth::user()->role_id == 4) {
-            $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
-            $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
+            $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
             $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('ipk');
             $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
 
             return view('mahasiswa.dashboard', [
                 "title" => "Dashboard",
-                "loggedInAccountName" => $loggedInAccountName,
-                "nim" => $nim,
+                "loggedInAccount" => $loggedInAccount,
                 "ipk" => $ipk,
                 "sksk" => $sksk,
             ]);

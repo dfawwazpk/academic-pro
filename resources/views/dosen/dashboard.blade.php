@@ -21,10 +21,10 @@
         </div>
         <div class="text-center">
             <img src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13" alt="Profile Picture" class="rounded-full w-32 h-32 mx-auto mb-4">
-            <h2 class="text-2xl font-bold">{{ $loggedInAccountName }}</h2>
-            <p class="text-gray-400">{{ $nip }}</p>
+            <h2 class="text-2xl font-bold">{{ $loggedInAccount->value('nama') }}</h2>
+            <p class="text-gray-400">{{ $loggedInAccount->value('nip') }}</p>
             <p class="text-gray-400">Departemen Informatika</p>
-            <p class="text-gray-400">Fakultas Sains dan Matematik</p>
+            <p class="text-gray-400">Fakultas Sains dan Matematika</p>
         </div>
     </div>
 

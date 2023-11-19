@@ -11,20 +11,24 @@ use Illuminate\Support\Facades\Auth;
 class KHSController extends Controller
 {
     function riwayatKHS(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('ipk');
+        $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
         $khsList = KHS::where('mahasiswa_id', Auth::user()->id)->get();
         return view('mahasiswa.riwayat.khs', [
             "title" => "Riwayat KHS",
-            "loggedInAccountName" => $loggedInAccountName,
+            "loggedInAccount" => $loggedInAccount,
+            "ipk" => $ipk,
+            "sksk" => $sksk,
             'khsList' => $khsList,
         ]);
     }
 
     function buatKHS(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         return view('mahasiswa.buat.khs', [
             "title" => "Buat KHS",
-            "loggedInAccountName" => $loggedInAccountName
+            "loggedInAccount" => $loggedInAccount
         ]);
     }
 

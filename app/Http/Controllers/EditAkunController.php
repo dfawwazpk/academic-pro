@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,32 +16,36 @@ class EditAkunController extends Controller
     public function index()
     {
         if (Auth::user()->role_id==1) {
+            $loggedInAccount = Operator::where('id', Auth::user()->id);
             $nip = Operator::where('id', Auth::user()->id)->value('nip');
             $nama = Operator::where('id', Auth::user()->id)->value('nama');
             $email = User::where('id', Auth::user()->id)->value('email');
             return view('operator.akun.edit', [
             "title" => "Edit Akun",
-            'loggedInAccountName' => $nama,
+            'loggedInAccount' => $loggedInAccount,
             "nip" => $nip,
             "nama" => $nama,
             "email"=> $email,
             ]);
         }
         if (Auth::user()->role_id==3) {
+            $loggedInAccount = Dosen::where('id', Auth::user()->id);
             $nip = Dosen::where('id', Auth::user()->id)->value('nip');
             $nama = Dosen::where('id', Auth::user()->id)->value('nama');
             $email = User::where('id', Auth::user()->id)->value('email');
             return view('dosen.akun.edit', [
             "title" => "Edit Akun",
-            'loggedInAccountName' => $nama,
+            'loggedInAccount' => $loggedInAccount,
             "nip" => $nip,
             "nama" => $nama,
             "email"=> $email,
             ]);
         }
         if (Auth::user()->role_id==4) {
+            $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
             return view('mahasiswa.akun.edit', [
-            "title" => "Edit Akun"
+            "title" => "Edit Akun",
+            'loggedInAccount' => $loggedInAccount,
             ]);
         }
     }

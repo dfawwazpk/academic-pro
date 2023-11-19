@@ -126,8 +126,8 @@
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group row-start-1 row-span-2 row-end-3 col-span-2 col-start-4">
         <div class="text-center">
             <img src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13" alt="Profile Picture" class="rounded-full w-32 h-32 mx-auto mb-4">
-            <h2 class="text-2xl font-bold">Huehue</h2>
-            <p class="text-gray-400">240601211xxxxx</p>
+            <h2 class="text-2xl font-bold">{{ $loggedInAccount->value('nama') }}</h2>
+            <p class="text-gray-400">{{ $loggedInAccount->value('nim') }}</p>
             <p class="text-gray-400">Departemen Informatika</p>
             <p class="text-gray-400">Fakultas Sains dan Matematik</p>
         </div>
@@ -135,7 +135,7 @@
     <div class="row-start-3 col-start-4 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
         <div class="flex justify-center">
             <div class="text-center">
-                <p class="text-5xl justify-center text-center">3,69</p>
+                <p class="text-5xl justify-center text-center">{{ number_format($ipk, 2, '.', ',') ?? '0.00' }}</p>
                 <p>IPK</p>
             </div>
         </div>
@@ -143,7 +143,7 @@
     <div class="row-start-3 col-start-5 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
         <div class="flex justify-center">
             <div class="text-center">
-                <p class="text-5xl justify-center text-center">3,69</p>
+                <p class="text-5xl justify-center text-center">{{ $sksk ?? '0' }}</p>
                 <p>IPK</p>
             </div>
         </div>

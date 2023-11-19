@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\IRS;
+use App\Models\KHS;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,20 +12,24 @@ use Illuminate\Support\Facades\Auth;
 class IRSController extends Controller
 {
     function riwayatIRS(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('ipk');
+        $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
         $irsList = IRS::where('mahasiswa_id', Auth::user()->id)->get();
         return view('mahasiswa.riwayat.irs', [
             "title" => "Riwayat IRS",
-            "loggedInAccountName" => $loggedInAccountName,
+            "loggedInAccount" => $loggedInAccount,
+            "ipk" => $ipk,
+            "sksk" => $sksk,
             'irsList' => $irsList
         ]);
     }
 
     function buatIRS(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         return view('mahasiswa.buat.irs', [
             "title" => "Buat IRS",
-            "loggedInAccountName" => $loggedInAccountName
+            "loggedInAccount" => $loggedInAccount
         ]);
     }
 

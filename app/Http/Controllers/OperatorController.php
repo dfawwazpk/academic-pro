@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Auth;
 class OperatorController extends Controller
 {
     function listMahasiswa(){
-        $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Operator::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::all();
         $irsList = IRS::where('status', 2)->latest('created_at')->get();
         $statusList = StatusMahasiswa::all();
         $jalurMasukList = JalurMasuk::all();
         return view('operator.daftar.mahasiswa', [
             'title' => 'Daftar Mahasiswa',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'irsList' => $irsList,
             'statusList' => $statusList,
@@ -31,11 +31,11 @@ class OperatorController extends Controller
     }
 
     function listDosen(){
-        $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Operator::where('id', Auth::user()->id);
         $dosenList = Dosen::all();
         return view('operator.daftar.dosen', [
             'title' => 'Daftar Dosen',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'dosenList' => $dosenList
         ]);
     }

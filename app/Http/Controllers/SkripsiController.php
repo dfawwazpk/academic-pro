@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KHS;
 use App\Models\Skripsi;
 use App\Models\IRS;
 use App\Models\Mahasiswa;
@@ -11,20 +12,24 @@ use Illuminate\Support\Facades\Auth;
 class SkripsiController extends Controller
 {  
     function riwayatSkripsi(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('ipk');
+        $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
         $skripsiList = Skripsi::where('mahasiswa_id', Auth::user()->id)->get();
         return view('mahasiswa.riwayat.skripsi', [
             "title" => "Riwayat Skripsi",
-            "loggedInAccountName" => $loggedInAccountName,
+            "loggedInAccount" => $loggedInAccount,
+            "ipk" => $ipk,
+            "sksk" => $sksk,
             'skripsiList' => $skripsiList,
         ]);
     }
 
     function buatSkripsi(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         return view('mahasiswa.buat.skripsi', [
             'title' => 'Buat Skripsi',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccount' => $loggedInAccount
         ]);
     }
 

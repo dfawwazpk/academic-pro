@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KHS;
 use App\Models\Mahasiswa;
 use App\Models\PKL;
 use Illuminate\Http\Request;
@@ -10,20 +11,24 @@ use Illuminate\Support\Facades\Auth;
 class PKLController extends Controller
 {
     function riwayatPKL(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('ipk');
+        $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
         $pklList = PKL::where('mahasiswa_id', Auth::user()->id)->get();
         return view('mahasiswa.riwayat.pkl', [
             "title" => "Riwayat PKL",
-            "loggedInAccountName" => $loggedInAccountName,
+            "loggedInAccount" => $loggedInAccount,
+            "ipk" => $ipk,
+            "sksk" => $sksk,
             'pklList' => $pklList,
         ]);
     }
 
     function buatPKL(){
-        $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         return view('mahasiswa.buat.pkl', [
             'title' => 'Buat PKL',
-            'loggedInAccountName' => $loggedInAccountName
+            'loggedInAccount' => $loggedInAccount
         ]);
     }
 

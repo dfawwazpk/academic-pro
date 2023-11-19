@@ -59,6 +59,7 @@ class MahasiswaController extends Controller
     }
 
     function updateFirst(){
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
         $nama = Mahasiswa::where('id', Auth::user()->id)->value('nama');
         $angkatan = Mahasiswa::where('id', Auth::user()->id)->value('angkatan');
@@ -66,7 +67,7 @@ class MahasiswaController extends Controller
         $kabupaten_kota = KabupatenKota::all('kode_kab', 'nama_kab');
         return view('mahasiswa.akun.editFirst',[
             "title" => "Lengkapi Data",
-            "loggedInAccountName" => '',
+            "loggedInAccount" => $loggedInAccount,
             "nim" => $nim,
             "nama" => $nama,
             "angkatan" => $angkatan,
@@ -107,12 +108,12 @@ class MahasiswaController extends Controller
     } 
 
     function create(){
+        $loggedInAccount = Operator::where('id', Auth::user()->id);
         $dosen_wali = Dosen::all('id', 'nama');
         $jalur_masuk = JalurMasuk::all('id', 'name');
-        $loggedInAccountName = Operator::where('id', Auth::user()->id)->value('nama');
         return view('operator.buat.mahasiswa',[
             "title" => "Buat Akun Mahasiswa",
-            "loggedInAccountName" => $loggedInAccountName,
+            "loggedInAccount" => $loggedInAccount,
             "dosen_wali" => $dosen_wali,
             "jalur_masuk" => $jalur_masuk,
         ]);

@@ -20,13 +20,13 @@ class VerifikasiController extends Controller
 {
     function listIRS()
     {
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $irsList = IRS::where('status', 1)->get();
     
         return view('dosen.verifikasi.irs', [
             'title' => 'Verifikasi IRS',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'irsList' => $irsList,
         ]);
@@ -52,13 +52,13 @@ class VerifikasiController extends Controller
 
     function listKHS()
     {
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $khsList = KHS::where('status', 1)->get();
     
         return view('dosen.verifikasi.khs', [
             'title' => 'Verifikasi KHS',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'khsList' => $khsList,
         ]);
@@ -84,13 +84,13 @@ class VerifikasiController extends Controller
 
     function listPKL()
     {
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $pklList = PKL::where('status', 1)->get();
     
         return view('dosen.verifikasi.pkl', [
             'title' => 'Verifikasi PKL',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'pklList' => $pklList,
         ]);
@@ -116,13 +116,13 @@ class VerifikasiController extends Controller
 
     function listSkripsi()
     {
-        $loggedInAccountName = Dosen::where('id', Auth::user()->id)->value('nama');
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $skripsiList = Skripsi::where('status', 1)->get();
     
         return view('dosen.verifikasi.skripsi', [
             'title' => 'Verifikasi Skripsi',
-            'loggedInAccountName' => $loggedInAccountName,
+            'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'skripsiList' => $skripsiList,
         ]);
