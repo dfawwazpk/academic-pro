@@ -50,7 +50,7 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">{{ $ipk }}</p>
+            <p class="text-5xl justify-center text-center">{{ number_format($ipk, 2, '.', ',') ?? '0.00' }}</p>
             <p>IPK</p>
         </div>
     </div>
@@ -58,8 +58,8 @@
         <div class="flex justify-center w-15 h-12">
         </div>
         <div class="text-center">
-            <p class="text-5xl justify-center text-center">{{ $ips }}</p>
-            <p class="text justify-center">IPS</p>
+            <p class="text-5xl justify-center text-center">{{ $sksk ?? '0' }}</p>
+            <p class="text justify-center">SKSK</p>
         </div>
     </div>
 

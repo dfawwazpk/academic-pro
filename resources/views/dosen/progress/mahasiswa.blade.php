@@ -5,46 +5,40 @@
     <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Rekap Prestasi Akademik {{-- {{ Auth::user()->name }} --}} </h1>
 </div>
 {{-- Nav Diatas Tabel --}}
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 p-4 gap-4">
-    <div class="mb-2 col-span-3 flex">
-        <div class="w-2/4">
-            <input type="text" name="nim" class="border rounded-full w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIM/Nama" value="{{ old('nim') }}">
-            @error('nim')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
+<form action="/progress-mahasiswa">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 p-4 gap-4">
+        <div class="mb-2 col-span-3 flex">
 
-        <div class="w-1/4">
-            <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
-                <option value="" selected disabled>Semester</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-            @error('angkatan')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+            <div class="w-2/4">
+                <input type="text" id="search" name="search" class="border rounded-full w-full py-2 px-4 text-black" placeholder="Cari NIM/Nama" value="{{ request('search') }}">
+            </div>
+
+            <div class="w-1/4">
+                <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('angkatan')=='' ? 'selected' : ''}}>Semua Angkatan</option>
+                    <option value="2023" {{ request('angkatan')=='2023' ? 'selected' : ''}}>2023</option>
+                    <option value="2022" {{ request('angkatan')=='2022' ? 'selected' : ''}}>2022</option>
+                    <option value="2021" {{ request('angkatan')=='2021' ? 'selected' : ''}}>2021</option>
+                    <option value="2020" {{ request('angkatan')=='2020' ? 'selected' : ''}}>2020</option>
+                    <option value="2019" {{ request('angkatan')=='2019' ? 'selected' : ''}}>2019</option>
+                    <option value="2018" {{ request('angkatan')=='2018' ? 'selected' : ''}}>2018</option>
+                    <option value="2017" {{ request('angkatan')=='2017' ? 'selected' : ''}}>2017</option>
+                    <option value="2016" {{ request('angkatan')=='2016' ? 'selected' : ''}}>2016</option>
+                </select>
+            </div>
+
+            <div class="w-1/4">
+                <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('status')=='' ? 'selected' : ''}}>Semua Status</option>
+                    <option value="1" {{ request('status')=='1' ? 'selected' : ''}}>Aktif</option>
+                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Nonaktif</option>
+                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Cuti</option>
+                </select>
+            </div>
+
         </div>
-        <div class="w-1/4">
-            <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
-                <option value="" selected disabled>Status</option>
-                <option value="">Aktif</option>
-                <option value="">Non-Aktif</option>
-                <option value="">Cuti</option>
-            </select>
-            @error('angkatan')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        
     </div>
-
-</div>
+</form>
 
 
 <section class="container px-4 mx-auto">

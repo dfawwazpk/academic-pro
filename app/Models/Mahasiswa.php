@@ -26,4 +26,18 @@ class Mahasiswa extends Model
         'status',
         'dosen_wali',
     ];
+
+    public function scopeFilter($query, array $filters) {
+        $query->when($filters['status'] ?? false, function($query, $status) {
+            return $query->where('status', $status);
+        });
+
+        $query->when($filters['angkatan'] ?? false, function($query, $angkatan) {
+            return $query->where('angkatan', $angkatan);
+        });
+
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            return $query->where('nim', 'like', '%' . $search . '%')->orWhere('nama', 'like', '%' . $search . '%');
+        });
+    }
 }

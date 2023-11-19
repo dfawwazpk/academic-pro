@@ -40,11 +40,16 @@
                     <div class="mb-2">
                         <div>
                             <label for="angkatan" class="block text-grey-darker text-sm font-bold mb-2">Angkatan</label>
-                            <select id="angkatan" name="angkatan" class="border rounded w-full py-2 px-3 text-black @error('angkatan') @else  is-invalid @enderror" value="{{ old('angkatan') }}">
-                                <option value="" selected disabled>Pilih angkatan</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
+                            <select id="angkatan" name="angkatan" class="border rounded w-full py-2 px-3 text-black @error('angkatan') @else  is-invalid @enderror"">
+                                <option value="" {{ old('angkatan')=='' ? 'selected' : ''}} disabled>Pilih angkatan</option>
+                                <option value="2023" {{ old('angkatan')=='2023' ? 'selected' : ''}}>2023</option>
+                                <option value="2022" {{ old('angkatan')=='2022' ? 'selected' : ''}}>2022</option>
+                                <option value="2021" {{ old('angkatan')=='2021' ? 'selected' : ''}}>2021</option>
+                                <option value="2020" {{ old('angkatan')=='2020' ? 'selected' : ''}}>2020</option>
+                                <option value="2019" {{ old('angkatan')=='2019' ? 'selected' : ''}}>2019</option>
+                                <option value="2018" {{ old('angkatan')=='2018' ? 'selected' : ''}}>2018</option>
+                                <option value="2017" {{ old('angkatan')=='2017' ? 'selected' : ''}}>2017</option>
+                                <option value="2016" {{ old('angkatan')=='2016' ? 'selected' : ''}}>2016</option>
                             </select>
                             @error('angkatan')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -64,10 +69,10 @@
                     <div class="mb-2">
                         <div>
                             <label for="jalur_masuk" class="block text-grey-darker text-sm font-bold mb-2">Jalur masuk</label>
-                            <select id="jalur_masuk" name="jalur_masuk" class="border rounded w-full py-2 px-3 text-black @error('jalur_masuk') @else  is-invalid @enderror" value="{{ old('jalur_masuk') }}">
-                                <option value="" selected disabled>Pilih jalur masuk</option>
+                            <select id="jalur_masuk" name="jalur_masuk" class="border rounded w-full py-2 px-3 text-black @error('jalur_masuk') @else  is-invalid @enderror">
+                                <option value="" {{ old('jalur_masuk')=='' ? 'selected' : ''}} disabled>Pilih jalur masuk</option>
                                 @foreach ($jalur_masuk as $jalur)
-                                    <option value="{{ $jalur->id }}"> {{ $jalur->name }}</option>
+                                    <option value="{{ $jalur->id }}" {{ old('jalur_masuk')==$jalur->id ? 'selected' : ''}}> {{ $jalur->name }}</option>
                                 @endforeach
                             </select>
                             @error('jalur_masuk')
@@ -80,9 +85,9 @@
                         <div>
                             <label for="dosen_wali" class="block text-grey-darker text-sm font-bold mb-2">Dosen wali</label>
                             <select id="dosen_wali" name="dosen_wali" class="border rounded w-full py-2 px-3 text-black @error('dosen_wali') @else  is-invalid @enderror" value="{{ old('dosen_wali') }}">
-                                <option value="" selected disabled>Pilih dosen wali</option>
+                                <option value="" {{ old('dosen_wali')=='' ? 'selected' : ''}} disabled>Pilih dosen wali</option>
                                 @foreach ($dosen_wali as $doswal)
-                                    <option value="{{ $doswal->id }}"> {{ $doswal->nama }}</option>
+                                    <option value="{{ $doswal->id }}" {{ old('dosen_wali')==$doswal->id ? 'selected' : ''}}> {{ $doswal->nama }}</option>
                                 @endforeach
                             </select>
                             @error('dosen_wali')

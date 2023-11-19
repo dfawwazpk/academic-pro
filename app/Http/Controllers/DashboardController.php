@@ -50,15 +50,15 @@ class DashboardController extends Controller
         if (Auth::user()->role_id == 4) {
             $loggedInAccountName = Mahasiswa::where('id', Auth::user()->id)->value('nama');
             $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
-            $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->value('ipk');
-            $ips = KHS::where('mahasiswa_id', Auth::user()->id)->value('ips');
+            $ipk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('ipk');
+            $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
 
             return view('mahasiswa.dashboard', [
                 "title" => "Dashboard",
                 "loggedInAccountName" => $loggedInAccountName,
                 "nim" => $nim,
                 "ipk" => $ipk,
-                "ips" => $ips,
+                "sksk" => $sksk,
             ]);
         }
         
