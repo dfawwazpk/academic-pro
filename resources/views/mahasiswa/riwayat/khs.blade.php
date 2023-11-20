@@ -6,7 +6,7 @@
     <h1 class="text-2xl md:text-3xl text-black font-bold mb-1">KHS</h1>
 </div>
 
-<div class="grid grid-cols-5 gap-4">
+<div class="grid grid-cols-5 gap-4 p-4">
     <div class="text-sm md:text-2xl text-black font-bold mb-1">Riwayat KHS</div>
     <div class="place-self-center col-start-3 px-5 w-auto h-auto font-bold text-white bg-gray-500 rounded-full">
         <a href="/buat/khs">Input KHS</a>
