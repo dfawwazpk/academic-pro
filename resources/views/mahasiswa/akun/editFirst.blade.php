@@ -52,7 +52,7 @@
                         <div>
                             <label for="tanggal_lahir" class="block text-grey-darker text-sm font-bold mb-2">Tanggal Lahir</label>
                             {{-- <input datepicker type="text" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-white-darker" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}"> --}}
-                            <input type="date" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-black" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}">
+                            <input type="date" name="tanggal_lahir" class="border rounded w-full py-2 px-3 text-black @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir" placeholder="" value="{{ old('tanggal_lahir') }}">
                             @error('tanggal_lahir')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -62,7 +62,7 @@
                     <div class="mb-2">
                         <div>
                             <label for="no_hp" class="block text-grey-darker text-sm font-bold mb-2">Nomor Telepon</label>
-                            <input type="text" name="no_hp" class="border rounded w-full py-2 px-3 text-black @error('nama') is-invalid @else  @enderror" id="no_hp" placeholder="Masukkan Nomor Telepon" value="{{ old('no_hp') }}">
+                            <input type="text" name="no_hp" class="border rounded w-full py-2 px-3 text-black @error('no_hp') is-invalid @else  @enderror" id="no_hp" placeholder="Masukkan Nomor Telepon" value="{{ old('no_hp') }}">
                             @error('no_hp')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
