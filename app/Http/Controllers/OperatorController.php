@@ -16,7 +16,7 @@ class OperatorController extends Controller
 {
     function listMahasiswa(){
         $loggedInAccount = Operator::where('id', Auth::user()->id);
-        $mahasiswaList = Mahasiswa::all();
+        $mahasiswaList = Mahasiswa::filter(request(['search', 'angkatan', 'status', 'jalur_masuk']))->get();
         $irsList = IRS::where('status', 2)->latest('created_at')->get();
         $statusList = StatusMahasiswa::all();
         $jalurMasukList = JalurMasuk::all();
@@ -32,7 +32,7 @@ class OperatorController extends Controller
 
     function listDosen(){
         $loggedInAccount = Operator::where('id', Auth::user()->id);
-        $dosenList = Dosen::all();
+        $dosenList = Dosen::filter(request(['search']))->get();
         return view('operator.daftar.dosen', [
             'title' => 'Daftar Dosen',
             'loggedInAccount' => $loggedInAccount,

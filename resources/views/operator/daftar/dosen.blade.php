@@ -33,20 +33,15 @@
 </div> --}}
 
 {{-- Nav Diatas Tabel --}}
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
-    <div class="mb-2 col-span-5 flex items-center">
-        <div class="w-full">
-            <input type="text" name="nim" class="border rounded w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIP/Nama" value="{{ old('nim') }}">
-            @error('nim')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+<form action="/daftar/dosen">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
+        <div class="mb-2 col-span-5 flex items-center">
+            <div class="w-full">
+                <input type="text" name="search" class="border rounded w-full py-2 px-4 text-black" id="search" placeholder="Cari NIP/Nama" value="{{ request('search') }}">
+            </div>
         </div>
-
-        
     </div>
-
-</div>
-
+</form>
 
 <section class="container px-4 mx-auto">
     <div class="flex flex-col">

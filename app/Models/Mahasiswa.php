@@ -28,6 +28,10 @@ class Mahasiswa extends Model
     ];
 
     public function scopeFilter($query, array $filters) {
+        $query->when($filters['jalur_masuk'] ?? false, function($query, $jalur_masuk) {
+            return $query->where('jalur_masuk', $jalur_masuk);
+        });
+        
         $query->when($filters['status'] ?? false, function($query, $status) {
             return $query->where('status', $status);
         });

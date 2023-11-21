@@ -27,56 +27,49 @@
 
 
 {{-- Nav Diatas Tabel --}}
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
-    <div class="mb-2 col-span-5 flex items-center">
-        <div class="w-1/2">
-            <input type="text" name="nim" class="border rounded-full w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIM/Nama" value="{{ old('nim') }}">
-            @error('nim')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
+<form action="/daftar/mahasiswa">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
+        <div class="mb-2 col-span-5 flex items-center">
 
-        <div class="w-1/2 ml-4">
-            <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
-                <option value="" selected disabled>Semester</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-            @error('angkatan')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="w-1/2 ml-4">
-            <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black @error('status') @else is-invalid @enderror" value="{{ old('status') }}">
-                <option value="" selected disabled>Status</option>
-                <option value="Aktif">Aktif</option>
-                <option value="Cuti">Cuti</option>
-            </select>
-            @error('status')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="w-1/2">
+                <input type="text" name="search" class="border rounded-full w-full py-2 px-4 text-black" id="nim" placeholder="Cari NIM/Nama" value="{{ request('search') }}">
+            </div>
+
             <div class="w-1/2 ml-4">
-            <select id="jalur-masuk" name="jalur-masuk" class="border rounded-full w-full py-2 px-3 text-black @error('jalur-masuk') @else is-invalid @enderror" value="{{ old('jalur-masuk') }}">
-                <option value="" selected disabled>Jalur Masuk</option>
-                <option value="SNBP">SNBP</option>
-                <option value="SNBT">SNBT</option>
-                <option value="UM">UM</option>
-            </select>
-            @error('jalur-masuk')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+                <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('angkatan')=='' ? 'selected' : ''}}>Semua Angkatan</option>
+                    <option value="2023" {{ request('angkatan')=='2023' ? 'selected' : ''}}>2023</option>
+                    <option value="2022" {{ request('angkatan')=='2022' ? 'selected' : ''}}>2022</option>
+                    <option value="2021" {{ request('angkatan')=='2021' ? 'selected' : ''}}>2021</option>
+                    <option value="2020" {{ request('angkatan')=='2020' ? 'selected' : ''}}>2020</option>
+                    <option value="2019" {{ request('angkatan')=='2019' ? 'selected' : ''}}>2019</option>
+                    <option value="2018" {{ request('angkatan')=='2018' ? 'selected' : ''}}>2018</option>
+                    <option value="2017" {{ request('angkatan')=='2017' ? 'selected' : ''}}>2017</option>
+                    <option value="2016" {{ request('angkatan')=='2016' ? 'selected' : ''}}>2016</option>
+                </select>
+            </div>
+
+            <div class="w-1/2 ml-4">
+                <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('status')=='' ? 'selected' : ''}}>Semua Status</option>
+                    <option value="1" {{ request('status')=='1' ? 'selected' : ''}}>Aktif</option>
+                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Nonaktif</option>
+                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Cuti</option>
+                </select>
+            </div>
+
+            <div class="w-1/2 ml-4">
+                <select id="jalur_masuk" name="jalur_masuk" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('jalur_masuk')=='' ? 'selected' : ''}}>Semua Jalur Masuk</option>
+                    <option value="1" {{ request('jalur_masuk')=='1' ? 'selected' : ''}}>SNBP</option>
+                    <option value="2" {{ request('jalur_masuk')=='2' ? 'selected' : ''}}>SNBT</option>
+                    <option value="3" {{ request('jalur_masuk')=='3' ? 'selected' : ''}}>Mandiri</option>
+                </select>
+            </div>
+
         </div>
     </div>
-
-</div>
-
+</form>
 
 <section class="container px-4 mx-auto">
     <div class="flex flex-col">
