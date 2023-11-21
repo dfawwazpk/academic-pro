@@ -15,7 +15,7 @@
   </div>
   @endif
   <div class="flex justify-center items-center ">
-  <form action="/edit-akun" method="post">
+  <form action="/edit-akun" method="post" enctype="multipart/form-data">
     @csrf
     <div class="col-md-7 col-lg-8">
       <div class="row g-3">
@@ -38,7 +38,7 @@
 
         <div class="col-12">
           <label for="nama_lengkap" class="form-label">Email</label>
-          <input type="email" name="email" class="border rounded w-full py-2 px-3 text-blackform-control @error('email') is-invalid @enderror" id="email" placeholder="" value="{{ $email }}">
+          <input type="email" name="email" class="border rounded w-full py-2 px-3 text-black form-control @error('email') is-invalid @enderror" id="email" placeholder="" value="{{ $email }}">
           @error('email')
           <div class="invalid-feedback">{{ $message }}</div>
           @enderror

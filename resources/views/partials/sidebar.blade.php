@@ -66,9 +66,9 @@
                     <div class="flex flex-col items-center mt-4">
                         
                       <div class="h-16 w-16 rounded-full overflow-hidden ">
-                            <img src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13" alt="John Doe">
+                            <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}" alt="avatar">
                         </div>
-                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13">{{ $loggedInAccount->value('nama') }}</span>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}">{{ $loggedInAccount->value('nama') }}</span>
                         <div class="flex space-x-2 mt-2">
                             <a href="/edit-akun" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
 
@@ -236,9 +236,9 @@
                 <div class="flex flex-col items-center mt-4">
                     
                   <div class="h-16 w-16 rounded-full overflow-hidden ">
-                        <img src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13" alt="John Doe">
+                        <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}" alt="avatar">
                     </div>
-                    <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13">{{ $loggedInAccount->value('nama') }}</span>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}">{{ $loggedInAccount->value('nama') }}</span>
                     <div class="flex space-x-2 mt-2">
                         <a href="/edit-akun" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
 
@@ -315,9 +315,9 @@
                 <div class="flex flex-col items-center mt-4">
                     
                   <div class="h-16 w-16 rounded-full overflow-hidden ">
-                        <img src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13" alt="John Doe">
+                        <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}" alt="avatar">
                     </div>
-                    <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="https://avatars.mds.yandex.net/i?id=2cade7f483adb39d6e5c54644bb43b186822689a-9270567-images-thumbs&n=13">{{ $loggedInAccount->value('nama') }}</span>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-200" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}">{{ $loggedInAccount->value('nama') }}</span>
                     <div class="flex space-x-2 mt-2">
                         <a href="/edit-akun" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-md text-sm font-medium hover-bg-gray-300">Edit Profile</a>
 

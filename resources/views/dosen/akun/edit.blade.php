@@ -15,7 +15,7 @@
   </div>
   @endif
   <div class="flex justify-center items-center ">
-  <form action="/edit-akun" method="post">
+  <form action="/edit-akun" method="post" enctype="multipart/form-data">
     @csrf
     <div class="col-md-7 col-lg-8">
       <div class="row g-3">

@@ -83,6 +83,9 @@ class EditAkunController extends Controller
                 $akun_operator->password = Hash::make($request->password);
             }
             if (!empty($request->avatar)) {
+                if ($akun_operator->avatar != null) {
+                    unlink('storage/' . $akun_operator->avatar);
+                }
                 $akun_operator->avatar = $request->file('avatar')->store('avatar', 'public');
             }
             $akun_operator->save();
@@ -125,6 +128,9 @@ class EditAkunController extends Controller
                 $akun_dosen->password = Hash::make($request->password);
             }
             if (!empty($request->avatar)) {
+                if ($akun_dosen->avatar != null) {
+                    unlink('storage/' . $akun_dosen->avatar);
+                }
                 $akun_dosen->avatar = $request->file('avatar')->store('avatar', 'public');
             }
             $akun_dosen->save();
