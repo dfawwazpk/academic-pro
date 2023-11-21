@@ -8,7 +8,7 @@
 <form action="/buat/skripsi" method="post" enctype="multipart/form-data">
     @csrf
     <div class="grid grid-cols-3 grid-rows-3 p-10">
-        {{-- <div class="row-start-1 col-span-2 font-bold">Status
+        <div class="row-start-1 col-span-2 font-bold">Status
             <div class="grid w-[28rem] grid-cols-3 gap-2 rounded-xl bg-gray-200 p-2">
                 <div>
                     <input type="radio" name="status_skripsi" id="1" value="Belum" class="peer hidden" checked />
@@ -28,8 +28,8 @@
             @error('status_skripsi')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-        </div> --}}
-        <div class="row-start-1 cols-span-2 font-bold">
+        </div>
+        <div class="row-start-2 col-start-1 font-bold">
             <h1 class="font-bold">Semester</h1>
             <div class="grid w-[28rem] rounded-xl bg-white p-2">
                 <select name="semester" id="semester" value="" class="input input-ghost w-full max-w-" />
@@ -53,7 +53,7 @@
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-        <div class="row-start-2 cols-span-2 font-bold">
+        <div class="row-start-3 col-start-1 font-bold">
             <h1 class="font-bold">Nilai</h1>
             <div class="grid w-[28rem] rounded-xl bg-white p-2">
                 <input type="text" name="nilai" id="nilai" placeholder="Masukkan nilai" value="{{ old('nilai') }}" class="input input-ghost w-full max-w-" />
@@ -71,7 +71,7 @@
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-        <div class="row-start-3 col-start-2 place-self-center">
+        <div class="row-start-4 col-start-2 place-self-center mt-4">
             <button type="submit" class="btn btn-neutral rounded-full">Simpan</button>
         </div>
     </div>

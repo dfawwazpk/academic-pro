@@ -42,7 +42,7 @@
             <div class="mt-4">
               <label class="block text-gray-700">Password</label>
               <input type="password" name="password" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 id="password" placeholder="Enter Password" minlength="6" 
-                    focus:bg-white focus:outline-none" required>
+                    focus:bg-white focus:outline-none required>
             </div>
             <button type="submit" class="w-full block bg-black hover:bg-zinc-400 focus:bg-zinc-400 text-white font-semibold rounded-lg
                   px-4 py-3 mt-6">Log In</button>

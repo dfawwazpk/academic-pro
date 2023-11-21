@@ -48,8 +48,10 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center">
+                    <div class="flex justify-center gap-2">
                         <button type="submit" class="btn btn-primary">Buat</button>
+
+                        <a href="/riwayat/irs" class="btn btn-error">Cancel</a>
                     </div>
                 </div>
             </form>
