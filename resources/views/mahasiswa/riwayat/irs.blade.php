@@ -7,7 +7,7 @@
 </div>
 
 <div class="grid grid-cols-5 gap-4">
-    <div class="text-sm md:text-2xl text-black font-bold mb-1">Riwayat IRS</div>
+    <div class="text-sm p-4 md:text-2xl text-black font-bold mb-1">Riwayat IRS</div>
     <div class="place-self-center col-start-3 px-5 w-auto h-auto font-bold text-white bg-gray-500 rounded-full">
         <a href="/buat/irs">Input IRS</a>
     </div>

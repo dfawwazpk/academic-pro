@@ -5,20 +5,37 @@
     <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">{{ Auth::user()->nama }} 👋</h1>
     <p class="dark:text-indigo-200">Selamat Datang di AcademicPro!</p>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-4">
 
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
-        <div class="flex justify-center w-15 h-14">
-        </div>
+<div class="grid grid-cols-2 grid-rows-4 p-4 gap-4">
+    <a href="/riwayat/irs" class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group row-start-1">
         <div class="text-center">
             <p class="text-3xl text-left">Cek Data IRS</p>
-            <p class="text-left">Cek Isian Rencana Studi anda</p>
+            <p class="text-left">Cek isian rencara studi anda</p>
         </div>
-    </div>
+    </a>
 
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group row-span-2 col-span-2">
-        <div class="flex justify-center w-15 h-12">
+    <a href="/riwayat/khs" class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group row-start-2">
+        <div class="text-center">
+            <p class="text-3xl text-left">Cek Data KHS</p>
+            <p class="text-left">Cek data kartu hasil studi anda</p>
         </div>
+    </a>
+    
+    <a href="/riwayat/pkl" class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group row-start-3">
+        <div class="text-center">
+            <p class="text-3xl text-left">Input data PKL</p>
+            <p class="text-left">Masukkan data praktik kerja lapangan anda</p>
+        </div>
+    </a>
+
+    <a href="/riwayat/skripsi" class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group row-start-4">
+        <div class="text-center">
+            <p class="text-3xl text-left">Input data skripsi</p>
+            <p class="text-left">Masukkan data skripsi</p>
+        </div>
+    </a>
+
+    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-start-2 row-span-3">
         <div class="text-center">
             <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}" alt="Profile Picture" class="rounded-full w-32 h-32 mx-auto mb-4">
             <h2 class="text-2xl font-bold">{{ $loggedInAccount->value('nama') }}</h2>
@@ -28,52 +45,29 @@
         </div>
     </div>
 
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
-        <div class="flex justify-center w-15 h-14">
-        </div>
-        <div class="text-center">
-            <p class="text-3xl text-left">Cek Data KHS</p>
-            <p class="text-left">Cek data kartu hasil studi anda</p>
-        </div>
-    </div>
-    
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
-        <div class="flex justify-center w-15 h-14">
-        </div>
-        <div class="text-center">
-            <p class="text-3xl text-center-left">Input data skripsi</p>
-            <p class="text-left">Masukkan data skripsi anda</p>
-        </div>
-    </div>
+    <div class="col-start-2">
+        <div class="grid grid-cols-2 gap-2">
+            <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-2 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-start-1">
+                <div class="text-center">
+                    <p class="text-5xl justify-center text-center">{{ number_format($ipk, 2, '.', ',') ?? '0.00' }}</p>
+                    <p>IPK</p>
+                </div>
+            </div>
 
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-        <div class="flex justify-center w-15 h-12">
-        </div>
-        <div class="text-center">
-            <p class="text-5xl justify-center text-center">{{ number_format($ipk, 2, '.', ',') ?? '0.00' }}</p>
-            <p>IPK</p>
-        </div>
-    </div>
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-        <div class="flex justify-center w-15 h-12">
-        </div>
-        <div class="text-center">
-            <p class="text-5xl justify-center text-center">{{ $sksk ?? '0' }}</p>
-            <p class="text justify-center">SKSK</p>
+            <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-2 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-start-2">
+                <div class="text-center">
+                    <p class="text-5xl justify-center text-center">{{ $sksk ?? '0' }}</p>
+                    <p class="text justify-center">SKS</p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
-        <div class="flex justify-center w-15 h-14">
-        </div>
-        <div class="text-center">
-            <p class="text-3xl text-left">Input data PKL</p>
-            <p class="text-left">Masukkan data praktik kerja lapangan anda</p>
-        </div>
-    </div>
-
-    
 </div>
+
+
+
+
+
 
     
  @endsection
