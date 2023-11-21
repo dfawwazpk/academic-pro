@@ -27,39 +27,35 @@ class SkripsiController extends Controller
 
     function buatSkripsi(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $semester = IRS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('semester');
         return view('mahasiswa.buat.skripsi', [
             'title' => 'Buat Skripsi',
-            'loggedInAccount' => $loggedInAccount
+            'loggedInAccount' => $loggedInAccount,
+            'semester' => $semester,
         ]);
     }
 
     function doBuatSkripsi(Request $request)
     {
         $request->validate([
-            'status_skripsi' => 'required|string',
+            'semester' => 'required|numeric',
+            'nilai' => 'required|numeric',
             'scan_skripsi' => 'required|file|mimes:pdf|max:2048',
         ]);
-
-        if ($request->status_pkl == "Lulus") {
-            $request->validate([
-                'nilai' => 'required|numeric',
-            ]);
-        }
     
         $skripsi = new Skripsi;
+        $skripsi->semester = $request->semester;
         $skripsi->status_skripsi = $request->status_skripsi;
+        $skripsi->nilai = $request->nilai;
+        $skripsi->status_skripsi = "Lulus";
+        $skripsi->tanggal_lulus_sidang = date('Y-m-d');
+        $skripsi->lama_studi = IRS::where('status', '2')->latest('created_at')->first()->semester;
         $skripsi->status = 1;
         $skripsi->file = $request->file('scan_skripsi')->store('skripsi', 'public');
         $skripsi->mahasiswa_id = Auth::user()->id;
 
-        if ($request->status_pkl == "Lulus") {
-            $skripsi->nilai = $request->nilai;
-            $skripsi->tanggal_lulus_sidang = date('Y-m-d');
-            $skripsi->lama_studi = IRS::where('status', '2')->latest('created_at')->first()->semester;
-        }
-
         $skripsi->save();
     
-        return redirect('/buat/skripsi')->with('success', 'Skripsi telah berhasil dibuat.');
+        return redirect('/riwayat/skripsi')->with('success', 'Skripsi telah berhasil dibuat.');
     }    
 }

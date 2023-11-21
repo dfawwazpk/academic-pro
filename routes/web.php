@@ -92,11 +92,6 @@ Route::get('riwayat/skripsi',[SkripsiController::class,'riwayatSkripsi'])->middl
 Route::get('buat/skripsi', [SkripsiController::class, 'buatSkripsi'])->middleware('auth','mahasiswa');
 Route::post('buat/skripsi', [SkripsiController::class, 'doBuatSkripsi'])->middleware('auth','mahasiswa');
 
-//EDIT PROFILE
-Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'index']);
-Route::get('/edit-profile/{id}', [DaftarMahasiswaController::class, 'editProfile'])->name('edit-profile');
-Route::post('/update-profile/{id}', [DaftarMahasiswaController::class, 'updateProfile'])->name('update-profile');
-
 //-------------------------------- DOSEN --------------------------------//
 
 //VERIFIKASI IRS

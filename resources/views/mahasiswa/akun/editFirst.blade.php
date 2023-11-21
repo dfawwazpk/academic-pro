@@ -82,10 +82,10 @@
                     <div class="mb-2">
                         <div>
                             <label for="provinsi" class="block text-grey-darker text-sm font-bold mb-2">Provinsi</label>
-                            <select id="provinsi" name="provinsi" class="border rounded w-full py-2 px-3 text-black @error('provinsi') @else  is-invalid @enderror" value="{{ old('provinsi') }}">
-                                <option value="" selected disabled>Pilih provinsi</option>
+                            <select id="provinsi" name="provinsi" class="border rounded w-full py-2 px-3 text-black @error('provinsi') @else  is-invalid @enderror" value="">
+                                <option value="" {{ old('provinsi')=='' ? 'selected' : ''}} disabled>Pilih provinsi</option>
                                 @foreach ($provinsi as $prov)
-                                    <option value="{{ $prov->kode_prov }}"> {{ $prov->nama_prov }}</option>
+                                    <option value="{{ $prov->kode_prov }} {{ old('provinsi')==$prov->kode_prov ? 'selected' : ''}}"> {{ $prov->nama_prov }}</option>
                                 @endforeach
                             </select>
                             @error('provinsi')
@@ -97,10 +97,10 @@
                     <div class="mb-2">
                         <div>
                             <label for="kabupaten_kota" class="block text-grey-darker text-sm font-bold mb-2">Kabupaten/Kota</label>
-                            <select id="kabupaten_kota" name="kabupaten_kota" class="border rounded w-full py-2 px-3 text-black @error('kabupaten_kota') @else  is-invalid @enderror" value="{{ old('kabupaten_kota') }}">
-                                <option value="" selected disabled>Pilih kabupaten/kota</option>
+                            <select id="kabupaten_kota" name="kabupaten_kota" class="border rounded w-full py-2 px-3 text-black @error('kabupaten_kota') @else  is-invalid @enderror" value="">
+                                <option value="" {{ old('kabupaten_kota')=='' ? 'selected' : ''}} disabled>Pilih kabupaten/kota</option>
                                 @foreach ($kabupaten_kota as $kabs)
-                                    <option value="{{ $kabs->kode_kab }}"> {{ $kabs->nama_kab }}</option>
+                                    <option value="{{ $kabs->kode_kab }} {{ old('kabupaten_kota')==$kabs->kode_kab ? 'selected' : ''}}"> {{ $kabs->nama_kab }}</option>
                                 @endforeach
                             </select>
                             @error('kabupaten_kota')

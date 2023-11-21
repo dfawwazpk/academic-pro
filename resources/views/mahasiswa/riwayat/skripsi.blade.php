@@ -21,6 +21,7 @@
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700  ">
                             <thead class="bg-gray-50 dark:bg-gray-800">
                                 <tr>
+
                                     <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         <div class="flex items-center gap-x-3">
                                             <button class="flex items-center gap-x-2">
@@ -30,8 +31,17 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        
                                     </th>
+
+                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        <div class= "flex items-center gap-x-2">
+                                        <span>Semester</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg"  height="1em"  viewBox="0 0 320 512" fill="white">
+                                            <path d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z" />
+                                        </svg>
+                                        </div>
+                                    </th>
+                                    
                                     <th scope="col" class="px-3.5 py-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 flex items-center">
                                         <div class= "flex items-center gap-x-2">
                                         <span>Nilai</span>
@@ -49,6 +59,7 @@
                                         </svg>
                                         </div>
                                     </th> 
+
                                     <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         <div class= "flex items-center gap-x-2">
                                         <span>Status Berkas</span>
@@ -67,6 +78,13 @@
                                         <span>{{ $skripsi->created_at->format('d-m-Y') }}</span>
                                     </td>
                                     
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                        <div class="flex items-center gap-x-2">
+                                            <div>
+                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $skripsi->semester }}</h2>
+                                            </div>
+                                        </div>
+                                    </td>
     
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                         <div class="flex items-center gap-x-2">
