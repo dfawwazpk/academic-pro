@@ -60,7 +60,13 @@ class DosenController extends Controller
             'jalurMasuk' => $jalurMasuk
         ]);
     }
-
+    function rekapMahasiswa(){
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        return view('dosen.rekap.mhs', [
+            'title' => 'Rekap Mahasiswa',
+            'loggedInAccount' => $loggedInAccount
+        ]);
+    }
     function rekapPKL(){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.rekap.pkl', [
@@ -68,10 +74,24 @@ class DosenController extends Controller
             'loggedInAccount' => $loggedInAccount
         ]);
     }
+    function rekapPKL2(){
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        return view('dosen.rekap.pkl2', [
+            'title' => 'Rekap PKL2',
+            'loggedInAccount' => $loggedInAccount
+        ]);
+    }
     function rekapSkripsi(){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.rekap.skripsi', [
             'title' => 'Rekap Skripsi',
+            'loggedInAccount' => $loggedInAccount
+        ]);
+    }
+    function rekapSkripsi2(){
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        return view('dosen.rekap.skripsi2', [
+            'title' => 'Rekap Skripsi2',
             'loggedInAccount' => $loggedInAccount
         ]);
     }
