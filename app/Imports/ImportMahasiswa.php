@@ -13,16 +13,16 @@
         {
             public function model(array $row)
             {
-                // $mahasiswa = new Mahasiswa([
-                //     'nama' => $row[2], 
-                // ]);
-                // $mahasiswa->save();
+                $mahasiswa = new Mahasiswa([
+                    'nama' => $row[2], 
+                ]);
+                $mahasiswa->save();
 
-                // $user = new User([
-                //     'email' => $row[1], 
-                //     'password' => bcrypt($row[2]), 
-                //     'role_id' => 4,
-                // ]);
-                // $user->save();
+                $user = new User([
+                    'email' => $row[1], 
+                    'password' => bcrypt($row[2]), 
+                    'role_id' => 4,
+                ]);
+                $user->save();
             }
         }
