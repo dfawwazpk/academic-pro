@@ -39,10 +39,10 @@ class DosenController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $akunMahasiswa = User::where('id', $id)->first();
         $mahasiswa = Mahasiswa::where('id', $id)->first();
-        $irsList = IRS::where('status', 2)->get();
-        $khsList = KHS::where('status', 2)->get();
-        $pklList = PKL::where('status', 2)->get();
-        $skripsiList = Skripsi::where('status', 2)->get();
+        $irsList = IRS::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $khsList = KHS::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $pklList = PKL::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $skripsiList = Skripsi::where('mahasiswa_id',$id)->where('status', 2)->get();
         $kabupatenKota = KabupatenKota::get();
         $provinsi = Provinsi::get();
         $jalurMasuk = JalurMasuk::get();

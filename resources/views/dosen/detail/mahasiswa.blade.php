@@ -27,20 +27,20 @@
     </div>
     <div class="grid grid-cols-2 p-4 gap-2">
         <div class="grid grid-cols-3 gap-1">
-            <button class="btn btn-neutral">1</button>
-            <button class="btn btn-neutral">2</button>
-            <button class="btn btn-neutral">3</button>
-            <button class="btn btn-neutral">4</button>
-            <button class="btn btn-neutral">5</button>
-            <button class="btn btn-neutral">6</button>
-            <button class="btn btn-neutral">7</button>
-            <button class="btn btn-neutral">8</button>
-            <button class="btn btn-neutral">9</button>
-            <button class="btn btn-neutral">10</button>
-            <button class="btn btn-neutral">11</button>
-            <button class="btn btn-neutral">12</button>
-            <button class="btn btn-neutral">13</button>
-            <button class="btn btn-neutral">14</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 1)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 1)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 1)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 1)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">1</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 2)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 2)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 2)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 2)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">2</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 3)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 3)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 3)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 3)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">3</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 4)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 4)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 4)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 4)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">4</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 5)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 5)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 5)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 5)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">5</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 6)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 6)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 6)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 6)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">6</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 7)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 7)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 7)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 7)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">7</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 8)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 8)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 8)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 8)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">8</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 9)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 9)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 9)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 9)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">9</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 10)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 10)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 10)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 10)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">10</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 11)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 11)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 11)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 11)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">11</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 12)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 12)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 12)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 12)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">12</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 13)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 13)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 13)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 13)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">13</button>
+            <button class="btn btn-neutral {{ $skripsiList->where('semester', 14)->count() > 0 ? 'bg-green-500' : '' }} {{ $pklList->where('semester', 14)->count() > 0 ? 'bg-yellow-500' : '' }} {{ $khsList->where('semester', 14)->count() > 0 ? 'bg-blue-600' : '' }} {{ $irsList->where('semester', 14)->count() > 0 ? 'bg-blue-400' : '' }} bg-red-500">14</button>
         </div>
         <div class="grid grid-cols-2 grid-rows-3 gap-2">
             <div class="col-start-1 row-start-1 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
