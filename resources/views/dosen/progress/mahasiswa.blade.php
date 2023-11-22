@@ -166,7 +166,7 @@
                                 </td>
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <a href ="/detail/mahasiswa" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">detail
+                                    <a href ="/progress-mahasiswa/{{ $mahasiswa->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">detail
                                     </a>
                                 </td>
 

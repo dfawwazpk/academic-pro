@@ -3,9 +3,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\IRS;
+use App\Models\JalurMasuk;
+use App\Models\KabupatenKota;
 use App\Models\KHS;
 use App\Models\Mahasiswa;
 use App\Models\Operator;
+use App\Models\PKL;
+use App\Models\Provinsi;
+use App\Models\Skripsi;
 use App\Models\StatusMahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,11 +35,29 @@ class DosenController extends Controller
             'khsList' => $khsList
         ]);
     }
-    function detailMahasiswa(){
+    function detailMahasiswa($id){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        $akunMahasiswa = User::where('id', $id)->first();
+        $mahasiswa = Mahasiswa::where('id', $id)->first();
+        $irsList = IRS::where('status', 2)->get();
+        $khsList = KHS::where('status', 2)->get();
+        $pklList = PKL::where('status', 2)->get();
+        $skripsiList = Skripsi::where('status', 2)->get();
+        $kabupatenKota = KabupatenKota::get();
+        $provinsi = Provinsi::get();
+        $jalurMasuk = JalurMasuk::get();
         return view('dosen.detail.mahasiswa', [
             'title' => 'Detail Mahasiswa',
-            'loggedInAccount' => $loggedInAccount
+            'loggedInAccount' => $loggedInAccount,
+            'akunMahasiswa' => $akunMahasiswa,
+            'mahasiswa' => $mahasiswa,
+            'irsList' => $irsList,
+            'khsList' => $khsList,
+            'pklList' => $pklList,
+            'skripsiList' => $skripsiList,
+            'kabupatenKota' => $kabupatenKota,
+            'provinsi' => $provinsi,
+            'jalurMasuk' => $jalurMasuk
         ]);
     }
 
