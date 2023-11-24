@@ -58,6 +58,8 @@ Route::get('daftar/dosen', [OperatorController::class,'listDosen'])->middleware(
 //BUAT AKUN MAHASISWA
 Route::get('buat/mahasiswa', [MahasiswaController::class,'create'])->middleware('auth','operator');
 Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middleware('auth','operator');
+Route::get('buat/mahasiswa/csv', [MahasiswaController::class,'importMhs'])->middleware('auth','operator');
+Route::post('buat/mahasiswa/csv', [MahasiswaController::class,'doImportMhs'])->middleware('auth','operator');
 
 //BUAT AKUN DOSEN
 Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','operator');

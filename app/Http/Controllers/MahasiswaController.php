@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportMahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -146,5 +148,25 @@ class MahasiswaController extends Controller
         $mahasiswa->save();
 
         return redirect('/buat/mahasiswa')->with('success', 'Akun mahasiswa baru berhasil dibuat!');
+    }
+
+    function importMhs(){
+        $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        return view('operator.buat.mahasiswabatch',[
+            "loggedInAccount" => $loggedInAccount,
+        ]);
+        
+    }
+
+    function doImportMhs(Request $request){
+        $request->validate([
+            'scan_csv' => 'required|mimes:xls,xlsx',
+        ]);
+        // dd($request);
+        $file = $request->file('scan_csv');
+    
+        Excel::import(new ImportMahasiswa, $file);
+    
+        return redirect('/buat/mahasiswa/csv')->with('success', 'Akun mahasiswa baru berhasil dibuat!');
     }
 }

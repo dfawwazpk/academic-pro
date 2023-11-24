@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'id',
     ];
 
     protected $table = 'users';
@@ -35,6 +36,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public static function boot() {
+        parent::boot();
+        static::creating(function ($user) {
+            $user->id = User::max('id') + 1;
+        });
+    }
 
     /**
      * The attributes that should be cast.
