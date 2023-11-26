@@ -96,8 +96,10 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center">
+                    <div class="flex justify-center gap-2">
                         <button type="submit" class="btn btn-primary">Buat</button>
+                        <a href="/daftar/mahasiswa" class="btn btn-error">Cancel</a>
+                        <a href="/buat/mahasiswa/csv" class="btn btn-neutral">Upload</a>
                     </div>
                 </div>
             </form>
