@@ -121,6 +121,10 @@ Route::get('progress-mahasiswa/{id}', [DosenController::class, 'detailMahasiswa'
 Route::get('detail/mahasiswa' ,[DosenController::class,'detailMahasiswa'])->middleware('auth','dosen');
 
 //REKAP MAHASISWA
+Route::get('/rekap/mahasiswa', [DosenController::class, 'rekapMahasiswa'])->middleware('auth','dosen');
+Route::get('/rekap/pkl2', [DosenController::class, 'rekapPKL2'])->middleware('auth','dosen');
+Route::get('/rekap/skripsi2', [DosenController::class, 'rekapSkripsi2'])->middleware('auth','dosen');
+//Backtup REkap
 Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
 Route::get('/rekap/skripsi', [DosenController::class, 'rekapSkripsi'])->middleware('auth','dosen');
 

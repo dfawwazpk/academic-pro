@@ -3,9 +3,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\IRS;
+use App\Models\JalurMasuk;
+use App\Models\KabupatenKota;
 use App\Models\KHS;
 use App\Models\Mahasiswa;
 use App\Models\Operator;
+use App\Models\PKL;
+use App\Models\Provinsi;
+use App\Models\Skripsi;
 use App\Models\StatusMahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,14 +35,38 @@ class DosenController extends Controller
             'khsList' => $khsList
         ]);
     }
-    function detailMahasiswa(){
+    function detailMahasiswa($id){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        $akunMahasiswa = User::where('id', $id)->first();
+        $mahasiswa = Mahasiswa::where('id', $id)->first();
+        $irsList = IRS::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $khsList = KHS::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $pklList = PKL::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $skripsiList = Skripsi::where('mahasiswa_id',$id)->where('status', 2)->get();
+        $kabupatenKota = KabupatenKota::get();
+        $provinsi = Provinsi::get();
+        $jalurMasuk = JalurMasuk::get();
         return view('dosen.detail.mahasiswa', [
             'title' => 'Detail Mahasiswa',
+            'loggedInAccount' => $loggedInAccount,
+            'akunMahasiswa' => $akunMahasiswa,
+            'mahasiswa' => $mahasiswa,
+            'irsList' => $irsList,
+            'khsList' => $khsList,
+            'pklList' => $pklList,
+            'skripsiList' => $skripsiList,
+            'kabupatenKota' => $kabupatenKota,
+            'provinsi' => $provinsi,
+            'jalurMasuk' => $jalurMasuk
+        ]);
+    }
+    function rekapMahasiswa(){
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        return view('dosen.rekap.mhs', [
+            'title' => 'Rekap Mahasiswa',
             'loggedInAccount' => $loggedInAccount
         ]);
     }
-
     function rekapPKL(){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.rekap.pkl', [
@@ -45,10 +74,24 @@ class DosenController extends Controller
             'loggedInAccount' => $loggedInAccount
         ]);
     }
+    function rekapPKL2(){
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        return view('dosen.rekap.pkl2', [
+            'title' => 'Rekap PKL2',
+            'loggedInAccount' => $loggedInAccount
+        ]);
+    }
     function rekapSkripsi(){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         return view('dosen.rekap.skripsi', [
             'title' => 'Rekap Skripsi',
+            'loggedInAccount' => $loggedInAccount
+        ]);
+    }
+    function rekapSkripsi2(){
+        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        return view('dosen.rekap.skripsi2', [
+            'title' => 'Rekap Skripsi2',
             'loggedInAccount' => $loggedInAccount
         ]);
     }
