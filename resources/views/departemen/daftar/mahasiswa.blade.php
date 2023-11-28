@@ -7,57 +7,49 @@
 </div>
 
 
-{{-- Nav Diatas Tabel --}}
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
-    <div class="mb-2 col-span-5 flex items-center">
-        <div class="w-1/2">
-            <input type="text" name="nim" class="border rounded-full w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIM/Nama" value="{{ old('nim') }}">
-            @error('nim')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
+<form action="/departemen/daftar/mahasiswa">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
+        <div class="mb-2 col-span-5 flex items-center">
 
-        <div class="w-1/2 ml-4">
-            <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black @error('angkatan') @else is-invalid @enderror" value="{{ old('angkatan') }}">
-                <option value="" selected disabled>Semester</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-            @error('angkatan')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="w-1/2 ml-4">
-            <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black @error('status') @else is-invalid @enderror" value="{{ old('status') }}">
-                <option value="" selected disabled>Status</option>
-                <option value="Aktif">Aktif</option>
-                <option value="Cuti">Cuti</option>
-            </select>
-            @error('status')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="w-1/2">
+                <input type="text" name="search" class="border rounded-full w-full py-2 px-4 text-black" id="nim" placeholder="Cari NIM/Nama" value="{{ request('search') }}">
+            </div>
+
             <div class="w-1/2 ml-4">
-            <select id="jalur-masuk" name="jalur-masuk" class="border rounded-full w-full py-2 px-3 text-black @error('jalur-masuk') @else is-invalid @enderror" value="{{ old('jalur-masuk') }}">
-                <option value="" selected disabled>Jalur Masuk</option>
-                <option value="SNBP">SNBP</option>
-                <option value="SNBT">SNBT</option>
-                <option value="UM">UM</option>
-            </select>
-            @error('jalur-masuk')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+                <select id="angkatan" name="angkatan" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('angkatan')=='' ? 'selected' : ''}}>Semua Angkatan</option>
+                    <option value="2023" {{ request('angkatan')=='2023' ? 'selected' : ''}}>2023</option>
+                    <option value="2022" {{ request('angkatan')=='2022' ? 'selected' : ''}}>2022</option>
+                    <option value="2021" {{ request('angkatan')=='2021' ? 'selected' : ''}}>2021</option>
+                    <option value="2020" {{ request('angkatan')=='2020' ? 'selected' : ''}}>2020</option>
+                    <option value="2019" {{ request('angkatan')=='2019' ? 'selected' : ''}}>2019</option>
+                    <option value="2018" {{ request('angkatan')=='2018' ? 'selected' : ''}}>2018</option>
+                    <option value="2017" {{ request('angkatan')=='2017' ? 'selected' : ''}}>2017</option>
+                    <option value="2016" {{ request('angkatan')=='2016' ? 'selected' : ''}}>2016</option>
+                </select>
+            </div>
+
+            <div class="w-1/2 ml-4">
+                <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('status')=='' ? 'selected' : ''}}>Semua Status</option>
+                    <option value="1" {{ request('status')=='1' ? 'selected' : ''}}>Aktif</option>
+                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Nonaktif</option>
+                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Cuti</option>
+                </select>
+            </div>
+
+            <div class="w-1/2 ml-4">
+                <select id="jalur_masuk" name="jalur_masuk" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
+                    <option value="" {{ request('jalur_masuk')=='' ? 'selected' : ''}}>Semua Jalur Masuk</option>
+                    <option value="1" {{ request('jalur_masuk')=='1' ? 'selected' : ''}}>SNBP</option>
+                    <option value="2" {{ request('jalur_masuk')=='2' ? 'selected' : ''}}>SNBT</option>
+                    <option value="3" {{ request('jalur_masuk')=='3' ? 'selected' : ''}}>Mandiri</option>
+                </select>
+            </div>
+
         </div>
     </div>
-
-</div>
-
+</form>
 
 <section class="container px-4 mx-auto">
     <div class="flex flex-col">
@@ -122,277 +114,84 @@
                                     </div>
                                 </th> 
 
-
                             </tr>
                         </thead>
+
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
 
-                                        <span>24060121140156</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center ">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">2021</h2>
-                                        </div>
-                                    </div>
-                                </td>
-                                
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center ">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
+                        @foreach ($mahasiswaList as $mahasiswa)
+                        <tr>
 
-                                        <h2 class="text-sm font-normal">Aktif</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">SNBT</h2>
-                                        </div>
-                                    </div>
-    
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                <div class="inline-flex items-center gap-x-3">
+                                    <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
+                                    <span>{{ $mahasiswa->nim }}</span>
+                                </div>
+                            </td>
 
-                                        {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Download
-                                        </button>
-                                        --}}
-                                    
-                                </td>
-                            </tr>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-    
-                                            <span>24060121140523</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Imroatus Zadin</h2>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center ">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white">2021</h2>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center ">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-    
-                                            <h2 class="text-sm font-normal">Cuti</h2>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">SNBT</h2>
-                                            </div>
-                                        </div>
-        
-    
-                                            {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Download
-                                            </button>
-                                            --}}
-                                        
-                                    </td>
-                                </tr>
-                                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                    <tr>
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                            <div class="inline-flex items-center gap-x-3">
-                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-        
-                                                <span>24060121140523</span>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center gap-x-2">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Vastia Kobo</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center ">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">2022</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center ">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                            <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-        
-                                                <h2 class="text-sm font-normal">Aktif</h2>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                            <div class="flex items-center gap-x-6">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">SNBP</h2>
-                                                </div>
-                                            </div>
-            
-        
-                                                {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                    Download
-                                                </button>
-                                                --}}
-                                            
-                                        </td>
-                                    </tr>    
+                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                <div class="flex items-center gap-x-2">
+                                    <div>
+                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $mahasiswa->nama }}</h2>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                <div class="flex items-center ">
+                                    <div>
+                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $mahasiswa->angkatan }}</h2>
+                                    </div>
+                                </div>
+                            </td>
                             
-                                    <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                        <tr>
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                <div class="inline-flex items-center gap-x-3">
-                                                    <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-            
-                                                    <span>24060121140523</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center gap-x-2">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Kureiji Ollie</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center ">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white">2022</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center ">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-            
-                                                    <h2 class="text-sm font-normal">Aktif</h2>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <div class="flex items-center gap-x-6">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">UM</h2>
-                                                    </div>
-                                                </div>
-                            
-                                                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                                    <tr>
-                                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                            <div class="inline-flex items-center gap-x-3">
-                                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-                        
-                                                                <span>24060121140156</span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            <div class="flex items-center gap-x-2">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            <div class="flex items-center ">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">2023</h2>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        
-                                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            <div class="flex items-center ">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white">5</h2>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                            <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg>
-                        
-                                                                <h2 class="text-sm font-normal">Aktif</h2>
-                                                            </div>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                            <div class="flex items-center gap-x-6">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">UM</h2>
-                                                                </div>
-                                                            </div>
-                            
-                        
-                                                                {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                                    Download
-                                                                </button>
-                                                                --}}
-                                                            
-                                                        </td>
-                                                    </tr>
+                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                <div class="flex items-center ">
+                                    <div>
+                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white">{{ $irsList->where('mahasiswa_id', $mahasiswa->id)->take(1)->value('semester') ?? 1 }}</h2>
+                                    </div>
+                                </div>
+                            </td>
+
+                            @if ($mahasiswa->status == 1)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <h2 class="text-sm font-normal">Aktif</h2>
+                                </div>
+                            </td>
+
+                            @elseif ($mahasiswa->status == 2)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <h2 class="text-sm font-normal">Nonaktif</h2>
+                                </div>
+                            </td>
+
+                            @elseif ($mahasiswa->status == 3)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Cuti</h2>
+                                </div>
+                            </td>
+                            @endif
+
+                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                <div class="flex items-center gap-x-6">
+                                    <div>
+                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $jalurMasukList->where('id', $mahasiswa->jalur_masuk)->value('name') }}</h2>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                        @endforeach
+
                         </tbody>
                     </table>
                 </div>

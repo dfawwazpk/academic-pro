@@ -8,20 +8,15 @@
 
 
 {{-- Nav Diatas Tabel --}}
-<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
-    <div class="mb-2 col-span-5 flex items-center">
-        <div class="w-full">
-            <input type="text" name="nim" class="border rounded-full w-full py-2 px-4 text-black @error('nim') is-invalid @else @enderror" id="nim" placeholder="Cari NIP/Nama" value="{{ old('nim') }}">
-            @error('nim')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+<form action="/departemen/daftar/dosen">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
+        <div class="mb-2 col-span-5 flex items-center">
+            <div class="w-full">
+                <input type="text" name="search" class="border rounded w-full py-2 px-4 text-black" id="search" placeholder="Cari NIP/Nama" value="{{ request('search') }}">
+            </div>
         </div>
-
-        
     </div>
-
-</div>
-
+</form>
 
 <section class="container px-4 mx-auto">
     <div class="flex flex-col">
@@ -55,124 +50,29 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+
+                            @foreach ($dosenList as $dosen)
                             <tr>
+
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
 
-                                        <span>197000xxxxxxxx</span>
+                                        <span>{{ $dosen->nip }}</span>
                                     </div>
                                 </td>
+
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $dosen->nama }}</h2>
                                         </div>
                                     </div>
                                 </td>
-                                
-    
 
-                                        {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Download
-                                        </button>
-                                        --}}
-                                    
-                                </td>
                             </tr>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-    
-                                            <span>197000xxxxxxxx</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Imroatus Zadin</h2>
-                                            </div>
-                                        </div>
-                                    </td>       
-    
-                                            {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Download
-                                            </button>
-                                            --}}
-                                        
-                                    </td>
-                                </tr>
-                                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                    <tr>
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                            <div class="inline-flex items-center gap-x-3">
-                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-        
-                                                <span>197000xxxxxxxx</span>
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div class="flex items-center gap-x-2">
-                                                <div>
-                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Vastia Kobo</h2>
-                                                </div>
-                                            </div>
-                                        </td>
-                                                   
-        
-                                                {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                    Download
-                                                </button>
-                                                --}}
-                                            
-                                        </td>
-                                    </tr>    
-                            
-                                    <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                        <tr>
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                <div class="inline-flex items-center gap-x-3">
-                                                    <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-            
-                                                    <span>197000xxxxxxxx</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                <div class="flex items-center gap-x-2">
-                                                    <div>
-                                                        <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Kureijio</h2>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                                                        
-                                            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                                                    <tr>
-                                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                                            <div class="inline-flex items-center gap-x-3">
-                                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-                        
-                                                                <span>197000xxxxxxxx</span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                                            <div class="flex items-center gap-x-2">
-                                                                <div>
-                                                                    <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        
-                            
-                        
-                                                                {{--  <button class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                                    Download
-                                                                </button>
-                                                                --}}
-                                                            
-                                                        </td>
-                                                    </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>

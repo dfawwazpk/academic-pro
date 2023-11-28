@@ -35,51 +35,6 @@ class DosenController extends Controller
             'khsList' => $khsList
         ]);
     }
-    function listMahasiswa(){
-        $loggedInAccount = Dosen::where('id', Auth::user()->id);
-        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->filter(request(['search', 'angkatan', 'status']))->get();
-        $irsList = IRS::where('status', 2)->latest('created_at')->get();
-        $statusList = StatusMahasiswa::all();
-        $khsList = KHS::where('status', 2)->latest('created_at')->get();
-        return view('dosen.list.mahasiswa', [
-            'title' => 'List Mahasiswa',
-            'loggedInAccount' => $loggedInAccount,
-            'mahasiswaList' => $mahasiswaList,
-            'irsList' => $irsList,
-            'statusList' => $statusList,
-            'khsList' => $khsList
-        ]);
-    }
-    function listMahasiswaPKL(){
-        $loggedInAccount = Dosen::where('id', Auth::user()->id);
-        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->filter(request(['search', 'angkatan', 'status']))->get();
-        $irsList = IRS::where('status', 2)->latest('created_at')->get();
-        $statusList = StatusMahasiswa::all();
-        $khsList = KHS::where('status', 2)->latest('created_at')->get();
-        return view('dosen.list.mahasiswaPKL', [
-            'title' => 'List Mahasiswa PKL',
-            'loggedInAccount' => $loggedInAccount,
-            'mahasiswaList' => $mahasiswaList,
-            'irsList' => $irsList,
-            'statusList' => $statusList,
-            'khsList' => $khsList
-        ]);
-    }
-    function listMahasiswaSkripsi(){
-        $loggedInAccount = Dosen::where('id', Auth::user()->id);
-        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->filter(request(['search', 'angkatan', 'status']))->get();
-        $irsList = IRS::where('status', 2)->latest('created_at')->get();
-        $statusList = StatusMahasiswa::all();
-        $khsList = KHS::where('status', 2)->latest('created_at')->get();
-        return view('dosen.list.mahasiswaSkripsi', [
-            'title' => 'List Mahasiswa Skripsi',
-            'loggedInAccount' => $loggedInAccount,
-            'mahasiswaList' => $mahasiswaList,
-            'irsList' => $irsList,
-            'statusList' => $statusList,
-            'khsList' => $khsList
-        ]);
-    }
     function detailMahasiswa($id){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $akunMahasiswa = User::where('id', $id)->first();
