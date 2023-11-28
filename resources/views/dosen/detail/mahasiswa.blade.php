@@ -56,26 +56,26 @@
         </div>
     </div>
     <div class="grid grid-cols-2 p-4 gap-2">
-        <div class="grid grid-cols-3 gap-1">
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 1)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 1)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 1)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 1)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">1</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 2)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 2)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 2)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 2)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">2</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 3)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 3)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 3)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 3)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">3</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 4)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 4)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 4)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 4)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">4</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 5)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 5)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 5)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 5)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">5</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 6)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 6)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 6)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 6)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">6</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 7)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 7)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 7)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 7)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">7</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 8)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 8)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 8)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 8)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">8</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 9)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 9)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 9)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 9)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">9</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 10)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 10)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 10)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 10)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">10</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 11)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 11)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 11)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 11)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">11</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 12)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 12)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 12)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 12)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">12</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 13)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 13)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 13)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 13)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">13</button>
-            <button class="btn btn-neutral {{ $skripsiList->where('semester', 14)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 14)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 14)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 14)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">14</button>
+        <div class="grid grid-cols-3 gap-1"  id="semesterButton">
+            <button id="1" class="btn btn-neutral {{ $skripsiList->where('semester', 1)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 1)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 1)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 1)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">1</button>
+            <button id="2" class="btn btn-neutral {{ $skripsiList->where('semester', 2)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 2)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 2)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 2)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">2</button>
+            <button id="3" class="btn btn-neutral {{ $skripsiList->where('semester', 3)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 3)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 3)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 3)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">3</button>
+            <button id="4" class="btn btn-neutral {{ $skripsiList->where('semester', 4)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 4)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 4)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 4)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">4</button>
+            <button id="5" class="btn btn-neutral {{ $skripsiList->where('semester', 5)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 5)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 5)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 5)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">5</button>
+            <button id="6" class="btn btn-neutral {{ $skripsiList->where('semester', 6)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 6)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 6)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 6)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">6</button>
+            <button id="7" class="btn btn-neutral {{ $skripsiList->where('semester', 7)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 7)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 7)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 7)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">7</button>
+            <button id="8" class="btn btn-neutral {{ $skripsiList->where('semester', 8)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 8)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 8)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 8)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">8</button>
+            <button id="9" class="btn btn-neutral {{ $skripsiList->where('semester', 9)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 9)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 9)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 9)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">9</button>
+            <button id="10" class="btn btn-neutral {{ $skripsiList->where('semester', 10)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 10)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 10)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 10)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">10</button>
+            <button id="11" class="btn btn-neutral {{ $skripsiList->where('semester', 11)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 11)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 11)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 11)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">11</button>
+            <button id="12" class="btn btn-neutral {{ $skripsiList->where('semester', 12)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 12)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 12)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 12)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">12</button>
+            <button id="13" class="btn btn-neutral {{ $skripsiList->where('semester', 13)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 13)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 13)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 13)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">13</button>
+            <button id="14" class="btn btn-neutral {{ $skripsiList->where('semester', 14)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 14)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 14)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 14)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">14</button>
         </div>
         <div class="grid grid-cols-2 grid-rows-3 gap-2">
             <div class="col-start-1 row-start-1 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-                <p class="text-xl">IPK</p>
-                <p class="text-3xl justify-center text-center" id="ipkValue"></p>
+                <p class="text-xl">IPS</p>
+                <p class="text-3xl justify-center text-center" id="ipsValue"></p>
             </div>
             <div class="col-start-2 row-start-1 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
                 <p class="text-xl">SKS</p>
@@ -100,22 +100,22 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Get all semester buttons
-            const semesterButtons = document.getElementById('semesterButtons');
+            const semesterButtons = document.getElementById('semesterButton');
     
             // Add a click event listener to the buttons container
             semesterButtons.addEventListener('click', function (event) {
                 // Check if the clicked element is a button
-                if (event.target.tagName === 'BUTTON') {
-                    // Get the selected semester from the button text
-                    const selectedSemester = parseInt(event.target.textContent);
-    
-                    // Fetch data or update content based on the selected semester
-                    // Replace the following lines with your logic
-    
-                    // Convert to number before updating content
-                    document.getElementById('ipkValue').textContent = String(selectedSemester);
-                    document.getElementById('sksValue').textContent = String(selectedSemester);
-                    // Update other elements as needed
+                if (event.target.tagName === 'BUTTON' && event.target.id === '1') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? number_format($khsList->where('semester', 1)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? $khsList->where('semester', 1)->first()->value('sks_semester') : '0' }};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '2') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? number_format($khsList->where('semester', 2)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? $khsList->where('semester', 2)->first()->value('sks_semester') : '0' }};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '3') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? number_format($khsList->where('semester', 3)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? $khsList->where('semester', 3)->first()->value('sks_semester') : '0'}};
                 }
             });
         });
