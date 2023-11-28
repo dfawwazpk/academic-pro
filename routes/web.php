@@ -128,6 +128,13 @@ Route::get('/rekap/skripsi2', [DosenController::class, 'rekapSkripsi2'])->middle
 Route::get('/rekap/pkl', [DosenController::class, 'rekapPKL'])->middleware('auth','dosen');
 Route::get('/rekap/skripsi', [DosenController::class, 'rekapSkripsi'])->middleware('auth','dosen');
 
+
+//LIST MAHASISWA
+Route::get('/list/mahasiswa', [DosenController::class, 'listMahasiswa'])->middleware('auth','dosen');
+Route::get('/list/mahasiswaPKL', [DosenController::class, 'listMahasiswaPKL'])->middleware('auth','dosen');
+Route::get('/list/mahasiswaSkripsi', [DosenController::class, 'listMahasiswaSkripsi'])->middleware('auth','dosen');
+
+
 //-------------------------------- DEPARTEMEN --------------------------------//
 
 //LIST AKUN
