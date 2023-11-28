@@ -219,9 +219,123 @@
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            
-                                
+                            <tr>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <a href="/list/mahasiswaPKL"class="flex items-center">
+                                        <span>5</span>
+                                    </a>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>0</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>30</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>4</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>80</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>0</span>
+                                    </button>
+                                </div>
+                            </th>
 
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>150</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>1</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>160</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>2</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>180</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>0</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>210</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>0</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>210</span>
+                                    </button>
+                                </div>
+                            </th>
+                            <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <div class="flex items-center justify-center">
+                                    <button class="flex items-center">
+                                        <span>0</span>
+                                    </button>
+                                </div>
+                            </th>   
+                            </tr>
+                                
+                            
                                 {{-- <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                     <button href ="" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-emerald-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
