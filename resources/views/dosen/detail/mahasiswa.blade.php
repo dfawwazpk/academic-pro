@@ -92,8 +92,8 @@
                 </div>
             </div>
             <div class="col-span-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-                <h1 class="font-semibold">Skripsi</h1>
-                <h2 class="text-4xl font-bold" id="statusSkripsi">Belum Mengambil</h2>
+                <h1 class="font-semibold"></h1>
+                <h2 class="text-4xl font-bold" id="statusSkripsi"></h2>
             </div>
         </div>
     </div>
@@ -106,16 +106,60 @@
             semesterButtons.addEventListener('click', function (event) {
                 // Check if the clicked element is a button
                 if (event.target.tagName === 'BUTTON' && event.target.id === '1') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? number_format($khsList->where('semester', 1)->first()->value('ips'), 2, '.', ',') : '0.00' }};
-                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? $khsList->where('semester', 1)->first()->value('sks_semester') : '0' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? number_format($khsList->where('semester', 1)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? $khsList->where('semester', 1)->take(1)->value('sks_semester') : '0' }};
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '2') {
                     document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? number_format($khsList->where('semester', 2)->first()->value('ips'), 2, '.', ',') : '0.00' }};
-                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? $khsList->where('semester', 2)->first()->value('sks_semester') : '0' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? $khsList->where('semester', 2)->take(1)->value('sks_semester') : '0'}};
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '3') {
                     document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? number_format($khsList->where('semester', 3)->first()->value('ips'), 2, '.', ',') : '0.00' }};
-                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? $khsList->where('semester', 3)->first()->value('sks_semester') : '0'}};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? $khsList->where('semester', 3)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '4') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? number_format($khsList->where('semester', 4)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? $khsList->where('semester', 4)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '5') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? number_format($khsList->where('semester', 5)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? $khsList->where('semester', 5)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '6') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? number_format($khsList->where('semester', 6)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? $khsList->where('semester', 6)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '7') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? number_format($khsList->where('semester', 7)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? $khsList->where('semester', 7)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '8') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? number_format($khsList->where('semester', 8)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? $khsList->where('semester', 8)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '9') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? number_format($khsList->where('semester', 9)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? $khsList->where('semester', 9)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '10') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? number_format($khsList->where('semester', 10)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? $khsList->where('semester', 10)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '11') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? number_format($khsList->where('semester', 11)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? $khsList->where('semester', 11)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '12') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? number_format($khsList->where('semester', 12)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? $khsList->where('semester', 12)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '13') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? number_format($khsList->where('semester', 13)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? $khsList->where('semester', 13)->take(1)->value('sks_semester') : '0'}};
+                }
+                else if (event.target.tagName === 'BUTTON' && event.target.id === '14') {
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? number_format($khsList->where('semester', 14)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? $khsList->where('semester', 14)->take(1)->value('sks_semester') : '0'}};
                 }
             });
         });
