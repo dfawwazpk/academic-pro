@@ -2855,6 +2855,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('operator')->truncate();
         DB::table('dosen')->truncate();
+        DB::table('departemen')->truncate();
 
         DB::table('users')->insert(
             [
@@ -2876,6 +2877,16 @@ class DatabaseSeeder extends Seeder
             ],
         );
 
+        DB::table('users')->insert(
+            [
+            'email' => 'departemen@academic.pro',
+            'password' => Hash::make('password'),
+            'role_id' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
+        );
+
         DB::table('operator')->insert([
             'id' => User::where('email', 'atmin@academic.pro')->value('id'),
             'nip' => '696969696969696969',
@@ -2888,6 +2899,13 @@ class DatabaseSeeder extends Seeder
             'id' => User::where('email', 'dosen@academic.pro')->value('id'),
             'nip' => '969696969696969696',
             'nama' => 'Dr. Dosen bin Dosen, S.T., M.Cs.',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('departemen')->insert([
+            'id' => User::where('email', 'departemen@academic.pro')->value('id'),
+            'nama' => 'Departemen Informatika',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

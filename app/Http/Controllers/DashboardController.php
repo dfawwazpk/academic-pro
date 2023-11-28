@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 //use App\Http\Middleware\Operator;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Operator;
 use App\Models\Dosen;
+use App\Models\Departemen;
 // use App\Models\;
 use App\Models\Mahasiswa;
 use App\Models\KHS;
@@ -33,8 +35,11 @@ class DashboardController extends Controller
             ]);
         }
         if (Auth::user()->role_id==2) {
+            $loggedInAccount = Departemen::where('id', Auth::user()->id);
+
             return view('departemen.dashboard', [
-            "title" => "Dashboard"
+            "title" => "Dashboard",
+            "loggedInAccount" => $loggedInAccount,
             ]);
         }
         if (Auth::user()->role_id==3) {

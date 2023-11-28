@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->after('password')->nullable();
+        Schema::table('mahasiswa', function (Blueprint $table) {
+            $table->date('lulus_pkl')->after('dosen_wali')->nullable();
+            $table->date('lulus_skripsi')->after('lulus_pkl')->nullable();
         });
     }
 
@@ -25,8 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('avatar');
+        Schema::table('mahasiswa', function (Blueprint $table) {
+            $table->dropColumn('lulus_pkl');
+            $table->dropColumn('lulus_skripsi');
         });
     }
 };

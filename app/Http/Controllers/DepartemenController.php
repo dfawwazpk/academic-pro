@@ -3,14 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Departemen;
+use Illuminate\Support\Facades\Auth;
 
 class DepartemenController extends Controller
 {
     //
     function listMahasiswa(){
-        return view('departemen.daftar.mahasiswa');
+        $loggedInAccount = Departemen::where('id', Auth::user()->id);
+        return view('departemen.daftar.mahasiswa', [
+            'title' => 'List Mahasiswa',
+            'loggedInAccount' => $loggedInAccount,
+        ]);
     }
     function listDosen(){
-        return view('departemen.daftar.dosen');
+        $loggedInAccount = Departemen::where('id', Auth::user()->id);
+        return view('departemen.daftar.dosen', [
+            'title' => 'List Dosen',
+            'loggedInAccount' => $loggedInAccount,
+        ]);
     }
 }

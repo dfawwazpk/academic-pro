@@ -102,6 +102,10 @@ class VerifikasiController extends Controller
         $pkl->status = 2;
         $pkl->save();
 
+        $mahasiswa = Mahasiswa::where('id', $pkl->mahasiswa_id)->first();
+        $mahasiswa->lulus_pkl = date('Y-m-d');
+        $mahasiswa->save();
+
         return redirect('verifikasi/pkl');
     }
 
@@ -133,6 +137,10 @@ class VerifikasiController extends Controller
         $skripsi = Skripsi::where('id', $id)->first();
         $skripsi->status = 2;
         $skripsi->save();
+
+        $mahasiswa = Mahasiswa::where('id', $skripsi->mahasiswa_id)->first();
+        $mahasiswa->lulus_skripsi = date('Y-m-d');
+        $mahasiswa->save();
 
         return redirect('verifikasi/pkl');
     }

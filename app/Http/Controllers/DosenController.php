@@ -105,39 +105,79 @@ class DosenController extends Controller
             'jalurMasuk' => $jalurMasuk
         ]);
     }
-    function rekapMahasiswa(){
+    function rekapStatus($angkatan, $status){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
-        return view('dosen.rekap.mhs', [
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $statusMahasiswaList = StatusMahasiswa::get();
+        if ($angkatan == '0') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'aktif') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 1);
+            }
+            else if ($status == 'nonaktif') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 2);
+            }
+            else if ($status == 'cuti') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 3);
+            }
+        }
+        return view('dosen.rekap.status', [
             'title' => 'Rekap Mahasiswa',
-            'loggedInAccount' => $loggedInAccount
+            'loggedInAccount' => $loggedInAccount,
+            'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListStatus' => $mahasiswaListStatus->get(),
+            'statusMahasiswaList' => $statusMahasiswaList,
+            'statusMahasiswa' => $status
         ]);
     }
-    function rekapPKL(){
+    function rekapPKL($angkatan, $status){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $pklList = PKL::where('status', 2)->get();
+        if ($angkatan == '0') {
+            $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'sudah') {
+                $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->whereNotNull('lulus_pkl');
+            }
+            else if ($status == 'belum') {
+                $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->whereNull('lulus_pkl');
+            }
+        }
         return view('dosen.rekap.pkl', [
             'title' => 'Rekap PKL',
-            'loggedInAccount' => $loggedInAccount
+            'loggedInAccount' => $loggedInAccount,
+            'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
+            'pklList' => $pklList,
+            'statusPKL' => $status
         ]);
     }
-    function rekapPKL2(){
+    function rekapSkripsi($angkatan, $status){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
-        return view('dosen.rekap.pkl2', [
-            'title' => 'Rekap PKL2',
-            'loggedInAccount' => $loggedInAccount
-        ]);
-    }
-    function rekapSkripsi(){
-        $loggedInAccount = Dosen::where('id', Auth::user()->id);
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $skripsiList = Skripsi::where('status', 2)->get();
+        if ($angkatan == '0') {
+            $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'sudah') {
+                $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->whereNotNull('lulus_skripsi');
+            }
+            else if ($status == 'belum') {
+                $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->whereNull('lulus_skripsi');
+            }
+        }
         return view('dosen.rekap.skripsi', [
             'title' => 'Rekap Skripsi',
-            'loggedInAccount' => $loggedInAccount
-        ]);
-    }
-    function rekapSkripsi2(){
-        $loggedInAccount = Dosen::where('id', Auth::user()->id);
-        return view('dosen.rekap.skripsi2', [
-            'title' => 'Rekap Skripsi2',
-            'loggedInAccount' => $loggedInAccount
+            'loggedInAccount' => $loggedInAccount,
+            'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
+            'skripsiList' => $skripsiList,
+            'statusSkripsi' => $status
         ]);
     }
     function create()
