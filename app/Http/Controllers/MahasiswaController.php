@@ -160,7 +160,7 @@ class MahasiswaController extends Controller
 
     function doImportMhs(Request $request){
         $request->validate([
-            'scan_csv' => 'required|mimes:xls,xlsx',
+            'scan_csv' => 'required|mimes:xls,xlsx,csv',
         ]);
         // dd($request);
         $file = $request->file('scan_csv');
