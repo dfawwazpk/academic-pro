@@ -96,6 +96,7 @@ class DosenController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $pklList = PKL::where('status', 2)->get();
+        $counter = 1;
         if ($angkatan == '0') {
             $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
         } 
@@ -113,13 +114,17 @@ class DosenController extends Controller
             'mahasiswaList' => $mahasiswaList,
             'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
             'pklList' => $pklList,
-            'statusPKL' => $status
+            'statusPKL' => $status,
+            'counter' => $counter
+
         ]);
     }
     function rekapSkripsi($angkatan, $status){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $skripsiList = Skripsi::where('status', 2)->get();
+        $counter = 1;
+
         if ($angkatan == '0') {
             $mahasiswaListAngkatan = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
         } 
@@ -137,7 +142,9 @@ class DosenController extends Controller
             'mahasiswaList' => $mahasiswaList,
             'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
             'skripsiList' => $skripsiList,
-            'statusSkripsi' => $status
+            'statusSkripsi' => $status,
+            'counter' => $counter
+
         ]);
     }
     function create()

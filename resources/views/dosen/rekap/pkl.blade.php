@@ -439,7 +439,11 @@
                             @elseif ($statusPKL == 'belum')
                                 @foreach ($mahasiswaListAngkatan as $mahasiswa)
                                 <tr>
-
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                        <div class="inline-flex items-center gap-x-3">
+                                            <span>{{ $counter++ }}</span>
+                                        </div>
+                                    </td>
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                         <div class="inline-flex items-center gap-x-3">
                                             <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
