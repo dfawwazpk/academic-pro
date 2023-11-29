@@ -26,13 +26,15 @@ class DosenController extends Controller
         $irsList = IRS::where('status', 2)->latest('created_at')->get();
         $statusList = StatusMahasiswa::all();
         $khsList = KHS::where('status', 2)->latest('created_at')->get();
+        $counter = 1;
         return view('dosen.progress.mahasiswa', [
             'title' => 'Progress Mahasiswa',
             'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'irsList' => $irsList,
             'statusList' => $statusList,
-            'khsList' => $khsList
+            'khsList' => $khsList,
+            'counter' => $counter
         ]);
     }
     function detailMahasiswa($id){
@@ -64,6 +66,7 @@ class DosenController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $statusMahasiswaList = StatusMahasiswa::get();
+        $counter = 1;
         if ($angkatan == '0') {
             $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
         } 
@@ -78,13 +81,15 @@ class DosenController extends Controller
                 $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 3);
             }
         }
+         
         return view('dosen.rekap.status', [
             'title' => 'Rekap Mahasiswa',
             'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'mahasiswaListStatus' => $mahasiswaListStatus->get(),
             'statusMahasiswaList' => $statusMahasiswaList,
-            'statusMahasiswa' => $status
+            'statusMahasiswa' => $status, 
+            'counter' => $counter
         ]);
     }
     function rekapPKL($angkatan, $status){
@@ -165,4 +170,5 @@ class DosenController extends Controller
 
         return redirect('/buat/dosen')->with('success', 'Akun dosen baru berhasil dibuat!');
     }
+
 }

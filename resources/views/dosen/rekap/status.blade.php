@@ -330,6 +330,11 @@
                             <tr>
                                 <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center gap-x-3">
+                                        <span>No</span>
+                                    </div>
+                                </th>
+                                <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
                                         <button class="flex items-center gap-x-2">
                                             <span>NIM</span>
@@ -365,7 +370,12 @@
                         @if ($mahasiswaListStatus->count() > 0)
                             @foreach ($mahasiswaListStatus as $mahasiswa)
                             <tr>
-
+                                <tr>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                        <div class="inline-flex items-center gap-x-3">
+                                            <span>{{ $counter++ }}</span>
+                                        </div>
+                                    </td>
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
@@ -401,7 +411,7 @@
                             @endforeach
                         @elseif ($mahasiswaListStatus->count() == 0)
                         <tr>
-                            <td colspan="4" class="px-4 py-4 text-sm font-normal text-gray-700 dark:text-gray-200 whitespace-nowrap" style="text-align: center;">
+                            <td colspan="5" class="px-4 py-4 text-sm font-normal text-gray-700 dark:text-gray-200 whitespace-nowrap" style="text-align: center;">
                                 <div class="inline-flex items-center gap-x-3">
                                     <h1>Tidak ada data</h1>  
                                 </div>

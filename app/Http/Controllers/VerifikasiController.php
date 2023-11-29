@@ -23,12 +23,14 @@ class VerifikasiController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $irsList = IRS::where('status', 1)->get();
+        $counter = 1;
     
         return view('dosen.verifikasi.irs', [
             'title' => 'Verifikasi IRS',
             'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'irsList' => $irsList,
+            'counter' => $counter
         ]);
     }
     
@@ -55,12 +57,14 @@ class VerifikasiController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $khsList = KHS::where('status', 1)->get();
+        $counter = 1;
     
         return view('dosen.verifikasi.khs', [
             'title' => 'Verifikasi KHS',
             'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'khsList' => $khsList,
+            'counter' => $counter
         ]);
     }
 
@@ -87,12 +91,14 @@ class VerifikasiController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $pklList = PKL::where('status', 1)->get();
+        $counter = 1;
     
         return view('dosen.verifikasi.pkl', [
             'title' => 'Verifikasi PKL',
             'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'pklList' => $pklList,
+            'counter' => $counter
         ]);
     }
     
@@ -123,12 +129,14 @@ class VerifikasiController extends Controller
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
         $skripsiList = Skripsi::where('status', 1)->get();
+        $counter = 1;
     
         return view('dosen.verifikasi.skripsi', [
             'title' => 'Verifikasi Skripsi',
             'loggedInAccount' => $loggedInAccount,
             'mahasiswaList' => $mahasiswaList,
             'skripsiList' => $skripsiList,
+            'counter' => $counter
         ]);
     }
     
