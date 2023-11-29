@@ -73,15 +73,27 @@
             <button id="14" class="btn btn-neutral {{ $skripsiList->where('semester', 14)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 14)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 14)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 14)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">14</button>
         </div>
         <div class="grid grid-cols-2 grid-rows-3 gap-2">
-            <div class="col-start-1 row-start-1 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-                <p class="text-xl">IPS</p>
+            <div class="col-span-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+                <h1 class="font-semibold">Semester</h1>
+                <h2 class="text-4xl justify-center text-center" id="semesterValue"></h2>
+            </div>
+            <div class="col-start-1 row-start-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+                <p class="font-semibold">IP Semester</p>
                 <p class="text-3xl justify-center text-center" id="ipsValue"></p>
             </div>
-            <div class="col-start-2 row-start-1 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-                <p class="text-xl">SKS</p>
+            <div class="col-start-2 row-start-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+                <p class="font-semibold">SKS Semester</p>
                 <p class="text-3xl justify-center text-center" id="sksValue"></p>
             </div>
-            <div class="col-span-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+            <div class="col-start-1 row-start-3 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+                <p class="font-semibold">IP Kumulatif</p>
+                <p class="text-3xl justify-center text-center" id="ipkValue"></p>
+            </div>
+            <div class="col-start-2 row-start-3 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+                <p class="font-semibold">SKS Kumulatif</p>
+                <p class="text-3xl justify-center text-center" id="skskValue"></p>
+            </div>
+            {{-- <div class="col-span-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
                 <div class="grid grid-cols-2"> 
                     <div class="row-span-2">
                         <h1 class="font-semibold">PKL</h1>
@@ -90,11 +102,11 @@
                     <h1 class="bg-neutral-50 rounded-full mb-2 font-bold text-black text-center flex justify-center items-center w-auto h-8">Nilai : A</h1>
                     <button class="btn btn-sm rounded-full col-start-2">Unduh</button>
                 </div>
-            </div>
-            <div class="col-span-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+            </div> --}}
+            {{-- <div class="col-span-2 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
                 <h1 class="font-semibold"></h1>
                 <h2 class="text-4xl font-bold" id="statusSkripsi"></h2>
-            </div>
+            </div> --}}
         </div>
     </div>
     <script>
@@ -108,58 +120,100 @@
                 if (event.target.tagName === 'BUTTON' && event.target.id === '1') {
                     document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? number_format($khsList->where('semester', 1)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? $khsList->where('semester', 1)->take(1)->value('sks_semester') : '0' }};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? number_format($khsList->where('semester', 1)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 1)->count() > 0 ? $khsList->where('semester', 1)->take(1)->value('sks_total') : '0' }};
+                    document.getElementById('semesterValue').textContent = '1';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '2') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? number_format($khsList->where('semester', 2)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? number_format($khsList->where('semester', 2)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? $khsList->where('semester', 2)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? number_format($khsList->where('semester', 2)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 2)->count() > 0 ? $khsList->where('semester', 2)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '2';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '3') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? number_format($khsList->where('semester', 3)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? number_format($khsList->where('semester', 3)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? $khsList->where('semester', 3)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? number_format($khsList->where('semester', 3)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 3)->count() > 0 ? $khsList->where('semester', 3)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '3';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '4') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? number_format($khsList->where('semester', 4)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? number_format($khsList->where('semester', 4)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? $khsList->where('semester', 4)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? number_format($khsList->where('semester', 4)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 4)->count() > 0 ? $khsList->where('semester', 4)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '4';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '5') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? number_format($khsList->where('semester', 5)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? number_format($khsList->where('semester', 5)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? $khsList->where('semester', 5)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? number_format($khsList->where('semester', 5)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 5)->count() > 0 ? $khsList->where('semester', 5)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '5';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '6') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? number_format($khsList->where('semester', 6)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? number_format($khsList->where('semester', 6)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? $khsList->where('semester', 6)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? number_format($khsList->where('semester', 6)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 6)->count() > 0 ? $khsList->where('semester', 6)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '6';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '7') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? number_format($khsList->where('semester', 7)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? number_format($khsList->where('semester', 7)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? $khsList->where('semester', 7)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? number_format($khsList->where('semester', 7)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 7)->count() > 0 ? $khsList->where('semester', 7)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '7';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '8') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? number_format($khsList->where('semester', 8)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? number_format($khsList->where('semester', 8)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? $khsList->where('semester', 8)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? number_format($khsList->where('semester', 8)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 8)->count() > 0 ? $khsList->where('semester', 8)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '8';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '9') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? number_format($khsList->where('semester', 9)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? number_format($khsList->where('semester', 9)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? $khsList->where('semester', 9)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? number_format($khsList->where('semester', 9)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 9)->count() > 0 ? $khsList->where('semester', 9)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '9';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '10') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? number_format($khsList->where('semester', 10)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? number_format($khsList->where('semester', 10)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? $khsList->where('semester', 10)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? number_format($khsList->where('semester', 10)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 10)->count() > 0 ? $khsList->where('semester', 10)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '10';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '11') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? number_format($khsList->where('semester', 11)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? number_format($khsList->where('semester', 11)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? $khsList->where('semester', 11)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? number_format($khsList->where('semester', 11)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 11)->count() > 0 ? $khsList->where('semester', 11)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '11';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '12') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? number_format($khsList->where('semester', 12)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? number_format($khsList->where('semester', 12)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? $khsList->where('semester', 12)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? number_format($khsList->where('semester', 12)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 12)->count() > 0 ? $khsList->where('semester', 12)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '12';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '13') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? number_format($khsList->where('semester', 13)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? number_format($khsList->where('semester', 13)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? $khsList->where('semester', 13)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? number_format($khsList->where('semester', 13)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 13)->count() > 0 ? $khsList->where('semester', 13)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '13';
                 }
                 else if (event.target.tagName === 'BUTTON' && event.target.id === '14') {
-                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? number_format($khsList->where('semester', 14)->first()->value('ips'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('ipsValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? number_format($khsList->where('semester', 14)->take(1)->value('ips'), 2, '.', ',') : '0.00' }};
                     document.getElementById('sksValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? $khsList->where('semester', 14)->take(1)->value('sks_semester') : '0'}};
+                    document.getElementById('ipkValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? number_format($khsList->where('semester', 14)->take(1)->value('ipk'), 2, '.', ',') : '0.00' }};
+                    document.getElementById('skskValue').textContent = {{ $khsList->where('semester', 14)->count() > 0 ? $khsList->where('semester', 14)->take(1)->value('sks_total') : '0'}};
+                    document.getElementById('semesterValue').textContent = '14';
                 }
             });
         });
