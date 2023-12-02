@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ImportMahasiswa;
 
+
 class MahasiswaController extends Controller
 {
 
@@ -169,4 +170,11 @@ class MahasiswaController extends Controller
     
         return redirect('/buat/mahasiswa/csv')->with('success', 'Akun mahasiswa baru berhasil dibuat!');
     }
+    public function getKabupatenKota($kode_prov)
+{
+    $kabupatenKota = KabupatenKota::where('kode_prov', $kode_prov)->get();
+
+    return response()->json($kabupatenKota);
+}
+
 }

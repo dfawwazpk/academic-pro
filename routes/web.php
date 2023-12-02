@@ -19,6 +19,8 @@ use App\Models\PKL;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\OperatorController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +72,8 @@ Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth
 //LOGIN PERTAMA
 Route::get('first-time-login', [MahasiswaController::class, 'updateFirst'])->middleware('auth','mahasiswa_firsttime');
 Route::post('first-time-login', [MahasiswaController::class, 'doUpdateFirst'])->middleware('auth','mahasiswa_firsttime');
+Route::get('/getKabupatenKota/{kode_prov}', [MahasiswaController::class, 'getKabupatenKota']);
+
 
 //IRS
 Route::get('riwayat/irs',[IRSController::class,'riwayatIRS'])->middleware('auth','mahasiswa');

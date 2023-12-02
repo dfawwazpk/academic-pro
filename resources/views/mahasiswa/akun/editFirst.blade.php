@@ -1,12 +1,24 @@
 @extends('partials.sidebar')
 @section('container')
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
 
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-4">
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-10 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-4">
         @if (session()->has('success'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ session('warning') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{-- INI BUAT POP UP KETIKA KLIK BUAT (MODAL) --}}
+        <input type="checkbox" id="my_modal_7" class="modal-toggle" checked />
+        <div class="modal bg-gray-800 text-white" role="dialog">
+            <div class="modal-box bg-gray-700">
+                <div class="flex items-center justify-center text-green-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-[#059669] mx-auto h-11 rounded-full bg-[#D1FAE5] w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
+                      </svg>
+                </div>
+                <p class="py-4 text-center text-2xl">{{ session('success') }}</p>
+            </div>
+            <label class="modal-backdrop" for="my_modal_7">Close</label>
         </div>
         @endif
         <div class="flex justify-center items-center ">
@@ -137,4 +149,31 @@
         </div>
     </div>
 </div>
+<script>
+    // Add jQuery script to handle the dynamic population of Kabupaten/Kota dropdown based on the selected Provinsi
+    $(document).ready(function () {
+        $('#provinsi').change(function () {
+            var provinsiValue = $(this).val();
+
+            // Make an AJAX request to fetch Kabupaten/Kota data based on the selected Provinsi
+            $.ajax({
+                type: 'GET',
+                url: '/getKabupatenKota/' + provinsiValue,
+                success: function (data) {
+                    // Clear existing options
+                    $('#kabupaten_kota').empty();
+
+                    // Add new options based on the fetched data
+                    $.each(data, function (key, value) {
+                        $('#kabupaten_kota').append('<option value="' + value.kode_kab + '">' + value.nama_kab + '</option>');
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
 @endsection
