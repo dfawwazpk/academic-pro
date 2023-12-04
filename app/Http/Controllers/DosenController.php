@@ -92,6 +92,16 @@ class DosenController extends Controller
             'counter' => $counter
         ]);
     }
+    function printRekapStatus(){
+        $dosen = Dosen::where('id', Auth::user()->id);
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+         
+        return view('dosen.rekap.statusPrint', [
+            'title' => 'Print Rekap Mahasiswa',
+            'dosen' => $dosen,
+            'mahasiswaList' => $mahasiswaList,
+        ]);
+    }
     function rekapPKL($angkatan, $status){
         $loggedInAccount = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();

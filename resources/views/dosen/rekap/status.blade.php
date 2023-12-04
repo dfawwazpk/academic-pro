@@ -316,6 +316,15 @@
             </div>
         </div>
     </div>
+
+    <div class="grid grid-cols-4 mt-4 mb-4">
+        <div class="col-start-4">
+            <div class="grid grid-cols-2 gap-2">
+                <a href="/rekap/status/cetak" target="_blank" class="btn btn-xs btn-neutral rounded-full col-start-2">Cetak</a>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 <br>

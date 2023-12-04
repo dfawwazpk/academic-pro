@@ -3,7 +3,7 @@
 @section('container')
     <h1 class="text-2xl md:text-3xl text-black font-bold mb-1 p-4">Detail Mahasiswa</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-1 p-4 gap-4 mt-4 mb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-1 p-4 gap-4 -mb-4">
         <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md p-10 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-4">
             <div class="grid grid-cols-2">
                 <div>
@@ -72,8 +72,8 @@
             <button id="13" class="hover:bg-black text-white font-bold rounded-lg shadow-md col-start-2 col-end-4 h-[75px] {{ $skripsiList->where('semester', 13)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 13)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 13)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 13)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">13</button>
             <button id="14" class="hover:bg-black text-white font-bold rounded-lg shadow-md col-start-4 col-end-6 h-[75px] {{ $skripsiList->where('semester', 14)->count() > 0 ? 'bg-green-500' : ($pklList->where('semester', 14)->count() > 0 ? 'bg-yellow-500' : ($khsList->where('semester', 14)->count() > 0 ? 'bg-blue-600' : ($irsList->where('semester', 14)->count() > 0 ? 'bg-blue-400' : 'bg-red-500'))) }}">14</button>
         </div>
-        <div class="grid col-start-2 grid-cols-1 grid-rows-4 bg-blue-500 dark:bg-gray-800 shadow-lg rounded-lg p-4 border-b-4 border-blue-600 dark:border-gray-600">
-            <div id="dynamic-details" class="grid col-start-1 row-start-1 row-end-4 grid-cols-2 grid-rows-3 m-5 gap-2">
+        <div class="grid col-start-2 grid-cols-1 grid-rows-6 bg-blue-500 dark:bg-gray-800 h-[440px] shadow-lg rounded-lg p-4 border-b-4 border-blue-600 dark:border-gray-600">
+            <div id="dynamic-details" class="grid col-start-1 row-start-1 row-end-6 grid-cols-2 grid-rows-3 m-1 gap-2">
                 <div class="col-span-2 row-start-1 text-white font-medium group">
                     <h1 class="font-semibold justify-center text-center">Semester</h1>
                     <h2 class="text-6xl justify-center text-center" id="semesterValue">-</h2>
@@ -109,7 +109,7 @@
                     <h2 class="text-4xl font-bold" id="statusSkripsi"></h2>
                 </div> --}}
             </div>
-            <div id="dynamic-buttons" class="grid col-start-1 row-start-4 grid-cols-4 grid-rows-1 m-5 gap-2 items-end">
+            <div id="dynamic-buttons" class="grid col-start-1 row-start-6 grid-cols-4 grid-rows-1 m-1 gap-2 items-end">
                 <a disabled id="irsButton" href="" class="btn btn-md col-start-1 row-start-1 content-center bg-blue-300 dark:bg-gray-600 shadow-lg rounded-md p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
                     <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
                     <p class="font-semibold">File IRS</p>

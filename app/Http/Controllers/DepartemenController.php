@@ -67,6 +67,14 @@ class DepartemenController extends Controller
             'statusMahasiswa' => $status
         ]);
     }
+    function printRekapStatus(){
+        $mahasiswaList = Mahasiswa::get();
+         
+        return view('departemen.rekap.statusPrint', [
+            'title' => 'Print Rekap Mahasiswa',
+            'mahasiswaList' => $mahasiswaList,
+        ]);
+    }
     function rekapPKL($angkatan, $status){
         $loggedInAccount = Departemen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::get();
