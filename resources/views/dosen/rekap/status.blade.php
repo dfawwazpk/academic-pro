@@ -30,6 +30,97 @@
         </div>
     </div>
 
+    <table class="border-collapse border border-slate-500">
+        <thead>
+            <tr>
+                <th rowspan="2" class="border border-slate-600">status</th>
+                <th colspan="7" class="border border-slate-600">angkatan</th>
+            </tr>
+            <tr>
+                <td class="border border-slate-600">2017</td>
+                <td class="border border-slate-600">2018</td>
+                <td class="border border-slate-600">2019</td>
+                <td class="border border-slate-600">2020</td>
+                <td class="border border-slate-600">2021</td>
+                <td class="border border-slate-600">2022</td>
+                <td class="border border-slate-600">2023</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="">
+                <td class="border border-slate-600 text-center">Aktif</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td>
+            </tr>
+            <tr>
+                <td class="border border-slate-600 text-center">Cuti</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td> 
+            </tr>
+            <tr>
+                <td class="border border-slate-600 text-center">Mangkir</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td> 
+            </tr>
+            <tr>
+                <td class="border border-slate-600 text-center">DO</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td> 
+            </tr>
+            <tr>
+                <td class="border border-slate-600 text-center">Undur Diri</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td> 
+            </tr>
+            <tr>
+                <td class="border border-slate-600 text-center">Lulus</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td> 
+            </tr>
+            <tr>
+                <td class="border border-slate-600 text-center">Meninggal Dunia</td>
+                <td class="border border-slate-600 text-center">1</td>
+                <td class="border border-slate-600 text-center">2</td>
+                <td class="border border-slate-600 text-center">3</td>
+                <td class="border border-slate-600 text-center">4</td>
+                <td class="border border-slate-600 text-center">5</td>
+                <td class="border border-slate-600 text-center">6</td>
+                <td class="border border-slate-600 text-center">7</td> 
+            </tr>                
+        </tbody>    
+      </table>
+    
+
     <div class="flex flex-col mt-4">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-7">
@@ -68,7 +159,6 @@
                                     </div>
                                 </th>
                             </tr>
-                            
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -448,3 +538,5 @@
 
 </section>
 @endsection
+
+=
