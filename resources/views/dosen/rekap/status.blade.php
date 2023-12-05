@@ -379,12 +379,12 @@
                         @if ($mahasiswaListStatus->count() > 0)
                             @foreach ($mahasiswaListStatus as $mahasiswa)
                             <tr>
-                                <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <span>{{ $counter++ }}</span>
-                                        </div>
-                                    </td>
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-x-3">
+                                        <span>{{ $counter++ }}</span>
+                                    </div>
+                                </td>
+                                
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
@@ -434,5 +434,14 @@
             </div>
         </div>
     </div>
+
+    <div class="grid grid-cols-4 mt-4 mb-4">
+        <div class="col-start-4">
+            <div class="grid grid-cols-2 gap-2">
+                <a href="/rekap/status/{{ $angkatanSelected }}/{{ $statusSelected }}/cetak" target="_blank" class="btn btn-xs btn-neutral rounded-full col-start-2">Cetak</a>
+            </div>
+        </div>
+    </div>
+
 </section>
 @endsection

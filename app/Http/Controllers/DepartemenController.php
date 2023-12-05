@@ -64,15 +64,47 @@ class DepartemenController extends Controller
             'mahasiswaList' => $mahasiswaList,
             'mahasiswaListStatus' => $mahasiswaListStatus->get(),
             'statusMahasiswaList' => $statusMahasiswaList,
-            'statusMahasiswa' => $status
+            'statusMahasiswa' => $status,
+            'angkatanSelected' => $angkatan,
+            'statusSelected' => $status
         ]);
     }
-    function printRekapStatus(){
+    function printRekapStatusAll(){
         $mahasiswaList = Mahasiswa::get();
+         
+        return view('departemen.rekap.statusAllPrint', [
+            'title' => 'Print Rekap Mahasiswa',
+            'mahasiswaList' => $mahasiswaList,
+        ]);
+    }
+    function printRekapStatus($angkatan, $status){
+        $mahasiswaList = Mahasiswa::get();
+        $statusMahasiswaList = StatusMahasiswa::get();
+        $counter = 1;
+        if ($angkatan == '0') {
+            $mahasiswaListStatus = Mahasiswa::where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'aktif') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 1);
+            }
+            else if ($status == 'nonaktif') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 2);
+            }
+            else if ($status == 'cuti') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 3);
+            }
+        }
          
         return view('departemen.rekap.statusPrint', [
             'title' => 'Print Rekap Mahasiswa',
             'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListStatus' => $mahasiswaListStatus->get(),
+            'statusMahasiswaList' => $statusMahasiswaList,
+            'statusMahasiswa' => $status, 
+            'counter' => $counter,
+            'angkatanSelected' => $angkatan,
+            'statusSelected' => $status
         ]);
     }
     function rekapPKL($angkatan, $status){

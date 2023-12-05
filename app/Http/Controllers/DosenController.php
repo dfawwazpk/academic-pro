@@ -89,17 +89,51 @@ class DosenController extends Controller
             'mahasiswaListStatus' => $mahasiswaListStatus->get(),
             'statusMahasiswaList' => $statusMahasiswaList,
             'statusMahasiswa' => $status, 
-            'counter' => $counter
+            'counter' => $counter,
+            'angkatanSelected' => $angkatan,
+            'statusSelected' => $status
         ]);
     }
-    function printRekapStatus(){
+    function printRekapStatusAll(){
         $dosen = Dosen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+         
+        return view('dosen.rekap.statusAllPrint', [
+            'title' => 'Print Rekap Mahasiswa',
+            'dosen' => $dosen,
+            'mahasiswaList' => $mahasiswaList,
+        ]);
+    }
+    function printRekapStatus($angkatan, $status){
+        $dosen = Dosen::where('id', Auth::user()->id);
+        $mahasiswaList = Mahasiswa::where('dosen_wali', Auth::user()->id)->get();
+        $statusMahasiswaList = StatusMahasiswa::get();
+        $counter = 1;
+        if ($angkatan == '0') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'aktif') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 1);
+            }
+            else if ($status == 'nonaktif') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 2);
+            }
+            else if ($status == 'cuti') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 3);
+            }
+        }
          
         return view('dosen.rekap.statusPrint', [
             'title' => 'Print Rekap Mahasiswa',
             'dosen' => $dosen,
             'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListStatus' => $mahasiswaListStatus->get(),
+            'statusMahasiswaList' => $statusMahasiswaList,
+            'statusMahasiswa' => $status, 
+            'counter' => $counter,
+            'angkatanSelected' => $angkatan,
+            'statusSelected' => $status
         ]);
     }
     function rekapPKL($angkatan, $status){
