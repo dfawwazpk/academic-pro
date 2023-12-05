@@ -74,11 +74,23 @@ class DosenController extends Controller
             if ($status == 'aktif') {
                 $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 1);
             }
-            else if ($status == 'nonaktif') {
+            else if ($status == 'cuti') {
                 $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 2);
             }
-            else if ($status == 'cuti') {
+            else if ($status == 'mangkir') {
                 $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 3);
+            }
+            else if ($status == 'DO') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 4);
+            }
+            else if ($status == 'undur diri') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 5);
+            }
+            else if ($status == 'lulus') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 6);
+            }
+            else if ($status == 'meninggal dunia') {
+                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 7);
             }
         }
          
@@ -112,16 +124,26 @@ class DosenController extends Controller
         if ($angkatan == '0') {
             $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', '0');
         } 
-        else {
-            if ($status == 'aktif') {
-                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 1);
-            }
-            else if ($status == 'nonaktif') {
-                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 2);
-            }
-            else if ($status == 'cuti') {
-                $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 3);
-            }
+        if ($status == 'aktif') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 1);
+        }
+        else if ($status == 'cuti') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 2);
+        }
+        else if ($status == 'mangkir') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 3);
+        }
+        else if ($status == 'DO') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 4);
+        }
+        else if ($status == 'undur diri') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 5);
+        }
+        else if ($status == 'lulus') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 6);
+        }
+        else if ($status == 'meninggal dunia') {
+            $mahasiswaListStatus = Mahasiswa::where('dosen_wali', Auth::user()->id)->where('angkatan', $angkatan)->where('status', 7);
         }
          
         return view('dosen.rekap.statusPrint', [

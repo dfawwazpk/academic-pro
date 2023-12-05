@@ -1,6 +1,9 @@
 @extends('partials.sidebar')
 
 @section('container')
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+
 <div class="flex items-center mt-6 p-2">
     <a href="/dashboard" class="inline-block">
         <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
@@ -12,21 +15,12 @@
 
  
 <div class="flex justify-end gap-4 p-4">
-    <button href="#" class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-        <span>
-            Ganti Status
-        </span>
-    </button>
     <a href="/buat/mahasiswa" class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
         <span>
             Tambah Akun
         </span>
     </a>
-    <button href="#" class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-        <span>
-            Hapus Akun
-        </span>
-    </button>
+
 </div>
 
 
@@ -59,8 +53,12 @@
                 <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
                     <option value="" {{ request('status')=='' ? 'selected' : ''}}>Semua Status</option>
                     <option value="1" {{ request('status')=='1' ? 'selected' : ''}}>Aktif</option>
-                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Nonaktif</option>
-                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Cuti</option>
+                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Cuti</option>
+                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Mangkir</option>
+                    <option value="4" {{ request('status')=='4' ? 'selected' : ''}}>DO</option>
+                    <option value="5" {{ request('status')=='5' ? 'selected' : ''}}>Undur Diri</option>
+                    <option value="6" {{ request('status')=='6' ? 'selected' : ''}}>Lulus</option>
+                    <option value="7" {{ request('status')=='7' ? 'selected' : ''}}>Meninggal Dunia</option>
                 </select>
             </div>
 
@@ -78,6 +76,8 @@
 </form>
 
 <section class="container px-4 mx-auto">
+
+
     <div class="flex flex-col">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-7">
@@ -121,12 +121,18 @@
                                     </div>
                                 </th> 
 
+                                <th scope="col-span" class="px-4 py-3.5 text-sm font-normal text-center text-gray-500 dark:text-gray-400" colspan="2">
+                                    <div class="flex items-center justify-center">
+                                        <span>Aksi</span>
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
 
                         @foreach ($mahasiswaList as $mahasiswa)
+                        <body x-data="{ openModal_{{ $mahasiswa->id }}: false }">
                         <tr>
 
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
@@ -162,27 +168,44 @@
                             @if ($mahasiswa->status == 1)
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
                                     <h2 class="text-sm font-normal">Aktif</h2>
                                 </div>
                             </td>
 
                             @elseif ($mahasiswa->status == 2)
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    <h2 class="text-sm font-normal">Nonaktif</h2>
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Cuti</h2>
                                 </div>
                             </td>
-
                             @elseif ($mahasiswa->status == 3)
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 dark:bg-gray-800">
-                                    <h2 class="text-sm font-normal">Cuti</h2>
+                                    <h2 class="text-sm font-normal">Mangkir</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 4)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-red-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">DO</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 5)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-red-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Undur Diri</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 6)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60  dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Lulus</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 7)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-red-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Meninggal Dunia</h2>
                                 </div>
                             </td>
                             @endif
@@ -194,6 +217,152 @@
                                     </div>
                                 </div>
                             </td>
+                             <!-- Add this form inside your foreach loop where the button is -->
+                            <td>
+                           <!-- Code 2: Form Triggering Modal -->
+                           <form onsubmit="event.preventDefault(); openStatusChangeModal('{{ $mahasiswa->id }}')" class="inline">
+                                @csrf
+                                <button type="submit" class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                                    <span>Ganti Status</span>
+                                </button>
+                             </form>
+                        
+
+                            <!-- Modal Content -->
+                            <div id="statusChangeModal_{{ $mahasiswa->id }}" class="hidden fixed inset-0 overflow-y-auto">
+                                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    </div>
+                                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                        <!-- Modal Header -->
+                                        <div class="bg-gray-800 text-white py-4 px-6">
+                                            <div class="flex items-center justify-center text-green-500 mb-4">
+                                            </div>
+                                            <p class="text-center text-2xl">Ganti Status</p>
+                                        </div>
+                                        <!-- Modal Body -->
+                                        <form action="{{ route('mahasiswa.changeStatus', ['id' => $mahasiswa->id]) }}" method="post" class="p-6">
+                                            @csrf
+                                            <select name="newStatus" class="mx-auto w-full border rounded-full py-2 px-3 text-black mb-4">
+                                                <option value="1">Aktif</option>
+                                                <option value="2">Cuti</option>
+                                                <option value="3">Mangkir</option>
+                                                <option value="4">DO</option>
+                                                <option value="5">Undur Diri</option>
+                                                <option value="6">Lulus</option>
+                                                <option value="7">Meninggal Dunia</option>
+                                            </select>
+                                            <!-- Modal Footer -->
+                                            <div class="flex justify-end">
+                                                <button type="button" onclick="closeStatusChangeModal('{{ $mahasiswa->id }}')" class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-full">Batal</button>                                                <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-full">Ya, Ganti Status</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </td>
+                            <td> 
+                        <!-- Code 3: Form Triggering Delete Modal -->
+                        <form onsubmit="event.preventDefault(); openDeleteModal('{{ $mahasiswa->id }}')" class="inline">
+                            @csrf
+                            <button type="submit" class="btn btn-sm text-sm text-red-500 capitalize transition-colors duration-200 bg-white border rounded-full hover:text-red-700 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                                <span>Hapus Akun</span>
+                            </button>
+                        </form>
+
+                        <!-- Delete Modal Content -->
+                        <div id="deleteModal_{{ $mahasiswa->id }}" class="hidden fixed inset-0 overflow-y-auto">
+                            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                </div>
+                                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                    <!-- Modal Header -->
+                                    <div class="bg-gray-800 text-white py-4 px-6">
+                                        <div class="flex items-center justify-center text-red-500 mb-4">
+                                        </div>
+                                        <p class="text-center text-2xl">Hapus Akun</p>
+                                    </div>
+                                    <!-- Modal Body -->
+                                    <form action="{{ route('delete.mahasiswa', $mahasiswa->id) }}" method="post" class="p-6">
+                                        @csrf
+                                        @method('DELETE')
+                                        <!-- Modal Footer -->
+                                        <div class="flex justify-center"> <!-- Center the buttons -->
+                                            <button type="button" onclick="closeDeleteModal('{{ $mahasiswa->id }}')" class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-full">Batal</button>
+                                            <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-full">Ya, Hapus Akun</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                            <!-- JavaScript to Control Modal -->
+                            <script>
+                                function openStatusChangeModal(id) {
+                                    document.getElementById('statusChangeModal_' + id).classList.remove('hidden');
+                                }
+                            
+                                function closeStatusChangeModal(id) {
+                                    document.getElementById('statusChangeModal_' + id).classList.add('hidden');
+                                }
+                            </script>
+                            <script>
+                                function openDeleteModal(id) {
+                                    document.getElementById('deleteModal_' + id).classList.remove('hidden');
+                                }
+
+                                function closeDeleteModal(id) {
+                                    document.getElementById('deleteModal_' + id).classList.add('hidden');
+                                }
+                            </script>
+
+
+                                {{-- Backup 
+                            <form action="{{ route('mahasiswa.changeStatus', ['id' => $mahasiswa->id]) }}" method="post" class="inline">
+                                @csrf
+                                <select name="newStatus" class="border rounded-full py-2 px-3 text-black">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Cuti</option>
+                                    <option value="3">Mangkir</option>
+                                    <option value="4">DO</option>
+                                    <option value="5">Undur Diri</option>
+                                    <option value="6">Lulus</option>
+                                    <option value="7">Meninggal Dunia</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                                    <span>Ganti Status</span>
+                                </button>
+                            </form>
+                             </td>
+                             --}}
+                            
+                            
+                            
+                            {{-- Backup 
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                <div class="inline-flex items-center gap-x-3">
+                                    <form action="{{ route('mahasiswa.changeStatus', $mahasiswa->id) }}" method="post">
+                                        @csrf
+                                        @method('post')
+                                        <select name="newStatus" class="form-select">
+                                            <option value="1">Aktif</option>
+                                            <option value="2">Cuti</option>
+                                            <option value="3">Mangkir</option>
+                                            <option value="4">DO</option>
+                                            <option value="5">Undur Diri</option>
+                                            <option value="6">Lulus</option>
+                                            <option value="7">Meninggal Dunia</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 ...">
+                                            <span>Ganti Status</span>
+                                        </button>
+                                    </form>
+                                </div>
+                                --}}
 
                         </tr>
                         @endforeach
@@ -206,4 +375,13 @@
     </div>
 </div>
 </section>
+<script>
+    function openModal() {
+        document.getElementById('statusChangeModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('statusChangeModal').classList.add('hidden');
+    }
+</script>
 @endsection

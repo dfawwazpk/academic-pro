@@ -62,7 +62,7 @@
             </tr>
 
             <tr>
-                <td class="identitas" width="100px">Angkatan</td>
+                <td class="identitas" width="100px">Status</td>
                 <td class="identitas" width="10px">:</td>
                 <td class="identitas" >{{ $angkatanSelected }}</td>
             </tr>
