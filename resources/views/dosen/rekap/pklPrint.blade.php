@@ -44,7 +44,7 @@
     
     <div style="border: 1px solid #000000;min-height: 97%;padding: 10px">
 
-        <h1><center>Rekap Status Mahasiswa Informatika</center></h1>
+        <h1><center>Rekap PKL Mahasiswa Informatika</center></h1>
         <h1><center>Fakultas Sains dan Matematika</center></h1>
         <h1><center>Universitas Diponegoro</center></h1>
 
@@ -68,9 +68,9 @@
             </tr>
 
             <tr>
-                <td class="identitas" width="100px">Status</td>
+                <td class="identitas" width="100px">Status PKL</td>
                 <td class="identitas" width="10px">:</td>
-                <td class="identitas" >{{ ucfirst($statusSelected) }}</td>
+                <td class="identitas" >{{ ucfirst($statusPKL) }}</td>
             </tr>
         </table>
 
@@ -80,20 +80,34 @@
                 <th>NIM</th>
                 <th>Nama</th>
                 <th>Angkatan</th>
-                <th>Status</th>
+                <th>Nilai</th>
             </tr>
 
-            @if ($mahasiswaListStatus->count() > 0)
-                @foreach ($mahasiswaListStatus as $mahasiswa)
-                <tr>
-                    <td>{{ $counter++ }}</td>
-                    <td style="text-align: left;">{{ $mahasiswa->nim }}</td>
-                    <td style="text-align: left;">{{ $mahasiswa->nama }}</td>
-                    <td>{{ $mahasiswa->angkatan }}</td>
-                    <td>{{ $statusMahasiswaList->where('id', $mahasiswa->status)->value('name') }}</td>
-                </tr>
-                @endforeach
-            @elseif ($mahasiswaListStatus->count() == 0)
+            @if ($mahasiswaListAngkatan->count() > 0)
+                @if ($statusPKL == 'sudah')
+                    @foreach ($mahasiswaListAngkatan as $mahasiswa)
+                        @foreach ($pklList->where('mahasiswa_id', $mahasiswa->id) as $pkl)
+                        <tr>
+                            <td>{{ $counter++ }}</td>
+                            <td style="text-align: left;">{{ $mahasiswa->nim }}</td>  
+                            <td style="text-align: left;">{{ $mahasiswa->nama }}</td>
+                            <td>{{ $mahasiswa->angkatan }}</td>
+                            <td>{{ $pkl->nilai }}</td>
+                        </tr>
+                        @endforeach
+                    @endforeach
+                @elseif ($statusPKL == 'belum')
+                    @foreach ($mahasiswaListAngkatan as $mahasiswa)
+                    <tr>
+                        <td>{{ $counter++ }}</td>
+                        <td style="text-align: left;">{{ $mahasiswa->nim }}</td>  
+                        <td style="text-align: left;">{{ $mahasiswa->nama }}</td>
+                        <td>{{ $mahasiswa->angkatan }}</td>
+                        <td>-</td>
+                    </tr>
+                    @endforeach
+                @endif
+            @elseif ($mahasiswaListAngkatan->count() == 0)
             <tr>
                 <td align="center" colspan="5">Tidak ada data</td>
             </tr>

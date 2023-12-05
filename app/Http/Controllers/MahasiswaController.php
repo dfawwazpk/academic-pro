@@ -20,47 +20,6 @@ use App\Imports\ImportMahasiswa;
 
 class MahasiswaController extends Controller
 {
-
-    function list(Request $request)
-    {
-        $mahasiswa = DB::select(
-            "SELECT nim, nama, angkatan, dosen_wali, status from mahasiswa
-            WHERE nim LIKE '%$request->s%'
-            OR nama LIKE '%$request->s%'
-            OR dosen_wali LIKE '%$request->s%'
-            OR status LIKE '%$request->s%'",
-        );
-
-        return view('operator.daftar.mahasiswa', ['mahasiswa' => $mahasiswa]);
-    }
-
-    function show ($idmhs)
-    {
-        $mahasiswa = DB::select(
-            "SELECT nim, nama, angkatan, dosen_wali, status from mahasiswa", [$idmhs]
-        );
-
-        return view('buatAkunMahasiswa.show', ['mahasiswa' => $mahasiswa]);
-    }
-
-    function entryData(){
-        $entrymhs = Mahasiswa::all('id', 'nim');
-        
-        return view('buatAkunMahasiswa.create', ['entrymhs' => $entrymhs]);
-    }
-
-    function editData()
-    {
-        $user = Auth::user();
-        $mahasiswa = $user->mahasiswa;
-
-        if ($this->isDataComplete($mahasiswa)) {
-            return redirect()->route('dashboard')->with('info', 'Anda telah melengkapi data pribadi.');
-        }
-
-        return view('mahasiswa.editData', ['mahasiswa' => $mahasiswa, 'nama' => $user->nama]);
-    }
-
     function updateFirst(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         $nim = Mahasiswa::where('id', Auth::user()->id)->value('nim');
@@ -154,6 +113,7 @@ class MahasiswaController extends Controller
     function importMhs(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
         return view('operator.buat.mahasiswabatch',[
+            "title" => "Impor Akun Mahasiswa",
             "loggedInAccount" => $loggedInAccount,
         ]);
         

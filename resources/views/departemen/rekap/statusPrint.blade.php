@@ -65,7 +65,7 @@
         <table class="content">
             <tr>
                 <th>No</th>
-                <th>Nim</th>
+                <th>NIM</th>
                 <th>Nama</th>
                 <th>Angkatan</th>
                 <th>Status</th>
@@ -75,8 +75,8 @@
                 @foreach ($mahasiswaListStatus as $mahasiswa)
                 <tr>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $mahasiswa->nim }}</td>
-                    <td>{{ $mahasiswa->nama }}</td>
+                    <td style="text-align: left;">{{ $mahasiswa->nim }}</td>
+                    <td style="text-align: left;">{{ $mahasiswa->nama }}</td>
                     <td>{{ $mahasiswa->angkatan }}</td>
                     <td>{{ $statusMahasiswaList->where('id', $mahasiswa->status)->value('name') }}</td>
                 </tr>
