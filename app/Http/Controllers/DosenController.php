@@ -296,8 +296,8 @@ class DosenController extends Controller
     }
     public function destroy($id)
     {
-        $dosen = Dosen::findOrFail($id);
-        $dosen->delete();
+        $akun_dosen = User::findOrFail($id);
+        $akun_dosen->delete();
 
         return redirect('/daftar/dosen')->with('success', 'Akun dosen berhasil dihapus!');
     }
