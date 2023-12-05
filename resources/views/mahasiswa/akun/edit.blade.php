@@ -3,7 +3,6 @@
 @section('container')
 <div class="relative bg-indigo-200 dark:bg-indigo-500 p-7 sm:p-7 rounded-sm overflow-hidden mb-10 mt-10">
   <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Edit Profile {{-- {{ Auth::user()->name }} --}} </h1>
-  
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-5">
@@ -15,13 +14,14 @@
         <div class="modal-box bg-gray-700">
             <div class="flex items-center justify-center text-green-500">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-[#059669] mx-auto h-11 rounded-full bg-[#D1FAE5] w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
-                  </svg>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
+                </svg>
             </div>
             <p class="py-4 text-center text-2xl">{{ session('success') }}</p>
         </div>
         <label class="modal-backdrop" for="my_modal_7">Close</label>
     </div>
+    @endif
   <div class="flex justify-center items-center ">
   <form action="/edit-akun" method="post" enctype="multipart/form-data">
     @csrf
