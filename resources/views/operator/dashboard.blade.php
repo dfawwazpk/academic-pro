@@ -11,7 +11,7 @@
         </div>
         <div class="text-center">
             <p class="text-5xl justify-center text-center">{{$jumlahMhs}}</p>
-            <p>Mahasiswa</p>
+            <p class="text justify-center">Mahasiswa</p>
         </div>
     </div>
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-20 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
@@ -37,20 +37,20 @@
     <!-- Buat Akun Mahasiswa -->
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
         <div class="flex justify-center w-15 h-14">
-        </div>
-        <div class="text-left">
-            <a href="/buat/mahasiswa" class="text-3xl text-left">Buat Akun Mahasiswa</a>
-            <p href="/buat/mahasiswa" class="text-left">Buat akun baru untuk mahasiswa</p>
+            <div class="text-left">
+                <a href="/buat/mahasiswa" class="text-3xl text-left">Buat Akun Mahasiswa</a>
+                <p href="/buat/mahasiswa" class="text-left">Buat akun baru untuk mahasiswa</p>
+            </div>
         </div>
     </div>
 
     <!-- Buat Akun Dosen -->
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-left p-4 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-2 ">
-        <div class="flex justify-center w-15 h-14">
-        </div>
-        <div class="text-center">
-            <p class="text-3xl text-center">Buat Akun Dosen</p>
-            <p class="text-left">Buat akun baru untuk dosen</p>
+        <div class="flex justify-center w-15 h-14">    
+            <div class="text-left">
+                <a href="/buat/dosen" class="text-3xl text-left">Buat Akun Dosen</a>
+                <p href="/buat/dosen" class="text-left">Buat akun baru untuk Dosen</p>
+            </div>
         </div>
     </div>
 </div>

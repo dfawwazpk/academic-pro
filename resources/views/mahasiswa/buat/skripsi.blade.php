@@ -1,8 +1,13 @@
 @extends('partials.sidebar')
 @section('container')
 
-<div class="sm:p-6 mb-4">
-    <h1 class="text-2xl md:text-3xl text-black font-bold mb-1">Input Skripsi</h1>
+<div class="flex items-center mt-6 p-2">
+    <a href="/riwayat/skripsi" class="inline-block">
+        <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
+        </svg>
+    </a>            
+    <h1 class="text-xl md:text-3xl text-black font-bold mb-1 p-1">Buat Skripsi</h1>
 </div>
 
 <form action="/buat/skripsi" method="post" enctype="multipart/form-data">
@@ -41,7 +46,7 @@
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
-        <div class="row-start-1 row-span-2 font-bold">
+        <div class="row-start-1 row-span-2 col-start-2 font-bold">
             <h1 class="font-bold">Unggah Berita Acara</h1>
             <div class="form-control w-full max-w-xs">
                 <input type="file" name="scan_skripsi" id="scan_skripsi" class="file-input file-input-bordered w-full max-w-xs" />

@@ -1,12 +1,16 @@
 @extends('partials.sidebar')
 
 @section('container')
-<div class="relative bg-indigo-200 dark:bg-indigo-500 p-7 sm:p-7 rounded-sm overflow-hidden mb-10 mt-10">
-    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Daftar Dosen {{-- {{ Auth::user()->name }} --}} </h1>
-    
+<div class="flex items-center mt-6 p-2">
+    <a href="/dashboard" class="inline-block">
+        <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
+        </svg>
+    </a>            
+    <h1 class="text-xl md:text-3xl text-black font-bold mb-1 p-1">Daftar Dosen</h1>
 </div>
 
-<div class="flex justify-end p-4 gap-4">
+<div class="flex justify-end p-3 ml-4">
     <a href="/buat/dosen" class="btn btn-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
         <span class="">Tambah Akun</span>
     </a>
@@ -31,7 +35,7 @@
 
 {{-- Nav Diatas Tabel --}}
 <form action="/daftar/dosen">
-    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5 p-3 gap-4">
         <div class="mb-2 col-span-5 flex items-center">
             <div class="w-full">
                 <input type="text" name="search" class="border rounded w-full py-2 px-4 text-black" id="search" placeholder="Cari NIP/Nama" value="{{ request('search') }}">
@@ -50,7 +54,6 @@
                             <tr>
                                 <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
                                         <button class="flex items-center gap-x-2">
                                             <span>NIP</span>
                                         </button>
@@ -75,8 +78,6 @@
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                         <div class="inline-flex items-center gap-x-3">
-                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
                                             <span>{{ $dosen->nip }}</span>
                                         </div>
                                     </td>
