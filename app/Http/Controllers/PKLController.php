@@ -38,7 +38,7 @@ class PKLController extends Controller
     function doBuatPKL(Request $request)
     {
         $request->validate([
-            'semester' => 'required|numeric',
+            'semester' => 'required|numeric|min:6',
             'nilai' => 'required|numeric',
             'scan_pkl' => 'required|file|mimes:pdf|max:2048',
         ]);
