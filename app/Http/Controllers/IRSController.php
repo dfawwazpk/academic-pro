@@ -36,13 +36,35 @@ class IRSController extends Controller
     function doBuatIRS(Request $request)
     {
         $request->validate([
-            'semester' => 'required|numeric',
             'sks' => 'required|numeric',
             'scan_irs' => 'required|file|mimes:pdf|max:2048',
         ]);
     
+        // Mendapatkan semester terakhir yang diisi IRS oleh pengguna
+        $lastFilledSemester = IRS::where('mahasiswa_id', Auth::user()->id)->max('semester');
+    
+        // Mendapatkan semester terakhir yang divalidasi di KHS
+        $lastValidatedSemester = KHS::where('mahasiswa_id', Auth::user()->id)
+            ->where('status', 2)
+            ->latest('created_at')
+            ->take(1)
+            ->value('semester');
+    
+        // Menggunakan semester terakhir yang divalidasi di KHS jika ada, atau 1 jika belum ada
+        $nextSemester = $lastValidatedSemester ? $lastValidatedSemester + 1 : 1;
+    
+        // Memeriksa apakah semester yang diajukan sesuai dengan aturan yang diizinkan
+        if ($request->filled('semester') && $request->semester != $nextSemester) {
+            return redirect()->back()->with('error', 'Anda hanya dapat mengisi IRS untuk semester berikutnya.');
+        }
+    
+        // Menggunakan nilai semester yang dihitung
+        $semesterToFill = $request->filled('semester') ? $request->semester : $nextSemester;
+    
+        // ... (lanjutkan dengan logika lainnya)
+    
         $irs = new IRS;
-        $irs->semester = $request->semester;
+        $irs->semester = $semesterToFill;
         $irs->sks_diambil = $request->sks;
         $irs->status = 1;
         $irs->file = $request->file('scan_irs')->store('irs', 'public');
@@ -51,4 +73,6 @@ class IRSController extends Controller
     
         return redirect('/riwayat/irs')->with('success', 'IRS telah berhasil dibuat.');
     }
+    
+    
 }
