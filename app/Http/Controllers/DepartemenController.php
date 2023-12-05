@@ -71,7 +71,6 @@ class DepartemenController extends Controller
     }
     function printRekapStatusAll(){
         $mahasiswaList = Mahasiswa::get();
-         
         return view('departemen.rekap.statusAllPrint', [
             'title' => 'Print Rekap Mahasiswa',
             'mahasiswaList' => $mahasiswaList,
@@ -128,7 +127,40 @@ class DepartemenController extends Controller
             'mahasiswaList' => $mahasiswaList,
             'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
             'pklList' => $pklList,
-            'statusPKL' => $status
+            'statusPKL' => $status,
+            'angkatanSelected' => $angkatan
+        ]);
+    }
+    function printRekapPKLAll(){
+        $mahasiswaList = Mahasiswa::get();
+        return view('departemen.rekap.pklAllPrint', [
+            'title' => 'Print Rekap PKL',
+            'mahasiswaList' => $mahasiswaList,
+        ]);
+    }
+    function printRekapPKL($angkatan, $status){
+        $mahasiswaList = Mahasiswa::get();
+        $pklList = PKL::where('status', 2)->get();
+        $counter = 1;
+        if ($angkatan == '0') {
+            $mahasiswaListAngkatan = Mahasiswa::where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'sudah') {
+                $mahasiswaListAngkatan = Mahasiswa::where('angkatan', $angkatan)->whereNotNull('lulus_pkl');
+            }
+            else if ($status == 'belum') {
+                $mahasiswaListAngkatan = Mahasiswa::where('angkatan', $angkatan)->whereNull('lulus_pkl');
+            }
+        }
+        return view('departemen.rekap.pklPrint', [
+            'title' => 'Print Rekap PKL',
+            'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
+            'pklList' => $pklList,
+            'statusPKL' => $status,
+            'counter' => $counter,
+            'angkatanSelected' => $angkatan
         ]);
     }
     function rekapSkripsi($angkatan, $status){
@@ -152,7 +184,41 @@ class DepartemenController extends Controller
             'mahasiswaList' => $mahasiswaList,
             'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
             'skripsiList' => $skripsiList,
-            'statusSkripsi' => $status
+            'statusSkripsi' => $status,
+            'angkatanSelected' => $angkatan
+        ]);
+    }
+    function printRekapSkripsiAll(){
+        $mahasiswaList = Mahasiswa::get();
+        return view('departemen.rekap.skripsiAllPrint', [
+            'title' => 'Rekap Skripsi',
+            'mahasiswaList' => $mahasiswaList,
+        ]);
+    }
+    function printRekapSkripsi($angkatan, $status){
+        $mahasiswaList = Mahasiswa::get();
+        $skripsiList = Skripsi::where('status', 2)->get();
+        $counter = 1;
+
+        if ($angkatan == '0') {
+            $mahasiswaListAngkatan = Mahasiswa::where('angkatan', '0');
+        } 
+        else {
+            if ($status == 'sudah') {
+                $mahasiswaListAngkatan = Mahasiswa::where('angkatan', $angkatan)->whereNotNull('lulus_skripsi');
+            }
+            else if ($status == 'belum') {
+                $mahasiswaListAngkatan = Mahasiswa::where('angkatan', $angkatan)->whereNull('lulus_skripsi');
+            }
+        }
+        return view('departemen.rekap.skripsiPrint', [
+            'title' => 'Rekap Skripsi',
+            'mahasiswaList' => $mahasiswaList,
+            'mahasiswaListAngkatan' => $mahasiswaListAngkatan->get(),
+            'skripsiList' => $skripsiList,
+            'statusSkripsi' => $status,
+            'counter' => $counter,
+            'angkatanSelected' => $angkatan
         ]);
     }
 }

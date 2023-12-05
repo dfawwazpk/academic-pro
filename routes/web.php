@@ -136,6 +136,10 @@ Route::get('rekap/skripsi/{angkatan}/{status}', [DosenController::class, 'rekapS
 //PRINT REKAP MAHASISWA
 Route::get('rekap/status/cetak', [DosenController::class, 'printRekapStatusAll'])->middleware('auth','dosen');
 Route::get('rekap/status/{angkatan}/{status}/cetak', [DosenController::class, 'printRekapStatus'])->middleware('auth','dosen');
+Route::get('rekap/pkl/cetak', [DosenController::class, 'printRekapPKLAll'])->middleware('auth','dosen');
+Route::get('rekap/pkl/{angkatan}/{status}/cetak', [DosenController::class, 'printRekapPKL'])->middleware('auth','dosen');
+Route::get('rekap/skripsi/cetak', [DosenController::class, 'printRekapSkripsiAll'])->middleware('auth','dosen');
+Route::get('rekap/skripsi/{angkatan}/{status}/cetak', [DosenController::class, 'printRekapSkripsi'])->middleware('auth','dosen');
 
 //-------------------------------- DEPARTEMEN --------------------------------//
 
@@ -151,3 +155,7 @@ Route::get('departemen/rekap/skripsi/{angkatan}/{status}', [DepartemenController
 //PRINT REKAP MAHASISWA
 Route::get('departemen/rekap/status/cetak', [DepartemenController::class, 'printRekapStatusAll'])->middleware('auth','departemen');
 Route::get('departemen/rekap/status/{angkatan}/{status}/cetak', [DepartemenController::class, 'printRekapStatus'])->middleware('auth','departemen');
+Route::get('departemen/rekap/pkl/cetak', [DepartemenController::class, 'printRekapPKLAll'])->middleware('auth','departemen');
+Route::get('departemen/rekap/pkl/{angkatan}/{status}/cetak', [DepartemenController::class, 'printRekapPKL'])->middleware('auth','departemen');
+Route::get('departemen/rekap/skripsi/cetak', [DepartemenController::class, 'printRekapSkripsiAll'])->middleware('auth','departemen');
+Route::get('departemen/rekap/skripsi/{angkatan}/{status}/cetak', [DepartemenController::class, 'printRekapSkripsi'])->middleware('auth','departemen');
