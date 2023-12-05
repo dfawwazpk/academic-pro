@@ -88,6 +88,7 @@
                                         </div>
                                     </div>
                                 </td>
+                                {{-- Ini Hapus Aken Dosen tapi masi refer ke dosen id blm ke user id --}}
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <form id="deleteForm_{{ $dosen->id }}" action="{{ route('delete.dosen', $dosen->id) }}" method="post">
@@ -95,10 +96,18 @@
                                             @method('DELETE')
                                         </form>
                                 
+
                                         <button type="button" onclick="confirmDelete('{{ $dosen->id }}')" class="btn btn-sm text-sm text-red-500 hover:text-red-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
                                             <span>Hapus Akun</span>
                                         </button>
                                     </div>
+                                {{-- Styling Backup 
+                                    
+                                    <a href ="/verifikasi/irs/tolak/{{ $irs->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-red-600 rounded-full whitespace-nowrap" style="width: 100px;">
+                                        <div class="inline-flex items-center gap-x-2">
+                                            <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
+                                        </div>
+                                    </a> --}}
                                 
                                     <script>
                                         function confirmDelete(id) {
