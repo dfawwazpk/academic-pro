@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KHS;
+use App\Models\IRS;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +36,6 @@ class KHSController extends Controller
     function doBuatKHS(Request $request)
     {
         $request->validate([
-            'semester' => 'required|numeric',
             'sks_semester' => 'required|numeric',
             'sks_total' => 'required|numeric',
             'ips' => 'required|numeric',
@@ -43,8 +43,29 @@ class KHSController extends Controller
             'scan_khs' => 'required|file|mimes:pdf|max:2048',
         ]);
     
+        // Mendapatkan semester terakhir yang diisi KHS oleh pengguna
+        $lastFilledSemester = KHS::where('mahasiswa_id', Auth::user()->id)->max('semester');
+    
+        // Mendapatkan semester terakhir yang divalidasi di IRS
+        $lastValidatedSemester = IRS::where('mahasiswa_id', Auth::user()->id)
+            ->where('status', 2)
+            ->latest('created_at')
+            ->take(1)
+            ->value('semester');
+    
+        // Menggunakan semester terakhir yang divalidasi di IRS jika ada, atau 1 jika belum ada
+        $nextSemester = $lastValidatedSemester ? $lastValidatedSemester + 1 : 1;
+    
+        // Memeriksa apakah semester yang diajukan sesuai dengan aturan yang diizinkan
+        if ($request->filled('semester') && $request->semester != $nextSemester) {
+            return redirect()->back()->with('error', 'Anda hanya dapat mengisi KHS untuk semester berikutnya.');
+        }
+    
+        // Menggunakan nilai semester yang dihitung
+        $semesterToFill = $request->filled('semester') ? $request->semester : $nextSemester;
+    
         $khs = new KHS;
-        $khs->semester = $request->semester;
+        $khs->semester = $semesterToFill;
         $khs->sks_semester = $request->sks_semester;
         $khs->sks_total = $request->sks_total;
         $khs->ips = $request->ips;
@@ -56,4 +77,5 @@ class KHSController extends Controller
     
         return redirect('/riwayat/khs')->with('success', 'KHS telah berhasil dibuat.');
     }
+    
 }
