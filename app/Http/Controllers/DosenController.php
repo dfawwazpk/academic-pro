@@ -221,5 +221,11 @@ class DosenController extends Controller
 
         return redirect('/buat/dosen')->with('success', 'Akun dosen baru berhasil dibuat!');
     }
+    public function destroy($id)
+    {
+        $dosen = Dosen::findOrFail($id);
+        $dosen->delete();
 
+        return redirect('/daftar/dosen')->with('success', 'Akun dosen berhasil dihapus!');
+    }
 }

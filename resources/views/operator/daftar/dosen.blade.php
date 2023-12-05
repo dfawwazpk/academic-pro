@@ -7,9 +7,6 @@
 </div>
 
 <div class="flex justify-end p-4 gap-4">
-    <button class="btn btn-sm text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-        <span>Hapus Akun</span>
-    </button>
     <a href="/buat/dosen" class="btn btn-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
         <span class="">Tambah Akun</span>
     </a>
@@ -44,7 +41,7 @@
 </form>
 
 <section class="container px-4 mx-auto">
-    <div class="flex flex-col">
+    <div class="flex flex-col col-span-3">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-7">
                 <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -56,22 +53,19 @@
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
                                         <button class="flex items-center gap-x-2">
                                             <span>NIP</span>
-
-                                            <svg xmlns="http://www.w3.org/2000/svg"  height="1em" viewBox="0 0 320 512" fill=white> 
-                                                <path  d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"/></svg>
                                         </button>
                                     </div>
                                 </th>
-                                <th scope="col" class="px-3.5 py-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 flex items-center">
+                                <th scope="col" class="px-3.5 py-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 flex items-center" col-span="2">
                                     <div class= "flex items-center gap-x-2">
                                     <span>Nama</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg"  height="1em"  viewBox="0 0 320 512" fill="white">
-                                        <path d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z" />
-                                    </svg>
                                     </div>
                                 </th>
-                                
-                            
+                                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class= "flex items-center gap-x-2">
+                                    <span>Aksi</span>
+                                    </div>
+                                </th> 
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
@@ -80,12 +74,12 @@
                             <tr>
 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
+                                        <div class="inline-flex items-center gap-x-3">
+                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
 
-                                        <span>{{ $dosen->nip }}</span>
-                                    </div>
-                                </td>
+                                            <span>{{ $dosen->nip }}</span>
+                                        </div>
+                                    </td>
 
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
@@ -94,7 +88,26 @@
                                         </div>
                                     </div>
                                 </td>
-
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-x-3">
+                                        <form id="deleteForm_{{ $dosen->id }}" action="{{ route('delete.dosen', $dosen->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                
+                                        <button type="button" onclick="confirmDelete('{{ $dosen->id }}')" class="btn btn-sm text-sm text-red-500 hover:text-red-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                                            <span>Hapus Akun</span>
+                                        </button>
+                                    </div>
+                                
+                                    <script>
+                                        function confirmDelete(id) {
+                                            if (confirm('Apakah Anda yakin ingin menghapus akun ini?')) {
+                                                document.getElementById('deleteForm_' + id).submit();
+                                            }
+                                        }
+                                    </script>
+                                </td>
                             </tr>
                             @endforeach
 
