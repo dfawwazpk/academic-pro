@@ -61,9 +61,9 @@
                     </a>
                 </nav>
     
-                <a href="#" class="flex items-center px-4 -mx-2">
+                <a href="" class="flex items-center px-4 -mx-2">
                 <div class="flex flex-col">
-                    <div class="h-16 w-16 rounded-full overflow-hidden ml-5 mb-2">
+                    <div class="h-12 w-12 rounded-full overflow-hidden ml-2 mb-2">
                         <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}" alt="avatar">
                     </div>
                     <span class="text-sm font-medium text-gray-700 dark:text-gray-200 object-contain ml-4" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}">{{ $loggedInAccount->value('nama') }}</span>
@@ -236,9 +236,9 @@
                 </a>
             </nav>
 
-            <a href="#" class="flex items-center px-4 -mx-2">
+            <a href="/edit-akun" class="flex items-center px-4 -mx-2">
                 <div class="flex flex-col">
-                    <div class="h-16 w-16 rounded-full overflow-hidden ml-5 mb-2">
+                    <div class="h-16 w-16 rounded-full overflow-hidden mt-4">
                         <img src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}" alt="avatar">
                     </div>
                     <span class="text-sm font-medium text-gray-700 dark:text-gray-200 object-contain ml-4" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://i.ibb.co/P6QfJFc/default-avatar-small.jpg' }}">{{ $loggedInAccount->value('nama') }}</span>

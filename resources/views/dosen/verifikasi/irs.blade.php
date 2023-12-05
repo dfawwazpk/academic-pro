@@ -1,9 +1,13 @@
 @extends('partials.sidebar')
 
 @section('container')
-<div class="relative bg-indigo-200 dark:bg-indigo-500 p-7 sm:p-7 rounded-sm overflow-hidden mb-10 mt-10">
-    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">Verifikasi IRS {{-- {{ Auth::user()->name }} --}} </h1>
-    
+<div class="flex items-center mt-6 p-2">
+    <a href="/dashboard" class="inline-block">
+        <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
+        </svg>
+    </a>            
+    <h1 class="text-xl md:text-3xl text-black font-bold mb-1 p-1">Verifikasi IRS</h1>
 </div>
 {{--  
 <div class="grid grid-cols-2">
@@ -64,7 +68,6 @@
                                 </th>
                                 <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center gap-x-3">
-                                        <div class="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
                                         <button class="flex items-center gap-x-2">
                                             <span>NIM</span>
                                         </button>

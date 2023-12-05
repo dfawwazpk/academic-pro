@@ -2,6 +2,8 @@
 
 @section('container')
 
+
+
 <section class="container px-4 mx-auto">
     
     <div class="flex flex-col items-center p-7 sm:p-20 justify-center">

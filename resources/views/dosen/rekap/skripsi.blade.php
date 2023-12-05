@@ -3,15 +3,19 @@
 
 @section('container')
 
+<div class="flex items-center mt-6 p-2">
+    <a href="/rekap/status/0/0" class="inline-block">
+        <svg class="w-5 h-5 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
+        </svg>
+    </a>            
+    <h1 class="text-xl md:text-3xl text-black font-bold mb-1 p-1">Rekap Skripsi</h1>
+</div>
+
 <section class="container px-4 mx-auto">
     
     <div class="flex flex-col items-center p-7 sm:p-20 justify-center">
-        <div class="flex items-center mb-4">
-            <a href="/rekap/status/0/0" class="inline-block">
-                <svg class="w-6 h-6 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
-                </svg>
-            </a>            
+        <div class="flex items-center mb-4">          
             <h1 class="text-2xl md:text-3xl text-black font-bold mb-1 p-1">Rekap Skripsi Mahasiswa Informatika</h1>
         </div>
         <h1 class="text-2xl md:text-2xl text-black font-bold mb-1">Fakultas Sains dan Matematika</h1>
@@ -369,7 +373,6 @@
                                 </th>
                                 <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center gap-x-3">
-                                        <div class="border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
                                         <div class="flex items-center gap-x-2">
                                             <span>NIM</span>
                                         </div>
