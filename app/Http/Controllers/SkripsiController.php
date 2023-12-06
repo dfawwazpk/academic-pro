@@ -57,7 +57,7 @@ class SkripsiController extends Controller
         $totalSks = $totalSksKHS + $totalSksSkripsi;
     
         // Memeriksa apakah total SKS sudah mencapai 120
-        if ($totalSks < 120) {
+        if ($totalSksKHS < 120) {
             return redirect()->back()->with('error', 'Total SKS harus mencapai 120 sebelum mengajukan Skripsi.');
         }
     

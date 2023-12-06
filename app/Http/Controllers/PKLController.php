@@ -57,7 +57,7 @@ class PKLController extends Controller
         $totalSks = $totalSksKHS + $totalSksPKL;
     
         // Memeriksa apakah total SKS sudah mencapai 100
-        if ($totalSks < 100) {
+        if ($totalSksKHS < 100) {
             return redirect()->back()->with('error', 'Total SKS harus mencapai 100 sebelum mengajukan PKL.');
         }
     
