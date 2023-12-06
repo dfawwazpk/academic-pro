@@ -66,10 +66,22 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Aktif',
             ],
             [
-                'name' => 'Nonaktif',
+                'name' => 'Cuti',
             ],
             [
-                'name' => 'Cuti',
+                'name' => 'Mangkir',
+            ],
+            [
+                'name' => 'DO',
+            ],
+            [
+                'name' => 'Undur Diri',
+            ],
+            [
+                'name' => 'Lulus',
+            ],
+            [
+                'name' => 'Meninggal Dunia',
             ],
         ];
 
