@@ -43,6 +43,24 @@ class PKLController extends Controller
             'scan_pkl' => 'required|file|mimes:pdf|max:2048',
         ]);
     
+        // Mendapatkan total SKS dari KHS (sks_total)
+        $totalSksKHS = KHS::where('mahasiswa_id', Auth::user()->id)
+            ->where('status', 2)
+            ->latest('created_at')
+            ->take(1)
+            ->value('sks_total');
+    
+        // Menambahkan total SKS PKL yang diajukan
+        $totalSksPKL = $request->nilai; // Misalnya, nilai dijadikan jumlah SKS PKL
+    
+        // Menghitung total SKS keseluruhan
+        $totalSks = $totalSksKHS + $totalSksPKL;
+    
+        // Memeriksa apakah total SKS sudah mencapai 100
+        if ($totalSksKHS < 100) {
+            return redirect()->back()->with('error', 'Total SKS harus mencapai 100 sebelum mengajukan PKL.');
+        }
+    
         $pkl = new PKL;
         $pkl->semester = $request->semester;
         $pkl->nilai = $request->nilai;
@@ -50,9 +68,10 @@ class PKLController extends Controller
         $pkl->status = 1;
         $pkl->file = $request->file('scan_pkl')->store('pkl', 'public');
         $pkl->mahasiswa_id = Auth::user()->id;
-
+    
         $pkl->save();
     
         return redirect('/riwayat/pkl')->with('success', 'PKL telah berhasil dibuat.');
     }
+    
 }

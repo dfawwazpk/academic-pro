@@ -63,353 +63,97 @@
         </table>
 
         <table class="content">
-                <tr>
-                    <td rowspan="2" class="border border-slate-600 ">Status</td>
-                    <td colspan="8" class="border border-slate-600 ">Angkatan</td>
-                 
-                </tr>
-                <tr>
-                    <td class="border border-slate-600 text-center ">2016</td>
-                    <td class="border border-slate-600 text-center ">2017</td>
-                    <td class="border border-slate-600 text-center ">2018</td>
-                    <td class="border border-slate-600 text-center ">2019</td>
-                    <td class="border border-slate-600 text-center ">2020</td>
-                    <td class="border border-slate-600 text-center ">2021</td>
-                    <td class="border border-slate-600 text-center ">2022</td>
-                    <td class="border border-slate-600  text-center ">2023</td>
-                </tr>
-            </thead>
-            <tbody >
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>Aktif</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 1)->count() }}</span>
-                        </div>
-                    </td>
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>Cuti</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 2)->count() }}</span>
-                        </div>
-                    </td>
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>Mangkir</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 3)->count() }}</span>
-                        </div>
-                    </td>
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>DO</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 4)->count() }}</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>Undur Diri</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 5)->count() }}</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>Lulus</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td >
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 6)->count() }}</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="flex items-center justify-center">
-                            <span>Meninggal Dunia</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 67)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="flex items-center justify-center">
-                                <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 7)->count() }}</span>
-                        </div>
-                    </td>
-                </tr>
-                
+            <tr>
+                <th rowspan="2">Status</th>
+                <th colspan="8">Angkatan</th>
+            </tr>
+            <tr>
+                <th>2016</th>
+                <th>2017</th>
+                <th>2018</th>
+                <th>2019</th>
+                <th>2020</th>
+                <th>2021</th>
+                <th>2022</th>
+                <th>2023</th>
+            </tr>
+            <tr>
+                <td>Aktif</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 1)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 1)->count() }}</td>
+            </tr>
+            <tr>
+                <td>Cuti</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 2)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 2)->count() }}</td>
+            </tr>
+            <tr>
+                <td>Mangkir</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 3)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 3)->count() }}</td>
+            </tr>
+            <tr>
+                <td>DO</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 4)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 4)->count() }}</td>
+            </tr>
+            <tr>
+                <td>Undur Diri</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 5)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 5)->count() }}</td>
+            </tr>
+            <tr>
+                <td>Lulus</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 6)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 6)->count() }}</td>
+            </tr>
+            <tr>
+                <td>Meninggal Dunia</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 7)->count() }}</td>
+                <td>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 7)->count() }}</td>
+            </tr>
         </table>
 
         <p style="margin-top: 15px">Dicetak pada {{ date('Y-m-d H:i:s') }}</p>

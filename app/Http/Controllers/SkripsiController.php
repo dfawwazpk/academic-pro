@@ -38,14 +38,31 @@ class SkripsiController extends Controller
     function doBuatSkripsi(Request $request)
     {
         $request->validate([
-            'semester' => 'required|numeric',
+            'semester' => 'required|numeric|min:7',
             'nilai' => 'required|numeric',
             'scan_skripsi' => 'required|file|mimes:pdf|max:2048',
         ]);
     
+        // Mendapatkan total SKS dari KHS (sks_total)
+        $totalSksKHS = KHS::where('mahasiswa_id', Auth::user()->id)
+            ->where('status', 2)
+            ->latest('created_at')
+            ->take(1)
+            ->value('sks_total');
+    
+        // Menambahkan total SKS Skripsi yang diajukan
+        $totalSksSkripsi = $request->nilai; // Misalnya, nilai dijadikan jumlah SKS Skripsi
+    
+        // Menghitung total SKS keseluruhan
+        $totalSks = $totalSksKHS + $totalSksSkripsi;
+    
+        // Memeriksa apakah total SKS sudah mencapai 120
+        if ($totalSksKHS < 120) {
+            return redirect()->back()->with('error', 'Total SKS harus mencapai 120 sebelum mengajukan Skripsi.');
+        }
+    
         $skripsi = new Skripsi;
         $skripsi->semester = $request->semester;
-        $skripsi->status_skripsi = $request->status_skripsi;
         $skripsi->nilai = $request->nilai;
         $skripsi->status_skripsi = "Lulus";
         $skripsi->tanggal_lulus_sidang = date('Y-m-d');
@@ -53,9 +70,10 @@ class SkripsiController extends Controller
         $skripsi->status = 1;
         $skripsi->file = $request->file('scan_skripsi')->store('skripsi', 'public');
         $skripsi->mahasiswa_id = Auth::user()->id;
-
+    
         $skripsi->save();
     
         return redirect('/riwayat/skripsi')->with('success', 'Skripsi telah berhasil dibuat.');
-    }    
+    }
+     
 }
