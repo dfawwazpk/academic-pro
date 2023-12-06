@@ -55,7 +55,7 @@ class IRSController extends Controller
     
         // Memeriksa apakah semester yang diajukan sesuai dengan aturan yang diizinkan
         if ($request->filled('semester') && $request->semester != $nextSemester) {
-            return redirect()->back()->with('error', 'Anda hanya dapat mengisi IRS untuk semester berikutnya.');
+            return redirect()->back()->with('error', 'Anda hanya dapat mengisi IRS untuk semester '.$nextSemester);
         }
     
         // Menggunakan nilai semester yang dihitung

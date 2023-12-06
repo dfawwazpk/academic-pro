@@ -13,6 +13,15 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-4">
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-10 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-4">
+        @if ($pklList->count() > 0)
+        <div class="mt-2 mb-2">
+            <h1 class="block text-grey-darker text-xl font-bold">Anda sudah melakukan pengisian PKL.</h1>
+        </div>
+        @elseif ($sksk < 100)
+        <div class="mt-2 mb-2">
+            <h1 class="block text-grey-darker text-xl font-bold">Jumlah SKS anda belum mencukupi untuk pengisian PKL.</h1>
+        </div>
+        @else
         @if (session()->has('success'))
         {{-- INI BUAT POP UP KETIKA KLIK BUAT (MODAL) --}}
         <input type="checkbox" id="my_modal_7" class="modal-toggle" checked />
@@ -92,4 +101,6 @@
                 </div>
             </div>
         </form>
+        @endif
+    </div>
 @endsection

@@ -11,6 +11,22 @@
     <h1 class="text-xl md:text-3xl text-black font-bold mb-1 p-1">Riwayat IRS</h1>
 </div>
 
+@if (session()->has('success'))
+    {{-- INI BUAT POP UP KETIKA KLIK BUAT (MODAL) --}}
+    <input type="checkbox" id="my_modal_7" class="modal-toggle" checked />
+    <div class="modal bg-gray-800 text-white" role="dialog">
+        <div class="modal-box bg-gray-700">
+            <div class="flex items-center justify-center text-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#059669] mx-auto h-11 rounded-full bg-[#D1FAE5] w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <p class="py-4 text-center text-2xl">{{ session('success') }}</p>
+        </div>
+        <label class="modal-backdrop" for="my_modal_7">Close</label>
+    </div>
+@endif
+
 <div class="grid grid-cols-5 gap-4">
     <div class="place-self-center col-start-3 px-5 w-auto h-auto font-bold text-white bg-gray-500 rounded-full">
         <a href="/buat/irs">Input IRS</a>

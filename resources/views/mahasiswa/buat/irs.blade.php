@@ -17,12 +17,25 @@
         <input type="checkbox" id="my_modal_7" class="modal-toggle" checked />
         <div class="modal bg-gray-800 text-white" role="dialog">
             <div class="modal-box bg-gray-700">
-            <div class="flex items-center justify-center text-green-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-[#059669] mx-auto h-11 rounded-full bg-[#D1FAE5] w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
-                </svg>
+                <div class="flex items-center justify-center text-green-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-[#059669] mx-auto h-11 rounded-full bg-[#D1FAE5] w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <p class="py-4 text-center text-2xl">{{ session('success') }}</p>
             </div>
-            <p class="py-4 text-center text-2xl">{{ session('success') }}</p>
+            <label class="modal-backdrop" for="my_modal_7">Close</label>
+        </div>
+        @elseif (session()->has('error'))
+        <input type="checkbox" id="my_modal_7" class="modal-toggle" checked />
+        <div class="modal bg-gray-800 text-white" role="dialog">
+            <div class="modal-box bg-gray-700">
+                <div class="flex items-center justify-center text-green-500">
+                    <svg viewBox="0 0 24 24" class="w-8 h-8 text-red-500 stroke-current" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 8V12V8ZM12 16H12.01H12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <p class="py-4 text-center text-2xl">{{ session('error') }}</p>
             </div>
             <label class="modal-backdrop" for="my_modal_7">Close</label>
         </div>
@@ -35,8 +48,24 @@
 
                     <div class="mb-2">
                         <div>
-                            <label for="semester" class="block text-grey-darker text-sm font-bold mb-2">Semester Aktif</label>
-                            <input type="text" name="semester" class="border rounded w-full py-2 px-3 text-black @error('semester') is-invalid @else  @enderror" id="semester" placeholder="Masukkan semester aktif" value="{{ old('semester') }}">
+                            <label for="semester" class="block text-grey-darker text-sm font-bold mb-2">Semester</label>
+                            <select id="semester" name="semester" class="border rounded w-full py-2 px-3 text-black @error('semester') @else  is-invalid @enderror" value="{{ old('semester') }}">
+                                <option value="" selected disabled>Pilih semester</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                            </select>
                             @error('semester')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

@@ -54,11 +54,11 @@ class KHSController extends Controller
             ->value('semester');
     
         // Menggunakan semester terakhir yang divalidasi di IRS jika ada, atau 1 jika belum ada
-        $nextSemester = $lastValidatedSemester ? $lastValidatedSemester + 1 : 1;
+        $nextSemester = $lastValidatedSemester ? $lastValidatedSemester : 1;
     
         // Memeriksa apakah semester yang diajukan sesuai dengan aturan yang diizinkan
         if ($request->filled('semester') && $request->semester != $nextSemester) {
-            return redirect()->back()->with('error', 'Anda hanya dapat mengisi KHS untuk semester berikutnya.');
+            return redirect()->back()->with('error', 'Anda hanya dapat mengisi KHS untuk semester '.$nextSemester);
         }
     
         // Menggunakan nilai semester yang dihitung

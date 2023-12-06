@@ -27,11 +27,16 @@ class SkripsiController extends Controller
 
     function buatSkripsi(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
-        $semester = IRS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('semester');
+        $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
+        $skripsiList = Skripsi::where('mahasiswa_id', Auth::user()->id)->get();
+        $lastValidatedSemester = IRS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('semester');
+        $semester = $lastValidatedSemester ? $lastValidatedSemester : 1;
         return view('mahasiswa.buat.skripsi', [
             'title' => 'Buat Skripsi',
             'loggedInAccount' => $loggedInAccount,
             'semester' => $semester,
+            'sksk' => $sksk,
+            'skripsiList' => $skripsiList,
         ]);
     }
 

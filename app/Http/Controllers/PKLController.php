@@ -27,11 +27,16 @@ class PKLController extends Controller
 
     function buatPKL(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
-        $semester = IRS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('semester');
+        $sksk = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('sks_total');
+        $pklList = PKL::where('mahasiswa_id', Auth::user()->id)->get();
+        $lastValidatedSemester = IRS::where('mahasiswa_id', Auth::user()->id)->where('status', 2)->latest('created_at')->take(1)->value('semester');
+        $semester = $lastValidatedSemester ? $lastValidatedSemester : 1;
         return view('mahasiswa.buat.pkl', [
             'title' => 'Buat PKL',
             'loggedInAccount' => $loggedInAccount,
             'semester' => $semester,
+            'sksk' => $sksk,
+            'pklList' => $pklList,
         ]);
     }
 

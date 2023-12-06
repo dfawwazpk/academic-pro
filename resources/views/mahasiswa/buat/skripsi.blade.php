@@ -12,6 +12,15 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 p-4 gap-4">
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-center p-10 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group col-span-4">
+        @if ($skripsiList->count() > 0)
+        <div class="mt-2 mb-2">
+            <h1 class="block text-grey-darker text-xl font-bold">Anda sudah melakukan pengisian skripsi.</h1>
+        </div>
+        @elseif ($sksk < 120)
+        <div class="mt-2 mb-2">
+            <h1 class="block text-grey-darker text-xl font-bold">Jumlah SKS anda belum mencukupi untuk pengisian skripsi.</h1>
+        </div>
+        @else
         @if (session()->has('success'))
         {{-- INI BUAT POP UP KETIKA KLIK BUAT (MODAL) --}}
         <input type="checkbox" id="my_modal_7" class="modal-toggle" checked />
@@ -29,12 +38,12 @@
         @endif
         <div class="flex justify-center items-center ">
         <form action="/buat/skripsi" method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="grid grid-cols-1 gap-8">
+            @csrf
+            <div class="grid grid-cols-1 gap-8">
                 <div class="mb-2">
                     <div>
-                    <h1 class="block text-grey-darker text-sm font-bold mb-2">Semester</h1>
-                    <div>
+                        <h1 class="block text-grey-darker text-sm font-bold mb-2">Semester</h1>
+                    </div>
                         <select name="semester" id="semester" value="" class="input input-ghost w-full max-w-">
                             <option value="1" {{ $semester=='1' ? 'selected' : ''}}>1</option>
                             <option value="2" {{ $semester=='2' ? 'selected' : ''}}>2</option>
@@ -82,14 +91,17 @@
                     @error('tanggal_sidang')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                  </div>
+                    </div>
                 --}}
-                  <div class="flex justify-center gap-2">
+                <div class="mb-2">
+                    <div class="flex justify-center gap-2">
                     <button type="submit" class="btn btn-primary">Simpan</button>
 
                     <a href="/riwayat/irs" class="btn btn-error">Cancel</a>
                 </div>
+            </div>
+        </form>
     </div>
-</form>
-
+    @endif
+</div>
 @endsection
