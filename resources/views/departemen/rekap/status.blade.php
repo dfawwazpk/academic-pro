@@ -37,6 +37,22 @@
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-800">
                             <tr>
+                                <th rowspan="2" class="border border-slate-600 text-white">Status</th>
+                                <th colspan="8" class="border border-slate-600 text-white">Angkatan</th>
+                             
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-600 text-white text-center ">2016</td>
+                                <td class="border border-slate-600 text-white text-center ">2017</td>
+                                <td class="border border-slate-600 text-white text-center ">2018</td>
+                                <td class="border border-slate-600 text-white text-center ">2019</td>
+                                <td class="border border-slate-600 text-white text-center ">2020</td>
+                                <td class="border border-slate-600 text-white text-center ">2021</td>
+                                <td class="border border-slate-600 text-white text-center ">2022</td>
+                                <td class="border border-slate-600 text-white text-center ">2023</td>
+                            </tr>
+                        </thead>
+{{-- Backup Table 
                                 <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-white">
                                     <div class="flex items-center justify-center gap-x-3">
 
@@ -68,14 +84,14 @@
                                     </div>
                                 </th>
                             </tr>
-                            
-                        </thead>
+                            --}}    
+                   
 
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <th class="border border-slate-600 py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
-                                        <span>2016</span>
+                                        <span>Aktif</span>
                                     </div>
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -87,51 +103,9 @@
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2016/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 2)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2016/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2017</span>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
                                         <a href="/departemen/rekap/status/2017/aktif"class="flex items-center">
                                             <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 1)->count() }}</span>
                                         </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2017/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 2)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2017/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2018</span>
                                     </div>
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -143,51 +117,9 @@
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2018/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 2)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2018/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2019</span>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
                                         <a href="/departemen/rekap/status/2019/aktif"class="flex items-center">
                                             <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 1)->count() }}</span>
                                         </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2019/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 2)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2019/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2020</span>
                                     </div>
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -199,51 +131,9 @@
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2020/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 2)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2020/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2021</span>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
                                         <a href="/departemen/rekap/status/2021/aktif"class="flex items-center">
                                             <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 1)->count() }}</span>
                                         </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2021/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 2)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2021/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2022</span>
                                     </div>
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -255,43 +145,420 @@
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2022/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 2)->count() }}</span>
+                                        <a href="/departemen/rekap/status/2023/aktif"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 1)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                {{-- Backup 
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/rekap/status/2016/nonaktif"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/rekap/status/2016/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+                            --}}
+                            <tr>
+                                <th class=" border border-slate-600 py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <span>Cuti</span>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2016/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2017/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2018/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2019/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2020/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2021/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 2)->count() }}</span>
                                         </a>
                                     </div>
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
                                         <a href="/departemen/rekap/status/2022/cuti"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 3)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <span>2023</span>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2023/aktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 1)->count() }}</span>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <div class="flex items-center justify-center">
-                                        <a href="/departemen/rekap/status/2023/nonaktif"class="flex items-center">
-                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 2)->count() }}</span>
+                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 2)->count() }}</span>
                                         </a>
                                     </div>
                                 </th>
                                 <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center justify-center">
                                         <a href="/departemen/rekap/status/2023/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                {{-- Backup 
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/rekap/status/2017/nonaktif"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 2)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/rekap/status/2017/cuti"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+                            --}}
+                            <tr>
+                                <th class="border border-slate-600 py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <span>Mangkir</span>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2016/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2017/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2018/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2019/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2020/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2021/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2022/mangkir"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2023/mangkir"class="flex items-center">
                                             <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 3)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            <tr>
+                                <th class="border border-slate-600  py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <span>DO</span>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2016/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2017/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2018/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+    
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2019/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2020/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2021/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2022/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2023/DO"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 4)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <th class=" border border-slate-600 py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <span>Undur Diri</span>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2016/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2017/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2018/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2019/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2020/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2021/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2022/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2023/undur diri"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 5)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class=" border border-slate-600 py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <span>Lulus</span>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2016/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2017/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2018/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2019/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2020/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2021/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2022/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2023/lulus"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 6)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class=" border border-slate-600 py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <span>Meninggal Dunia</span>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2016/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2016)->where('status', 67)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2017/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2017)->where('status', 7)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2018/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2018)->where('status', 7)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2019/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2019)->where('status', 7)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2020/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2020)->where('status', 7)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2021/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2021)->where('status', 7)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2022/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2022)->where('status', 7)->count() }}</span>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <div class="flex items-center justify-center">
+                                        <a href="/departemen/rekap/status/2023/meninggal dunia"class="flex items-center">
+                                            <span>{{ $mahasiswaList->where('angkatan', 2023)->where('status', 7)->count() }}</span>
                                         </a>
                                     </div>
                                 </th>
@@ -326,6 +593,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="grid grid-cols-4 mt-4 mb-4">
         <div class="col-start-4">

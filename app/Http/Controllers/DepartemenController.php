@@ -15,7 +15,7 @@ use App\Models\StatusMahasiswa;
 use Illuminate\Support\Facades\Auth;
 
 class DepartemenController extends Controller
-{
+{ 
     function listMahasiswa(){
         $loggedInAccount = Departemen::where('id', Auth::user()->id);
         $mahasiswaList = Mahasiswa::filter(request(['search', 'angkatan', 'status', 'jalur_masuk']))->get();
@@ -51,11 +51,23 @@ class DepartemenController extends Controller
             if ($status == 'aktif') {
                 $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 1);
             }
-            else if ($status == 'nonaktif') {
+            else if ($status == 'cuti') {
                 $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 2);
             }
-            else if ($status == 'cuti') {
+            else if ($status == 'mangkir') {
                 $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 3);
+            }
+            else if ($status == 'DO') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 4);
+            }
+            else if ($status == 'undur diri') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 5);
+            }
+            else if ($status == 'lulus') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 6);
+            }
+            else if ($status == 'meninggal dunia ') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 7);
             }
         }
         return view('departemen.rekap.status', [
@@ -87,11 +99,23 @@ class DepartemenController extends Controller
             if ($status == 'aktif') {
                 $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 1);
             }
-            else if ($status == 'nonaktif') {
+            else if ($status == 'cuti') {
                 $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 2);
             }
-            else if ($status == 'cuti') {
+            else if ($status == 'mangkir') {
                 $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 3);
+            }
+            else if ($status == 'DO') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 4);
+            }
+            else if ($status == 'undur diri') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 5);
+            }
+            else if ($status == 'lulus') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 6);
+            }
+            else if ($status == 'meninggal dunia ') {
+                $mahasiswaListStatus = Mahasiswa::where('angkatan', $angkatan)->where('status', 7);
             }
         }
          
@@ -222,3 +246,6 @@ class DepartemenController extends Controller
         ]);
     }
 }
+
+
+
