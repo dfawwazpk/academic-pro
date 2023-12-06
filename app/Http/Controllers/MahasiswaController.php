@@ -136,5 +136,29 @@ class MahasiswaController extends Controller
 
     return response()->json($kabupatenKota);
 }
+    public function changeStatus($id, Request $request)
+    {
+        $request->validate([
+            'newStatus' => 'required|in:1,2,3,4,5,6,7', // Add validation for valid status codes
+        ]);
+
+        $newStatus = $request->input('newStatus');
+        $mahasiswa = Mahasiswa::findOrFail($id);
+
+        // Update status only if it's different
+        if ($mahasiswa->status != $newStatus) {
+            $mahasiswa->status = $newStatus;
+            $mahasiswa->save();
+        }
+
+        return redirect()->back()->with('success', 'Status mahasiswa berhasil dirubah!');
+    }
+    public function destroy($id)
+    {
+        $akun_mahasiswa  = User::findOrFail($id);
+        $akun_mahasiswa ->delete();
+
+        return redirect()->back()->with('success', 'Akun mahasiswa berhasil dihapus!');
+    }
 
 }

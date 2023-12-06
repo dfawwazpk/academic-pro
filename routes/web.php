@@ -63,6 +63,16 @@ Route::post('buat/mahasiswa', [MahasiswaController::class,'doCreate'])->middlewa
 Route::get('buat/mahasiswa/csv', [MahasiswaController::class,'importMhs'])->middleware('auth','operator');
 Route::post('buat/mahasiswa/csv', [MahasiswaController::class,'doImportMhs'])->middleware('auth','operator');
 
+// Update Status Mhs
+Route::post('/change-status/{id}', [MahasiswaController::class, 'changeStatus'])
+    ->name('mahasiswa.changeStatus')
+    ->middleware('auth', 'operator');
+
+//delete akun mhs
+Route::delete('/delete/mahasiswa/{id}', [MahasiswaController::class, 'destroy'])
+    ->name('delete.mahasiswa')
+    ->middleware('auth', 'operator');
+
 //BUAT AKUN DOSEN
 Route::get('buat/dosen', [DosenController::class,'create'])->middleware('auth','operator');
 Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth','operator');
@@ -70,6 +80,7 @@ Route::post('buat/dosen', [DosenController::class,'doCreate'])->middleware('auth
 Route::delete('/delete/dosen/{id}', [DosenController::class, 'destroy'])
     ->name('delete.dosen')
     ->middleware('auth', 'operator');
+
 
 //-------------------------------- MAHASISWA --------------------------------//
 

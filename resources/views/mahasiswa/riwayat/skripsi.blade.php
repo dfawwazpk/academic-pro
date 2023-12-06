@@ -167,7 +167,7 @@
         <div class="flex justify-center">
             <div class="text-center">
                 <p class="text-5xl justify-center text-center">{{ $sksk ?? '0' }}</p>
-                <p>IPK</p>
+                <p>SKSK</p>
             </div>
         </div>
     </div>

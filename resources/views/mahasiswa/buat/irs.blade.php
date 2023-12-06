@@ -63,7 +63,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="flex justify-center gap-2">
                         <button type="submit" class="btn btn-primary">Buat</button>
 

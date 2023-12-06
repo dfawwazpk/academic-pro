@@ -90,6 +90,45 @@
                                     </div>
                                 </td>
                                 {{-- Ini Hapus Aken Dosen tapi masi refer ke dosen id blm ke user id --}}
+                                <td>
+                                            <!-- Code 3: Form Triggering Delete Modal -->
+                                    <form onsubmit="event.preventDefault(); openDeleteModal('{{ $dosen->id }}')" class="inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm text-sm text-red-500 capitalize transition-colors duration-200 bg-white border rounded-full hover:text-red-700 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                                            <span>Hapus Akun</span>
+                                        </button>
+                                    </form>
+
+                                    <!-- Delete Modal Content -->
+                                    <div id="deleteModal_{{ $dosen->id }}" class="hidden fixed inset-0 overflow-y-auto">
+                                        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                            </div>
+                                            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                                            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                                <!-- Modal Header -->
+                                                <div class="bg-gray-800 text-white py-4 px-6">
+                                                    <div class="flex items-center justify-center text-red-500 mb-4">
+                                                    </div>
+                                                    <p class="text-center text-2xl">Hapus Akun</p>
+                                                </div>
+                                                <!-- Modal Body -->
+                                                <form action="{{ route('delete.mahasiswa', $dosen->id) }}" method="post" class="p-6">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <!-- Modal Footer -->
+                                                    <div class="flex justify-center"> <!-- Center the buttons -->
+                                                        <button type="button" onclick="closeDeleteModal('{{ $dosen->id }}')" class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-full">Batal</button>
+                                                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-full">Ya, Hapus Akun</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                {{-- Backup 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <form id="deleteForm_{{ $dosen->id }}" action="{{ route('delete.dosen', $dosen->id) }}" method="post">
@@ -101,15 +140,26 @@
                                         <button type="button" onclick="confirmDelete('{{ $dosen->id }}')" class="btn btn-sm text-sm text-red-500 hover:text-red-700 capitalize transition-colors duration-200 bg-white border rounded-full gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
                                             <span>Hapus Akun</span>
                                         </button>
-                                    </div>
+                                    </div> 
+                                    --}}
                                 {{-- Styling Backup 
                                     
                                     <a href ="/verifikasi/irs/tolak/{{ $irs->id }}" class="px-4 py-4 text-sm font-medium text-gray-700 bg-gray-500 hover:bg-red-600 rounded-full whitespace-nowrap" style="width: 100px;">
                                         <div class="inline-flex items-center gap-x-2">
                                             <h2 class="text-sm font-normal text-emerald-100">Tolak</h2>
                                         </div>
-                                    </a> --}}
-                                
+                                    </a> 
+                                --}}
+                                    <script>
+                                        function openDeleteModal(id) {
+                                            document.getElementById('deleteModal_' + id).classList.remove('hidden');
+                                        }
+        
+                                        function closeDeleteModal(id) {
+                                            document.getElementById('deleteModal_' + id).classList.add('hidden');
+                                        }
+                                 </script>
+                                 {{--Styling Backup 
                                     <script>
                                         function confirmDelete(id) {
                                             if (confirm('Apakah Anda yakin ingin menghapus akun ini?')) {
@@ -117,6 +167,7 @@
                                             }
                                         }
                                     </script>
+                                    --}}
                                 </td>
                             </tr>
                             @endforeach

@@ -37,8 +37,12 @@
                 <select id="status" name="status" class="border rounded-full w-full py-2 px-3 text-black" onchange="this.form.submit()">
                     <option value="" {{ request('status')=='' ? 'selected' : ''}}>Semua Status</option>
                     <option value="1" {{ request('status')=='1' ? 'selected' : ''}}>Aktif</option>
-                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Nonaktif</option>
-                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Cuti</option>
+                    <option value="2" {{ request('status')=='2' ? 'selected' : ''}}>Cuti</option>
+                    <option value="3" {{ request('status')=='3' ? 'selected' : ''}}>Mangkir</option>
+                    <option value="4" {{ request('status')=='4' ? 'selected' : ''}}>DO</option>
+                    <option value="5" {{ request('status')=='5' ? 'selected' : ''}}>Undur Diri</option>
+                    <option value="6" {{ request('status')=='6' ? 'selected' : ''}}>Lulus</option>
+                    <option value="7" {{ request('status')=='7' ? 'selected' : ''}}>Meninggal Dunia</option>
                 </select>
             </div>
 
@@ -137,30 +141,48 @@
                                 </div>
                             </td>
 
+
                             @if ($mahasiswa->status == 1)
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
                                     <h2 class="text-sm font-normal">Aktif</h2>
                                 </div>
                             </td>
 
                             @elseif ($mahasiswa->status == 2)
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                <div class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    <h2 class="text-sm font-normal">Nonaktif</h2>
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Cuti</h2>
                                 </div>
                             </td>
-
                             @elseif ($mahasiswa->status == 3)
                             <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                 <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 dark:bg-gray-800">
-                                    <h2 class="text-sm font-normal">Cuti</h2>
+                                    <h2 class="text-sm font-normal">Mangkir</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 4)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-red-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">DO</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 5)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-red-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Undur Diri</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 6)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60  dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Lulus</h2>
+                                </div>
+                            </td>
+                            @elseif ($mahasiswa->status == 7)
+                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-red-100/60 dark:bg-gray-800">
+                                    <h2 class="text-sm font-normal">Meninggal Dunia</h2>
                                 </div>
                             </td>
                             @endif
