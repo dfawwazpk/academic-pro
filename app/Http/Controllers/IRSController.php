@@ -27,9 +27,11 @@ class IRSController extends Controller
 
     function buatIRS(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $irsWaitingValidationList = IRS::where('mahasiswa_id', Auth::user()->id)->where('status', 1)->get();
         return view('mahasiswa.buat.irs', [
             "title" => "Buat IRS",
-            "loggedInAccount" => $loggedInAccount
+            "loggedInAccount" => $loggedInAccount,
+            'irsWaitingValidationList' => $irsWaitingValidationList
         ]);
     }
 

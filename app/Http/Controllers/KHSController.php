@@ -27,9 +27,11 @@ class KHSController extends Controller
 
     function buatKHS(){
         $loggedInAccount = Mahasiswa::where('id', Auth::user()->id);
+        $khsWaitingValidationList = KHS::where('mahasiswa_id', Auth::user()->id)->where('status', 1)->get();
         return view('mahasiswa.buat.khs', [
             "title" => "Buat KHS",
-            "loggedInAccount" => $loggedInAccount
+            "loggedInAccount" => $loggedInAccount,
+            'khsWaitingValidationList' => $khsWaitingValidationList
         ]);
     }
 
