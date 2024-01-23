@@ -160,5 +160,4 @@ class MahasiswaController extends Controller
 
         return redirect()->back()->with('success', 'Akun mahasiswa berhasil dihapus!');
     }
-
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Mahasiswa extends Model
 {
@@ -26,6 +27,22 @@ class Mahasiswa extends Model
         'status',
         'dosen_wali',
     ];
+
+    public function namaProvinsi(): BelongsTo {
+        return $this->belongsTo(Provinsi::class, 'provinsi', 'kode_prov');
+    }
+
+    public function namaKabupatenKota(): BelongsTo {
+        return $this->belongsTo(KabupatenKota::class, 'kabupaten_kota', 'kode_kab');
+    }
+
+    public function namaJalurMasuk(): BelongsTo {
+        return $this->belongsTo(JalurMasuk::class, 'jalur_masuk', 'id');
+    }
+
+    public function namaDosenWali(): BelongsTo {
+        return $this->belongsTo(Dosen::class, 'dosen_wali', 'id');
+    }
 
     public function scopeFilter($query, array $filters) {
         $query->when($filters['jalur_masuk'] ?? false, function($query, $jalur_masuk) {
